@@ -82,11 +82,11 @@ return <span style={{display:"inline-flex",alignItems:"center",flexShrink:0,...s
 
 const TH={
 boost:{name:"Monday Boost",grad:"linear-gradient(135deg,#F0FFF4,#C8F0D0)",pill:"#C8F0D0",pillText:"#1A6B35",accent:"#2ECC71",dark:"#1A6B35",blob:"rgba(46,204,113,0.15)",icon:"sparkle"},
-forza_ret:{name:"Forza + Retinale",grad:"linear-gradient(135deg,#FFF4EE,#FFD5B8)",pill:"#FFD5B8",pillText:"#A04010",accent:"#E8733A",dark:"#A04010",blob:"rgba(232,115,58,0.15)",icon:"dumbbell"},
-forza_idr:{name:"Forza + Idratazione",grad:"linear-gradient(135deg,#FFF4EE,#FFD5B8)",pill:"#FFD5B8",pillText:"#A04010",accent:"#E8733A",dark:"#A04010",blob:"rgba(232,115,58,0.15)",icon:"dumbbell"},
-mob_yoga:{name:"Mobilità + Yoga",grad:"linear-gradient(135deg,#F2FAF0,#C8E8B8)",pill:"#C8E8B8",pillText:"#2A5A18",accent:"#5EA840",dark:"#2A5A18",blob:"rgba(160,210,120,0.18)",icon:"yoga"},
-mob_face:{name:"Mobilità + Face Yoga",grad:"linear-gradient(135deg,#F2FAF0,#C8E8B8)",pill:"#C8E8B8",pillText:"#2A5A18",accent:"#5EA840",dark:"#2A5A18",blob:"rgba(160,210,120,0.18)",icon:"yoga"},
-sabato:{name:"Rallentare",grad:"linear-gradient(135deg,#FDFAF2,#F0E4B8)",pill:"#F0E4B8",pillText:"#7A5C10",accent:"#C4980A",dark:"#7A5C10",blob:"rgba(196,152,10,0.15)",icon:"sparkle"},
+forza_ret:{name:"Lower Body + Hydration",grad:"linear-gradient(135deg,#FFF4EE,#FFD5B8)",pill:"#FFD5B8",pillText:"#A04010",accent:"#E8733A",dark:"#A04010",blob:"rgba(232,115,58,0.15)",icon:"dumbbell"},
+forza_idr:{name:"Lower Body + Hydration",grad:"linear-gradient(135deg,#FFF4EE,#FFD5B8)",pill:"#FFD5B8",pillText:"#A04010",accent:"#E8733A",dark:"#A04010",blob:"rgba(232,115,58,0.15)",icon:"dumbbell"},
+mob_yoga:{name:"Yoga + Exfoliation",grad:"linear-gradient(135deg,#F2FAF0,#C8E8B8)",pill:"#C8E8B8",pillText:"#2A5A18",accent:"#5EA840",dark:"#2A5A18",blob:"rgba(160,210,120,0.18)",icon:"yoga"},
+mob_face:{name:"Yoga + Hydration",grad:"linear-gradient(135deg,#F2FAF0,#C8E8B8)",pill:"#C8E8B8",pillText:"#2A5A18",accent:"#5EA840",dark:"#2A5A18",blob:"rgba(160,210,120,0.18)",icon:"yoga"},
+sabato:{name:"Clean & Slow down",grad:"linear-gradient(135deg,#FDFAF2,#F0E4B8)",pill:"#F0E4B8",pillText:"#7A5C10",accent:"#C4980A",dark:"#7A5C10",blob:"rgba(196,152,10,0.15)",icon:"sparkle"},
 domenica:{name:"Relax",grad:"linear-gradient(135deg,#FFF5EE,#FFD9B8)",pill:"#FFD9B8",pillText:"#A04A10",accent:"#E8834A",dark:"#A04A10",blob:"rgba(232,131,74,0.15)",icon:"moon"},
 };
 
@@ -131,13 +131,13 @@ const AG="linear-gradient(135deg,#FDFAF6,#EDE0CC)";
 const AT="#6B4A2A";
 
 const DD={
-1:{th:TH.boost,colazione:"monday",mattina:["Nettalingua","Detersione viso","1 bicchiere acqua tiepida","30 Calf Raises + Vacuum 3×30″",`Supp. risveglio: ${SR}`,"Detox Yoga 15–30' oppure Upper & Abs","Dry Brush","Morning Skincare",`Supp. colazione: ${SC}`,"Face Yoga mattina"],alimLabel:"DETOX — low carb & low sodium",alimGrad:AG,alimText:AT,spuntino:"Tisana + 1 arancia",pranzo:"150–200 g proteine + doppia verdura · low carb · low sodium",cena:"150–200 g proteine + verdura cotta · low carb · low sodium",sera:["Gentle Foam Roller","Dry Brush + Massaggio con crema","Skincare Sera A — Retinale 0,2%","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:FY_M,fyLabel:"Face Yoga — Drenaggio & Scolpitura"},
-2:{th:TH.forza_idr,colazione:"std",mattina:["Nettalingua","Detersione viso","1 bicchiere acqua tiepida","30 Calf Raises + Vacuum 3×30″",`Supp. risveglio: ${SR}`,"Focus Glutei con pesi (40 min)","Dry Brush","Morning Skincare",`Supp. colazione: ${SC}`,"Face Yoga mattina"],alimLabel:"Pro + Carbo + Veggies",alimGrad:AG,alimText:AT,spuntino:"Cappuccino veg + 1 arancia + 20 g frutta secca",pranzo:"70 g cereali + 130 g proteine + verdure + 1 cucchiaio EVO",cena:"150–200 g proteine + verdura + 30–40 g carbo",sera:["Dry Brush + Massaggio con crema","Skincare Sera C — Idratazione + Face Yoga completo","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:FY_C,fyLabel:"Face Yoga Sera C — Completo"},
-3:{th:TH.mob_yoga,colazione:"std",mattina:["Nettalingua","Detersione viso","1 bicchiere acqua tiepida","30 Calf Raises + Vacuum 3×30″",`Supp. risveglio: ${SR}`,"Mobility/Flexibility Yoga 15'","Dry Brush","Morning Skincare",`Supp. colazione: ${SC}`],alimLabel:"Pro + Carbo + Veggies",alimGrad:AG,alimText:AT,spuntino:"Cappuccino veg + 1 arancia + 10 g frutta secca",pranzo:"70 g cereali + 130 g proteine + verdure + 1 cucchiaio EVO",cena:"150–200 g proteine + verdura + 30–40 g carbo",sera:["Yoga class 18:15","Dry Brush + Doccia + Getto freddo gambe","Massaggio con crema","Skincare Sera B — Peeling AHA 30% + BHA 2% (max 10 min)","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:null},
-4:{th:TH.forza_ret,colazione:"std",mattina:["Nettalingua","Detersione viso","1 bicchiere acqua tiepida","30 Calf Raises + Vacuum 3×30″",`Supp. risveglio: ${SR}`,"Focus Glutei con pesi (40 min)","Dry Brush","Morning Skincare",`Supp. colazione: ${SC}`,"Face Yoga mattina"],alimLabel:"Pro + Carbo + Veggies",alimGrad:AG,alimText:AT,spuntino:"Cappuccino veg + 1 arancia + 20 g frutta secca",pranzo:"70 g cereali + 130 g proteine + verdure + 1 cucchiaio EVO",cena:"150–200 g proteine + verdura + 30–40 g carbo",sera:["Gentle Foam Roller","Dry Brush + Massaggio con crema","Skincare Sera A — Retinale 0,2%","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:FY_M,fyLabel:"Face Yoga — Drenaggio & Scolpitura"},
-5:{th:TH.mob_face,colazione:"std",mattina:["Nettalingua","Detersione viso","1 bicchiere acqua tiepida","30 Calf Raises + Vacuum 3×30″",`Supp. risveglio: ${SR}`,"Mobility/Flexibility Yoga 15'","Dry Brush","Morning Skincare",`Supp. colazione: ${SC}`,"Face Yoga mattina"],alimLabel:"Pro + Carbo + Veggies",alimGrad:AG,alimText:AT,spuntino:"Cappuccino veg + 1 arancia + 10 g frutta secca",pranzo:"70 g cereali + 130 g proteine + verdure + 1 cucchiaio EVO",cena:"150–200 g proteine + verdura + 30–40 g carbo",sera:["Yoga class 18:15","Dry Brush + Massaggio (opzionale)","Skincare Sera C — Idratazione + Face Yoga completo","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:FY_C,fyLabel:"Face Yoga Sera C — Completo"},
-6:{th:TH.sabato,colazione:"std",mattina:["Nettalingua","Detersione viso","1 bicchiere acqua tiepida","30 Calf Raises + Vacuum 3×30″",`Supp. risveglio: ${SR}`,"Dry Brush","Morning Skincare",`Supp. colazione: ${SC}`,"Pulizie di casa (9–11)","Yoga class 11:00"],alimLabel:"Pranzo libero + aperitivo + serata",alimGrad:AG,alimText:AT,spuntino:null,aperitivo:"Spritz + snacks",pranzo:"Pasta sfiziosa + contorno veggies",cena:"Cena fuori o sfiziosa — NAC prima se alcolici",sera:["Dry Brush + Doccia + Getto freddo gambe","Massaggio con crema","Skincare essenziale: doppia detersione + sieri","Magnesio + Potassio"],ufficio:[],faceYoga:null},
-0:{th:TH.domenica,colazione:"detox",mattina:["NO sveglia — riposo","Nettalingua","Detersione viso","1 bicchiere acqua tiepida","30 Calf Raises + Vacuum 3×30″","Supp. risveglio: Omega 3 · Biotina · ½ Bromelina · Multi Probiotico · Diosmina + Esperidina","Dry Brush","Morning Skincare","Mattinata libera: relax, piante, lettura","11:00 — Bromelina","13:30 — Vitamina D3 + Acido Folico"],alimLabel:"Giornata di relax + pinsa serale",alimGrad:AG,alimText:AT,spuntino:"Aperitivo o spuntino libero",aperitivo:null,pranzo:"Pasta sfiziosa + contorno veggies — 13:30",cena:"Pinsa + mozzarella light + birra analcolica",sera:["Gentle Foam Roller","Dry Brush + Massaggio con crema","Skincare Sera C — Idratazione + Face Yoga completo","Gambe al muro 10'","½ Bromelina + Magnesio + Potassio"],ufficio:[],faceYoga:FY_C,fyLabel:"Face Yoga Sera C — Completo"},
+1:{th:TH.boost,colazione:"monday",mattina:["Nettalingua","Detersione viso",`Supp. risveglio: ${SR}`,"30 Calf Raises lenti – Vacuum 3×30″","Detox Yoga o Upper & Abs","Morning Skincare","Morning face yoga",`Supp. colazione: ${SC}`],alimLabel:"DETOX — low carb & low sodium",alimGrad:AG,alimText:AT,spuntino:"Tisana + 1 arancia",pranzo:"150–200 g proteine + doppia verdura · low carb · low sodium",cena:"150–200 g proteine + verdura cotta · low carb · low sodium",sera:["Gentle Foam Roller","Dry Brush + Massaggio con crema","Skincare Sera A — Retinale 0,2%","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:FY_M,fyLabel:"Face Yoga — Drenaggio & Scolpitura"},
+2:{th:TH.forza_idr,colazione:"std",mattina:["Nettalingua","Detersione viso",`Supp. risveglio: ${SR}`,"30 Calf Raises lenti – Vacuum 3×30″","Focus Glutei con pesi","Morning Skincare","Morning face yoga",`Supp. colazione: ${SC}`,"Protein Shake"],alimLabel:"Pro + Carbo + Veggies",alimGrad:AG,alimText:AT,spuntino:"Cappuccino veg + 1 arancia + 20 g frutta secca",pranzo:"70 g cereali + 130 g proteine + verdure + 1 cucchiaio EVO",cena:"150–200 g proteine + verdura + 30–40 g carbo",sera:["Dry Brush + Massaggio con crema","Skincare Sera C — Idratazione + Face Yoga completo","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:FY_C,fyLabel:"Face Yoga Sera C — Completo"},
+3:{th:TH.mob_yoga,colazione:"std",mattina:["Nettalingua","Detersione viso",`Supp. risveglio: ${SR}`,"30 Calf Raises lenti – Vacuum 3×30″","30' Yoga e/o Camminata","Morning Skincare","Morning face yoga",`Supp. colazione: ${SC}`],alimLabel:"Pro + Carbo + Veggies",alimGrad:AG,alimText:AT,spuntino:"Cappuccino veg + 1 arancia + 10 g frutta secca",pranzo:"70 g cereali + 130 g proteine + verdure + 1 cucchiaio EVO",cena:"150–200 g proteine + verdura + 30–40 g carbo",sera:["Yoga class 18:15","Dry Brush + Doccia + Getto freddo gambe","Massaggio con crema","Skincare Sera B — Peeling AHA 30% + BHA 2% (max 10 min)","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:null},
+4:{th:TH.forza_ret,colazione:"std",mattina:["Nettalingua","Detersione viso",`Supp. risveglio: ${SR}`,"30 Calf Raises lenti – Vacuum 3×30″","Focus Glutei con pesi","Morning Skincare","Morning face yoga",`Supp. colazione: ${SC}`,"Protein Shake"],alimLabel:"Pro + Carbo + Veggies",alimGrad:AG,alimText:AT,spuntino:"Cappuccino veg + 1 arancia + 20 g frutta secca",pranzo:"70 g cereali + 130 g proteine + verdure + 1 cucchiaio EVO",cena:"150–200 g proteine + verdura + 30–40 g carbo",sera:["Gentle Foam Roller","Dry Brush + Massaggio con crema","Skincare Sera A — Retinale 0,2%","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:FY_M,fyLabel:"Face Yoga — Drenaggio & Scolpitura"},
+5:{th:TH.mob_face,colazione:"std",mattina:["Nettalingua","Detersione viso",`Supp. risveglio: ${SR}`,"30 Calf Raises lenti – Vacuum 3×30″","30' Yoga e/o Camminata","Morning Skincare","Morning face yoga",`Supp. colazione: ${SC}`],alimLabel:"Pro + Carbo + Veggies",alimGrad:AG,alimText:AT,spuntino:"Cappuccino veg + 1 arancia + 10 g frutta secca",pranzo:"70 g cereali + 130 g proteine + verdure + 1 cucchiaio EVO",cena:"150–200 g proteine + verdura + 30–40 g carbo",sera:["Yoga class 18:15","Dry Brush + Massaggio (opzionale)","Skincare Sera C — Idratazione + Face Yoga completo","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:FY_C,fyLabel:"Face Yoga Sera C — Completo"},
+6:{th:TH.sabato,colazione:"std",mattina:["Nettalingua","Detersione viso",`Supp. risveglio: ${SR}`,"30 Calf Raises lenti – Vacuum 3×30″","Dry Brush","Morning Skincare","Morning face yoga",`Supp. colazione: ${SC}`,"Pulizie di casa (9–11)","Yoga class 11:00"],alimLabel:"Pranzo libero + aperitivo + serata",alimGrad:AG,alimText:AT,spuntino:null,aperitivo:"Spritz + snacks",pranzo:"Pasta sfiziosa + contorno veggies",cena:"Cena fuori o sfiziosa — NAC prima se alcolici",sera:["Dry Brush + Doccia + Getto freddo gambe","Massaggio con crema","Skincare essenziale: doppia detersione + sieri","Magnesio + Potassio"],ufficio:[],faceYoga:null},
+0:{th:TH.domenica,colazione:"detox",mattina:["NO sveglia — riposo","Nettalingua","Detersione viso","Supp. risveglio: Omega 3 · Biotina · ½ Bromelina · Multi Probiotico · Diosmina + Esperidina","30 Calf Raises lenti – Vacuum 3×30″","Dry Brush","Morning Skincare","Morning face yoga","Mattinata libera: relax, piante, lettura","11:00 — Bromelina","13:30 — Vitamina D3 + Acido Folico"],alimLabel:"Giornata di relax + pinsa serale",alimGrad:AG,alimText:AT,spuntino:"Aperitivo o spuntino libero",aperitivo:null,pranzo:"Pasta sfiziosa + contorno veggies — 13:30",cena:"Pinsa + mozzarella light + birra analcolica",sera:["Gentle Foam Roller","Dry Brush + Massaggio con crema","Skincare Sera C — Idratazione + Face Yoga completo","Gambe al muro 10'","½ Bromelina + Magnesio + Potassio"],ufficio:[],faceYoga:FY_C,fyLabel:"Face Yoga Sera C — Completo"},
 };
 
 const DN=["domenica","lunedì","martedì","mercoledì","giovedì","venerdì","sabato"];
@@ -158,6 +158,9 @@ const PROTEIN_TYPES=[
 const INIT_WORKOUTS=[
 {id:"w1",type:"glutei",name:"Scheda Focus Glutei & Gambe",freq:"2× a settimana · 48–72h di riposo",grad:"linear-gradient(135deg,#FFF4EE,#FFD5B8)",tc:"#A04010",sections:[{title:"Riscaldamento",items:["5–10 min mobilità articolare","5' Surya Namaskara"]},{title:"Attivazione",items:["20 Glute Bridge","15 × lato Clamshell","10 × lato Bird-Dog","20 Frog Pumps"]},{title:"Forza",items:["Hip Thrust: 4 × 10–12","Squat Bulgaro: 3 × 12","Stacchi Rumeni: 3 × 12"]},{title:"Defaticamento",items:["Gambe a muro 5'"]}],tips:["Visualizza il gluteo","Progressione settimanale","Senza scarpe"]},
 {id:"w2",type:"upper",name:"Allenamento Upper & Core",freq:"1–2× a settimana",grad:"linear-gradient(135deg,#FFF4EE,#FFD5B8)",tc:"#A04010",sections:[{title:"Forza · 3 giri · 45\" pausa",items:["Around the World: 12","Bent-over Row: 15","Alzate Laterali: 12","Chest Opener: 12","Dead Bug: 10/gamba"]},{title:"Power Flow · 3 giri",items:["Down Dog → Dolphin: 5–10","Dolphin Push-ups: 10","Plank Knee-to-Elbow: 20","Plank Shoulder Taps: 10/lato","Ardha Navasana: 10 respiri","V-ups alternati: 10/lato","Low Navasana Hold: 30\""]},{title:"Compensazione",items:["Ginocchia al petto","Rolling like a ball","Malasana","Anahatasana","Bhujangasana","Supine Twist"]}],tips:["Rematore + Face Pull per postura","Vacuum addominale ogni mattina"]},
+{id:"w3",type:"glutei",name:"Lower Body (Livello intermedio)",freq:"2× a settimana",grad:"linear-gradient(135deg,#FFF4EE,#FFD5B8)",tc:"#A04010",sections:[{title:"Esercizi · 8–10 ripetizioni",items:["8–10 RDL (Stacchi rumeni)","8–10 Squat","8–10 Step-up","8–10 Affondi laterali","8–10 Good mornings","8–10 Slanci"]}],tips:["Progressione graduale","Riposo 48–72h tra le sessioni"]},
+{id:"w4",type:"upper",name:"Upper Body (Livello intermedio)",freq:"1–2× a settimana",grad:"linear-gradient(135deg,#FFF4EE,#FFD5B8)",tc:"#A04010",sections:[{title:"Esercizi · 8–10 ripetizioni",items:["8–10 Chest press (Spinte petto su pavimento o divano)","8–10 Piegamenti (Push-ups)","8–10 Superman Pulls (con manubri)","8–10 Shoulder press (in piedi o seduta)","8–10 Face pulls","8–10 W-Press con manubri leggeri"]}],tips:["Concentrati sulla postura","Mantieni le spalle basse e indietro"]},
+{id:"w5",type:"upper",name:"Abs",freq:"2–3× a settimana",grad:"linear-gradient(135deg,#FFF4EE,#FFD5B8)",tc:"#A04010",sections:[{title:"Esercizi",items:["3×8 per gamba Deadbug + Weighted pullover","3×6–8 per lato Half kneeling Weight Chop & Lift","3×6–8 per lato Low plank w Banded Leg lifts"]}],tips:["Attiva il core prima di ogni esercizio","Respira in modo controllato"]},
 ];
 const INIT_YOGA=[
 {id:"y1",type:"yoga",name:"Detox Yoga",duration:"30–40 min",freq:"Post-weekend · giorni detox",grad:"linear-gradient(135deg,#F2FAF0,#C8E8B8)",tc:"#2A5A18",desc:"Sequenza drenante e digestiva.",sections:[{title:"Apertura",items:["Parivrtta Sukhasana","Cat-cow","Thread the needle"]},{title:"Flow",items:["3–5 Surya Namaskara","Utkatasana · Skandasana · Malasana","Twisted Runner Lunge","Twisted Wide Legged Fold"]},{title:"Chiusura",items:["Ananda Balasana — 2 min","Supta Baddha Konasana — 3 min","Jathara Parivartanasana — 2 min/lato","Viparita Karani — 5–10 min"]}],tips:["Bevi un bicchiere d'acqua subito dopo","Massaggia le gambe verso l'alto"]},
@@ -525,19 +528,19 @@ function AddRicModal({onAdd,onClose}){
   </Sheet>);
 }
 
-function AddNoteModal({onAdd,onClose}){
-  const[title,setTitle]=useState(""); const[content,setContent]=useState("");
+function AddNoteModal({onAdd,onClose,editNote=null}){
+  const[title,setTitle]=useState(editNote?.title||""); const[content,setContent]=useState(editNote?.content||"");
   const colors=[["#D9F0CE","#2D6020"],["#F0E4B8","#7A5C10"],["#FFD5B8","#A04010"],["#FCDDE5","#A03050"],["#EDE0FF","#6B3FA0"],["#F0EDE8","#5A5652"]];
-  const icons=["leaf","flower","spark","tag","book","star","heart","note"]; const[ci,setCi]=useState(0); const[icon,setIcon]=useState("note");
+  const icons=["leaf","flower","spark","tag","book","heart","note","fork"]; const[ci,setCi]=useState(editNote?colors.findIndex(([bg])=>bg===editNote.color):0); const[icon,setIcon]=useState(editNote?.icon||"note");
   return(<Sheet onClose={onClose}>
-    <Title size={20}>Nuova nota</Title>
+    <Title size={20}>{editNote?"Modifica nota":"Nuova nota"}</Title>
     <div style={{paddingBottom:8}}>
       <input value={title} onChange={e=>setTitle(e.target.value)} placeholder="Titolo" style={{width:"100%",padding:"11px 14px",borderRadius:13,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:13,color:N.text,background:N.faint,boxSizing:"border-box",outline:"none",marginTop:8,marginBottom:10}}/>
       <textarea value={content} onChange={e=>setContent(e.target.value)} placeholder="Contenuto…" rows={4} style={{width:"100%",padding:"11px 14px",borderRadius:13,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:13,color:N.text,background:N.faint,boxSizing:"border-box",outline:"none",resize:"none",marginBottom:12}}/>
       <div style={{display:"flex",gap:8,marginBottom:10}}>{icons.map(ic=><div key={ic} onClick={()=>setIcon(ic)} style={{width:32,height:32,borderRadius:9,background:icon===ic?N.text:N.faint,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer"}}><Ic n={ic} s={14} c={icon===ic?"#fff":N.muted}/></div>)}</div>
       <div style={{display:"flex",gap:8}}>{colors.map(([bg,tc],i)=><div key={i} onClick={()=>setCi(i)} style={{flex:1,height:24,borderRadius:8,background:bg,border:`2px solid ${ci===i?colors[i][1]:"transparent"}`,cursor:"pointer"}}/>)}</div>
     </div>
-    <button onClick={()=>{if(title.trim()){onAdd({id:"note"+Date.now(),title,content,color:colors[ci][0],tc:colors[ci][1],icon});onClose();}}} style={{width:"100%",padding:"13px",borderRadius:16,border:"none",background:N.text,color:"#fff",fontWeight:600,fontSize:14,cursor:"pointer",fontFamily:F.body,marginTop:12}}>Salva</button>
+    <button onClick={()=>{if(title.trim()){if(editNote){onAdd({...editNote,title,content,color:colors[ci<0?0:ci][0],tc:colors[ci<0?0:ci][1],icon});}else{onAdd({id:"note"+Date.now(),title,content,color:colors[ci][0],tc:colors[ci][1],icon});}onClose();}}} style={{width:"100%",padding:"13px",borderRadius:16,border:"none",background:N.text,color:"#fff",fontWeight:600,fontSize:14,cursor:"pointer",fontFamily:F.body,marginTop:12}}>{editNote?"Salva modifiche":"Salva"}</button>
   </Sheet>);
 }
 
@@ -612,10 +615,34 @@ function RSection({list,type,gradStyle,checked,onToggle,onAdd,onDel,onReorder,th
 
 // ── Main App ──
 export default function App(){
-  const now=new Date(); const hour=now.getHours();
+  const [now,setNow]=useState(()=>new Date());
+  useEffect(()=>{
+    const tick=()=>{
+      const n=new Date();
+      setNow(prev=>{
+        const pk=prev.toISOString().slice(0,10);
+        const nk=n.toISOString().slice(0,10);
+        if(pk!==nk)return n; // only re-render on day change
+        return prev;
+      });
+    };
+    // Check every minute
+    const id=setInterval(tick,60000);
+    return()=>clearInterval(id);
+  },[]);
+  const hour=now.getHours();
   const todayKey=now.toISOString().slice(0,10);
   const [loaded,setLoaded]=useState(false);
-  const [viewDateKey,setViewDateKey]=useState(todayKey); // chiave del giorno visualizzato
+  const [viewDateKey,setViewDateKey]=useState(()=>new Date().toISOString().slice(0,10));
+
+  // Quando cambia il giorno (mezzanotte), porta viewDateKey su oggi se si stava vedendo oggi
+  useEffect(()=>{
+    setViewDateKey(prev=>{
+      // Se stava vedendo "oggi" (giorno vecchio), aggiorna a nuovo oggi
+      if(prev<todayKey) return todayKey;
+      return prev;
+    });
+  },[todayKey]);
 
   // Calcola proprietà dal giorno visualizzato
   const viewDate=new Date(viewDateKey+"T12:00:00");
@@ -646,6 +673,8 @@ export default function App(){
   const [hidden,setHidden]=useState({mattina:[],sera:[]});
   const [readDone,setReadDone]=useState(false);
   const [alignDone,setAlignDone]=useState(false);
+  const [dailyTodos,setDailyTodos]=useState({});
+  const [todoInput,setTodoInput]=useState("");
 
   const getWeekStart=()=>{
     const d=new Date(now);
@@ -684,6 +713,7 @@ export default function App(){
       const allP=await load("weekProteins",[]);
       const ws=getWeekStart();
       setWeekProteins(allP.filter(e=>e.date>=ws));
+      setDailyTodos(await load("dailyTodos",{}));
       setChecked(await loadDaily("checked",{}));
       setWaterCount(await loadDaily("water",0));
       setStepsReached(await loadDaily("stepsReached",false));
@@ -767,6 +797,7 @@ export default function App(){
     hidden:mkSet(setHidden,"hidden",true),
     readDone:mkSet(setReadDone,"readDone",true),
     alignDone:mkSet(setAlignDone,"alignDone",true),
+    dailyTodos:mkSet(setDailyTodos,"dailyTodos"),
   };
 
   const[tab,setTab]=useState("oggi");
@@ -787,6 +818,7 @@ export default function App(){
   const[showAddRic,setShowAddRic]=useState(false);
   const[ricFilter,setRicFilter]=useState("Tutti");
   const[showAddNote,setShowAddNote]=useState(false);
+  const[editNote,setEditNote]=useState(null);
   const[noteOpen,setNoteOpen]=useState(null);
   const[showAddProg,setShowAddProg]=useState(false);
   const[newProg,setNewProg]=useState({date:todayKey,peso:"",energia:"3",umore:"3",note:""});
@@ -878,6 +910,7 @@ export default function App(){
       {showAddStrat&&<AddStratModal onAdd={r=>S.strats(p=>[...p,r])} onClose={()=>setShowAddStrat(false)}/>}
       {showAddRic&&<AddRicModal onAdd={r=>S.ricette(p=>[...p,r])} onClose={()=>setShowAddRic(false)}/>}
       {showAddNote&&<AddNoteModal onAdd={n=>S.notes(p=>[...p,n])} onClose={()=>setShowAddNote(false)}/>}
+      {editNote&&<AddNoteModal editNote={editNote} onAdd={updated=>S.notes(p=>p.map(x=>x.id===updated.id?updated:x))} onClose={()=>setEditNote(null)}/>}
       {showAddMov&&<AddMovimentoModal onAdd={item=>{if(item.type==="yoga")S.yoga(p=>[...p,item]);else if(item.type==="faceyoga")S.faceYoga(p=>[...p,item]);else S.workouts(p=>[...p,item]);}} onClose={()=>setShowAddMov(false)}/>}
 
       <div style={{position:"relative",zIndex:1}}>
@@ -1010,6 +1043,54 @@ export default function App(){
           </div>
 
           <RSection list={mList} type="mattina" gradStyle="linear-gradient(160deg,#FFFDF0 0%,#FFF6CC 55%,#FFFFFF 100%)" checked={checked} onToggle={k=>S.checked(p=>({...p,[k]:!p[k]}))} onAdd={setAddModal} onDel={(item,type)=>setDelModal({item,type})} onReorder={nl=>S.routineOrder(p=>({...p,mattina:nl.map(x=>x.key)}))} th={th} plan={plan} onFYOpen={()=>setFyOpen(true)}/>
+
+          {/* ── Daily To-do List ── */}
+          {(()=>{
+            const todosForDay=(dailyTodos[viewDateKey]||[]);
+            const addTodo=()=>{
+              const t=todoInput.trim();
+              if(!t)return;
+              S.dailyTodos(prev=>({...prev,[viewDateKey]:[...(prev[viewDateKey]||[]),{id:"td"+Date.now(),text:t,done:false}]}));
+              setTodoInput("");
+            };
+            const toggleTodo=(id)=>S.dailyTodos(prev=>({...prev,[viewDateKey]:(prev[viewDateKey]||[]).map(t=>t.id===id?{...t,done:!t.done}:t)}));
+            const deleteTodo=(id)=>S.dailyTodos(prev=>({...prev,[viewDateKey]:(prev[viewDateKey]||[]).filter(t=>t.id!==id)}));
+            return(
+              <div style={{borderRadius:18,padding:"14px 15px",background:"linear-gradient(160deg,#F0F4FF 0%,#E4ECFF 55%,#FFFFFF 100%)",border:`0.5px solid ${N.border}`,marginBottom:12}}>
+                <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:12}}>
+                  <div style={{display:"flex",alignItems:"center",gap:8}}>
+                    <Ic n="check" s={16} c="#3A5FA0"/>
+                    <Title size={16} style={{color:"#2A4090"}}>Daily to-do list</Title>
+                  </div>
+                  <a href="calshow://" style={{display:"flex",alignItems:"center",gap:4,fontSize:10,padding:"4px 10px",borderRadius:20,border:"1px solid #3A5FA044",background:"rgba(255,255,255,0.7)",color:"#2A4090",textDecoration:"none",fontFamily:F.body,fontWeight:600}}>
+                    <Ic n="cal" s={11} c="#2A4090"/>Calendario ›
+                  </a>
+                </div>
+                {todosForDay.length===0&&<p style={{fontSize:12,color:N.muted,fontFamily:F.body,margin:"0 0 10px",fontStyle:"italic"}}>Nessun task per oggi — aggiungine uno!</p>}
+                {todosForDay.map((todo)=>(
+                  <div key={todo.id} style={{display:"flex",alignItems:"flex-start",gap:8,padding:"7px 0",borderBottom:`0.5px solid rgba(0,0,0,0.05)`}}>
+                    <div onClick={()=>toggleTodo(todo.id)} style={{width:20,height:20,borderRadius:6,border:todo.done?"none":`1.5px solid ${N.border}`,background:todo.done?"#3A5FA0":"transparent",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,marginTop:2,cursor:"pointer",transition:"all .2s"}}>
+                      {todo.done&&<Ic n="check" s={12} c="#fff"/>}
+                    </div>
+                    <p onClick={()=>toggleTodo(todo.id)} style={{fontSize:13,color:todo.done?N.muted:N.text,textDecoration:todo.done?"line-through":"none",margin:0,lineHeight:1.55,fontFamily:F.body,flex:1,cursor:"pointer"}}>{todo.text}</p>
+                    <div onClick={()=>deleteTodo(todo.id)} style={{padding:"2px 4px",cursor:"pointer",opacity:.3,flexShrink:0}}><Ic n="trash" s={13} c={N.text}/></div>
+                  </div>
+                ))}
+                <div style={{display:"flex",gap:8,marginTop:10}}>
+                  <input
+                    value={todoInput}
+                    onChange={e=>setTodoInput(e.target.value)}
+                    onKeyDown={e=>{if(e.key==="Enter")addTodo();}}
+                    placeholder="Aggiungi task…"
+                    style={{flex:1,padding:"9px 12px",borderRadius:11,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:12,color:N.text,background:"rgba(255,255,255,0.8)",outline:"none"}}
+                  />
+                  <button onClick={addTodo} style={{width:36,height:36,borderRadius:11,border:"none",background:"#3A5FA0",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",flexShrink:0}}>
+                    <Ic n="plus" s={16} c="#fff"/>
+                  </button>
+                </div>
+              </div>
+            );
+          })()}
 
           {/* ── Durante la giornata — solo feriali ── */}
           {dow>=1&&dow<=5&&<div style={{borderRadius:20,padding:"14px 15px",marginBottom:12,background:"linear-gradient(135deg,#F7F5F0,#EDE9E2)",border:`0.5px solid ${N.border}`}}>
@@ -1239,7 +1320,13 @@ export default function App(){
           <div style={{display:"flex",justifyContent:"flex-end",marginBottom:14}}><button onClick={()=>setShowAddNote(true)} style={{display:"flex",alignItems:"center",gap:5,fontSize:11,padding:"5px 12px",borderRadius:20,border:`1px solid ${N.border}`,background:"#fff",color:N.muted,cursor:"pointer",fontFamily:F.body}}><Ic n="plus" s={12} c={N.muted}/>nuova</button></div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
             {notes.map(n=>(<div key={n.id} onClick={()=>setNoteOpen(noteOpen===n.id?null:n.id)} style={{background:n.color,borderRadius:18,padding:"14px 14px",cursor:"pointer",border:`0.5px solid ${n.tc}22`,gridColumn:noteOpen===n.id?"1 / -1":"auto",transition:"all .2s"}}>
-              <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:8}}><Ic n={n.icon||"note"} s={18} c={n.tc}/><button onClick={e=>{e.stopPropagation();S.notes(p=>p.filter(x=>x.id!==n.id));}} style={{background:"transparent",border:"none",cursor:"pointer",padding:0,opacity:.45}}><Ic n="close" s={14} c={n.tc}/></button></div>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:8}}>
+                <Ic n={n.icon||"note"} s={18} c={n.tc}/>
+                <div style={{display:"flex",gap:6,alignItems:"center"}}>
+                  <button onClick={e=>{e.stopPropagation();setEditNote(n);}} style={{background:"transparent",border:"none",cursor:"pointer",padding:0,opacity:.55}}><Ic n="edit" s={14} c={n.tc}/></button>
+                  <button onClick={e=>{e.stopPropagation();S.notes(p=>p.filter(x=>x.id!==n.id));}} style={{background:"transparent",border:"none",cursor:"pointer",padding:0,opacity:.45}}><Ic n="close" s={14} c={n.tc}/></button>
+                </div>
+              </div>
               <p style={{fontSize:12,fontWeight:600,color:n.tc,margin:"0 0 4px",fontFamily:F.body,lineHeight:1.3}}>{n.title}</p>
               {noteOpen===n.id?<p style={{fontSize:12,color:N.text,margin:0,fontFamily:F.body,lineHeight:1.7}}>{n.content}</p>:<p style={{fontSize:11,color:n.tc,opacity:.7,margin:0,fontFamily:F.body,overflow:"hidden",display:"-webkit-box",WebkitLineClamp:2,WebkitBoxOrient:"vertical"}}>{n.content}</p>}
             </div>))}
