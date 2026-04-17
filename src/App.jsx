@@ -82,7 +82,7 @@ return <span style={{display:"inline-flex",alignItems:"center",flexShrink:0,...s
 
 const TH={
 boost:{name:"Monday Boost",grad:"linear-gradient(135deg,#F0FFF4,#C8F0D0)",pill:"#C8F0D0",pillText:"#1A6B35",accent:"#2ECC71",dark:"#1A6B35",blob:"rgba(46,204,113,0.15)",icon:"sparkle"},
-forza_ret:{name:"Lower Body + Hydration",grad:"linear-gradient(135deg,#FFF4EE,#FFD5B8)",pill:"#FFD5B8",pillText:"#A04010",accent:"#E8733A",dark:"#A04010",blob:"rgba(232,115,58,0.15)",icon:"dumbbell"},
+forza_ret:{name:"Lower Body + Radiance",grad:"linear-gradient(135deg,#FFF4EE,#FFD5B8)",pill:"#FFD5B8",pillText:"#A04010",accent:"#E8733A",dark:"#A04010",blob:"rgba(232,115,58,0.15)",icon:"dumbbell"},
 forza_idr:{name:"Lower Body + Hydration",grad:"linear-gradient(135deg,#FFF4EE,#FFD5B8)",pill:"#FFD5B8",pillText:"#A04010",accent:"#E8733A",dark:"#A04010",blob:"rgba(232,115,58,0.15)",icon:"dumbbell"},
 mob_yoga:{name:"Yoga + Exfoliation",grad:"linear-gradient(135deg,#F2FAF0,#C8E8B8)",pill:"#C8E8B8",pillText:"#2A5A18",accent:"#5EA840",dark:"#2A5A18",blob:"rgba(160,210,120,0.18)",icon:"yoga"},
 mob_face:{name:"Yoga + Hydration",grad:"linear-gradient(135deg,#F2FAF0,#C8E8B8)",pill:"#C8E8B8",pillText:"#2A5A18",accent:"#5EA840",dark:"#2A5A18",blob:"rgba(160,210,120,0.18)",icon:"yoga"},
@@ -131,13 +131,13 @@ const AG="linear-gradient(135deg,#FDFAF6,#EDE0CC)";
 const AT="#6B4A2A";
 
 const DD={
-1:{th:TH.boost,colazione:"monday",mattina:["Nettalingua","Detersione viso",`Supp. risveglio: ${SR}`,"30 Calf Raises lenti – Vacuum 3×30″","Detox Yoga o Upper & Abs","Morning Skincare","Morning face yoga",`Supp. colazione: ${SC}`,"Brush teeth"],alimLabel:"DETOX — low carb & low sodium",alimGrad:AG,alimText:AT,spuntino:"Tisana + 1 arancia",pranzo:"150–200 g proteine + doppia verdura · low carb · low sodium",cena:"150–200 g proteine + verdura cotta · low carb · low sodium",sera:["Gentle Foam Roller","Dry Brush","Massaggio con crema","Skincare Sera A — Retinale 0,2%","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:FY_M,fyLabel:"Face Yoga — Drenaggio & Scolpitura"},
-2:{th:TH.forza_idr,colazione:"std",mattina:["Detersione viso","Nettalingua",`Supp. risveglio: ${SR}`,"30 Calf Raises lenti – Vacuum 3×30″","Focus Glutei con pesi","Morning Skincare","Morning face yoga",`Supp. colazione: ${SC}`,"Protein Shake","Brush teeth"],alimLabel:"Pro + Carbo + Veggies",alimGrad:AG,alimText:AT,spuntino:"Cappuccino veg + 1 arancia + 20 g frutta secca",pranzo:"70 g cereali + 130 g proteine + verdure + 1 cucchiaio EVO",cena:"150–200 g proteine + verdura + 30–40 g carbo",sera:["Dry Brush","Massaggio con crema","Skincare Sera C — Idratazione + Face Yoga completo","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:FY_C,fyLabel:"Face Yoga Sera C — Completo"},
-3:{th:TH.mob_yoga,colazione:"std",mattina:["Nettalingua","Detersione viso",`Supp. risveglio: ${SR}`,"30 Calf Raises lenti – Vacuum 3×30″","30' Yoga e/o Camminata","Morning Skincare","Morning face yoga",`Supp. colazione: ${SC}`,"Brush teeth"],alimLabel:"Pro + Carbo + Veggies",alimGrad:AG,alimText:AT,spuntino:"Cappuccino veg + 1 arancia + 10 g frutta secca",pranzo:"70 g cereali + 130 g proteine + verdure + 1 cucchiaio EVO",cena:"150–200 g proteine + verdura + 30–40 g carbo",sera:["Yoga class 18:15","Dry Brush + Doccia + Getto freddo gambe","Massaggio con crema","Skincare Sera B — Peeling AHA 30% + BHA 2% (max 10 min)","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:null},
-4:{th:TH.forza_ret,colazione:"std",mattina:["Detersione viso","Nettalingua",`Supp. risveglio: ${SR}`,"30 Calf Raises lenti – Vacuum 3×30″","Focus Glutei con pesi","Morning Skincare","Morning face yoga",`Supp. colazione: ${SC}`,"Protein Shake","Brush teeth"],alimLabel:"Pro + Carbo + Veggies",alimGrad:AG,alimText:AT,spuntino:"Cappuccino veg + 1 arancia + 20 g frutta secca",pranzo:"70 g cereali + 130 g proteine + verdure + 1 cucchiaio EVO",cena:"150–200 g proteine + verdura + 30–40 g carbo",sera:["Gentle Foam Roller","Dry Brush","Massaggio con crema","Skincare Sera A — Retinale 0,2%","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:FY_M,fyLabel:"Face Yoga — Drenaggio & Scolpitura"},
-5:{th:TH.mob_face,colazione:"std",mattina:["Nettalingua","Detersione viso",`Supp. risveglio: ${SR}`,"30 Calf Raises lenti – Vacuum 3×30″","30' Yoga e/o Camminata","Morning Skincare","Morning face yoga",`Supp. colazione: ${SC}`,"Brush teeth"],alimLabel:"Pro + Carbo + Veggies",alimGrad:AG,alimText:AT,spuntino:"Cappuccino veg + 1 arancia + 10 g frutta secca",pranzo:"70 g cereali + 130 g proteine + verdure + 1 cucchiaio EVO",cena:"150–200 g proteine + verdura + 30–40 g carbo",sera:["Yoga class 18:15","Dry Brush + Massaggio (opzionale)","Skincare Sera C — Idratazione + Face Yoga completo","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:FY_C,fyLabel:"Face Yoga Sera C — Completo"},
-6:{th:TH.sabato,colazione:"std",mattina:["Nettalingua","Detersione viso",`Supp. risveglio: ${SR}`,"30 Calf Raises lenti – Vacuum 3×30″","Dry Brush","Morning Skincare","Morning face yoga",`Supp. colazione: ${SC}`,"Pulizie di casa (9–11)","Yoga class 11:00","Brush teeth"],alimLabel:"Pranzo libero + aperitivo + serata",alimGrad:AG,alimText:AT,spuntino:null,aperitivo:"Spritz + snacks",pranzo:"Pasta sfiziosa + contorno veggies",cena:"Cena fuori o sfiziosa — NAC prima se alcolici",sera:["Dry Brush + Doccia + Getto freddo gambe","Massaggio con crema","Skincare essenziale: doppia detersione + sieri","Magnesio + Potassio"],ufficio:[],faceYoga:null},
-0:{th:TH.domenica,colazione:"detox",mattina:["NO sveglia — riposo","Nettalingua","Detersione viso","Supp. risveglio: Omega 3 · Biotina · ½ Bromelina · Multi Probiotico · Diosmina + Esperidina","30 Calf Raises lenti – Vacuum 3×30″","Dry Brush","Morning Skincare","Morning face yoga","Mattinata libera: relax, piante, lettura","11:00 — Bromelina","13:30 — Vitamina D3 + Acido Folico","Brush teeth"],alimLabel:"Giornata di relax + pinsa serale",alimGrad:AG,alimText:AT,spuntino:"Aperitivo o spuntino libero",aperitivo:null,pranzo:"Pasta sfiziosa + contorno veggies — 13:30",cena:"Pinsa + mozzarella light + birra analcolica",sera:["Gentle Foam Roller","Dry Brush","Massaggio con crema","Skincare Sera C — Idratazione + Face Yoga completo","Gambe al muro 10'","½ Bromelina + Magnesio + Potassio"],ufficio:[],faceYoga:FY_C,fyLabel:"Face Yoga Sera C — Completo"},
+1:{th:TH.boost,colazione:"monday",mattina:["Nettalingua","Detersione viso","Probiotici + Bromelina","30 Calf Raises lenti – Vacuum 3×30″","Detox Yoga o Upper & Abs","Morning Skincare","Morning face yoga",`Supp. colazione: ${SC}`,"Brush teeth"],alimLabel:"DETOX — low carb & low sodium",alimGrad:AG,alimText:AT,spuntino:"Tisana + 1 arancia",pranzo:"150–200 g proteine + doppia verdura · low carb · low sodium",cena:"150–200 g proteine + verdura cotta · low carb · low sodium",sera:["Gentle Foam Roller","Dry Brush","Massaggio con crema","Skincare Sera A — Retinale 0,2%","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:FY_M,fyLabel:"Face Yoga — Drenaggio & Scolpitura"},
+2:{th:TH.forza_idr,colazione:"std",mattina:["Detersione viso","Nettalingua","Probiotici + Bromelina","30 Calf Raises lenti – Vacuum 3×30″","Focus Glutei con pesi","Morning Skincare","Morning face yoga",`Supp. colazione: ${SC}`,"Protein Shake","Brush teeth"],alimLabel:"Pro + Carbo + Veggies",alimGrad:AG,alimText:AT,spuntino:"Cappuccino veg + 1 arancia + 20 g frutta secca",pranzo:"70 g cereali + 130 g proteine + verdure + 1 cucchiaio EVO",cena:"150–200 g proteine + verdura + 30–40 g carbo",sera:["Dry Brush","Massaggio con crema","Skincare Sera C — Idratazione + Face Yoga completo","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:FY_C,fyLabel:"Face Yoga Sera C — Completo"},
+3:{th:TH.mob_yoga,colazione:"std",mattina:["Nettalingua","Detersione viso","Probiotici + Bromelina","30 Calf Raises lenti – Vacuum 3×30″","30' Yoga e/o Camminata","Morning Skincare","Morning face yoga",`Supp. colazione: ${SC}`,"Brush teeth"],alimLabel:"Pro + Carbo + Veggies",alimGrad:AG,alimText:AT,spuntino:"Cappuccino veg + 1 arancia + 10 g frutta secca",pranzo:"70 g cereali + 130 g proteine + verdure + 1 cucchiaio EVO",cena:"150–200 g proteine + verdura + 30–40 g carbo",sera:["Yoga class 18:15","Dry Brush + Doccia + Getto freddo gambe","Massaggio con crema","Skincare Sera B — Peeling AHA 30% + BHA 2% (max 10 min)","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:null},
+4:{th:TH.forza_ret,colazione:"std",mattina:["Detersione viso","Nettalingua","Probiotici + Bromelina","30 Calf Raises lenti – Vacuum 3×30″","Focus Glutei con pesi","Morning Skincare","Morning face yoga",`Supp. colazione: ${SC}`,"Protein Shake","Brush teeth"],alimLabel:"Pro + Carbo + Veggies",alimGrad:AG,alimText:AT,spuntino:"Cappuccino veg + 1 arancia + 20 g frutta secca",pranzo:"70 g cereali + 130 g proteine + verdure + 1 cucchiaio EVO",cena:"150–200 g proteine + verdura + 30–40 g carbo",sera:["Gentle Foam Roller","Dry Brush","Massaggio con crema","Skincare Sera A — Retinale 0,2%","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:FY_M,fyLabel:"Face Yoga — Drenaggio & Scolpitura"},
+5:{th:TH.mob_face,colazione:"std",mattina:["Nettalingua","Detersione viso","Probiotici + Bromelina","30 Calf Raises lenti – Vacuum 3×30″","30' Yoga e/o Camminata","Morning Skincare","Morning face yoga",`Supp. colazione: ${SC}`,"Brush teeth"],alimLabel:"Pro + Carbo + Veggies",alimGrad:AG,alimText:AT,spuntino:"Cappuccino veg + 1 arancia + 10 g frutta secca",pranzo:"70 g cereali + 130 g proteine + verdure + 1 cucchiaio EVO",cena:"150–200 g proteine + verdura + 30–40 g carbo",sera:["Yoga class 18:15","Dry Brush + Massaggio (opzionale)","Skincare Sera C — Idratazione + Face Yoga completo","Gambe al muro 10'","Magnesio + Potassio"],ufficio:["Oscillazioni tallone-punta","Ogni ora: 5 contrazioni glutei + Rotazione scapole","Ogni volta in bagno: 10 Squat + 20″ Shaking + 10 Wall Slides"],faceYoga:FY_C,fyLabel:"Face Yoga Sera C — Completo"},
+6:{th:TH.sabato,colazione:"std",mattina:["Nettalingua","Detersione viso","Probiotici + Bromelina","30 Calf Raises lenti – Vacuum 3×30″","Dry Brush","Morning Skincare","Morning face yoga",`Supp. colazione: ${SC}`,"Pulizie di casa (9–11)","Yoga class 11:00","Brush teeth"],alimLabel:"Pranzo libero + aperitivo + serata",alimGrad:AG,alimText:AT,spuntino:null,aperitivo:"Spritz + snacks",pranzo:"Pasta sfiziosa + contorno veggies",cena:"Cena fuori o sfiziosa — NAC prima se alcolici",sera:["Dry Brush + Doccia + Getto freddo gambe","Massaggio con crema","Skincare essenziale: doppia detersione + sieri","Magnesio + Potassio"],ufficio:[],faceYoga:null},
+0:{th:TH.domenica,colazione:"detox",mattina:["NO sveglia — riposo","Nettalingua","Detersione viso","Probiotici + Bromelina","30 Calf Raises lenti – Vacuum 3×30″","Dry Brush","Morning Skincare","Morning face yoga","Mattinata libera: relax, piante, lettura","11:00 — Bromelina","13:30 — Vitamina D3 + Acido Folico","Brush teeth"],alimLabel:"Giornata di relax + pinsa serale",alimGrad:AG,alimText:AT,spuntino:"Aperitivo o spuntino libero",aperitivo:null,pranzo:"Pasta sfiziosa + contorno veggies — 13:30",cena:"Pinsa + mozzarella light + birra analcolica",sera:["Gentle Foam Roller","Dry Brush","Massaggio con crema","Skincare Sera C — Idratazione + Face Yoga completo","Gambe al muro 10'","½ Bromelina + Magnesio + Potassio"],ufficio:[],faceYoga:FY_C,fyLabel:"Face Yoga Sera C — Completo"},
 };
 
 const DN=["domenica","lunedì","martedì","mercoledì","giovedì","venerdì","sabato"];
@@ -792,9 +792,14 @@ export default function App(){
       setYogaPractices(await load("yogaPractices",INIT_YOGA));
       setFaceYogaPractices(await load("faceYogaPractices",INIT_FACEYOGA));
       setExtraGoals(await load("extraGoals",[]));
-      setAlwaysExtra(await load("alwaysExtra",{mattina:[],sera:[]}));
-      setDeleted(await load("deleted",{mattina:[],sera:[],mattina_extra:[],sera_extra:[]}));
-      setRoutineOrder(await load("routineOrder",{mattina:null,sera:null}));
+      // Reset dei dati manuali che potrebbero interferire con le routine base
+      // (alwaysExtra, routineOrder, deleted vengono azzerati per garantire la routine corretta)
+      await storeSet("bm_alwaysExtra",{mattina:[],sera:[]});
+      setAlwaysExtra({mattina:[],sera:[]});
+      await storeSet("bm_deleted",{mattina:[],sera:[],mattina_extra:[],sera_extra:[]});
+      setDeleted({mattina:[],sera:[],mattina_extra:[],sera_extra:[]});
+      await storeSet("bm_routineOrder",{mattina:null,sera:null});
+      setRoutineOrder({mattina:null,sera:null});
       const allP=await load("weekProteins",[]);
       const ws=getWeekStart();
       setWeekProteins(allP.filter(e=>e.date>=ws));
@@ -926,22 +931,28 @@ export default function App(){
     const deduped=raw.filter(item=>{
       if(item.key.startsWith("base_")) return true;
       const t=item.text.trim().toLowerCase();
-      // Filtra se è identica a una voce base
       if(baseTexts.has(t)) return false;
-      // Filtra se è una sottostringa o superstringa di una voce base (es. "Supp. colazione: ..." matcha parzialmente)
       for(const bt of baseTexts){
         if(t.startsWith(bt.slice(0,12))||bt.startsWith(t.slice(0,12))) return false;
       }
       return true;
     });
+    // Regola anti-duplicati globale: rimuove qualsiasi voce con testo identico già vista (prima occorrenza vince)
+    const seenTexts=new Set();
+    const unique=deduped.filter(item=>{
+      const t=item.text.trim().toLowerCase();
+      if(seenTexts.has(t)) return false;
+      seenTexts.add(t);
+      return true;
+    });
     const order=routineOrder[type];
     if(order&&order.length>0){
-      const keySet=new Set(deduped.map(x=>x.key));
-      const ordered=order.filter(k=>keySet.has(k)).map(k=>deduped.find(x=>x.key===k));
-      const remaining=deduped.filter(x=>!order.includes(x.key));
+      const keySet=new Set(unique.map(x=>x.key));
+      const ordered=order.filter(k=>keySet.has(k)).map(k=>unique.find(x=>x.key===k));
+      const remaining=unique.filter(x=>!order.includes(x.key));
       return [...ordered,...remaining];
     }
-    return deduped;
+    return unique;
   };
   const mList=buildList("mattina"); const sList=buildList("sera");
   const total=mList.length+sList.length;
@@ -1010,7 +1021,14 @@ export default function App(){
       {fyOpen&&plan.faceYoga&&<FYSheet steps={plan.faceYoga} label={plan.fyLabel||""} onClose={()=>setFyOpen(false)} th={th}/>}
       {fyAutoOpen&&<FYSheet steps={FY_AUTO} label="Face Yoga in Auto 🚗" onClose={()=>setFyAutoOpen(false)} th={{grad:"linear-gradient(135deg,#EDE0FF,#D4C0FF)",dark:"#6B3FA0"}}/>}
       {fyOfficeOpen&&<FYSheet steps={FY_OFFICE} label="Face Yoga in Ufficio 💻" onClose={()=>setFyOfficeOpen(false)} th={{grad:"linear-gradient(135deg,#EDE0FF,#D4C0FF)",dark:"#6B3FA0"}}/>}
-      {addModal&&<AddRoutineModal label={addModal.type==="mattina"?"Routine mattina":"Night routine"} onAdd={(text,scope)=>{if(scope==="always")S.alwaysExtra(p=>({...p,[addModal.type]:[...p[addModal.type],text]}));else S.todayExtra(p=>({...p,[addModal.type]:[...p[addModal.type],text]}));}} onClose={()=>setAddModal(null)}/>}
+      {addModal&&<AddRoutineModal label={addModal.type==="mattina"?"Routine mattina":"Night routine"} onAdd={(text,scope)=>{
+        // Anti-duplicati: controlla che il testo non esista già nella lista corrente
+        const currentList=buildList(addModal.type);
+        const already=currentList.some(item=>item.text.trim().toLowerCase()===text.trim().toLowerCase());
+        if(already) return; // ignora silenziosamente se già presente
+        if(scope==="always")S.alwaysExtra(p=>({...p,[addModal.type]:[...p[addModal.type],text]}));
+        else S.todayExtra(p=>({...p,[addModal.type]:[...p[addModal.type],text]}));
+      }} onClose={()=>setAddModal(null)}/>}
       {delModal&&<DelRoutineModal item={delModal.item} onDelete={(scope)=>{if(scope==="today")S.hidden(p=>({...p,[delModal.type]:[...(p[delModal.type]||[]),delModal.item.key]}));else if(scope==="always"){if(delModal.item.key.startsWith("base_"))S.deleted(p=>({...p,[delModal.type]:[...(p[delModal.type]||[]),delModal.item.baseIdx]}));else S.deleted(p=>({...p,[`${delModal.type}_extra`]:[...(p[`${delModal.type}_extra`]||[]),delModal.item.extraIdx]}));}}} onClose={()=>setDelModal(null)}/>}
       {showAddStrat&&<AddStratModal onAdd={r=>S.strats(p=>[...p,r])} onClose={()=>setShowAddStrat(false)}/>}
       {showAddRic&&<AddRicModal onAdd={r=>S.ricette(p=>[...p,r])} onClose={()=>setShowAddRic(false)}/>}
