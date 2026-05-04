@@ -658,14 +658,14 @@ function JournalingCard({entry,onSave,dateKey}){
   const[text,setText]=useState(entry);
   useEffect(()=>{setText(entry);},[entry,dateKey]);
   return(
-    <div style={{borderRadius:20,padding:"15px 16px",marginBottom:12,background:"#FFFFFF",border:"1px solid transparent",backgroundImage:"linear-gradient(#fff,#fff),linear-gradient(135deg,#FFB3BA,#FFDFBA,#FFFFBA,#BAFFC9,#BAE1FF,#D4BAFF)",backgroundOrigin:"border-box",backgroundClip:"padding-box,border-box",boxShadow:"0 2px 16px rgba(200,180,255,0.10)"}}>
+    <div style={{borderRadius:20,padding:"15px 16px",marginBottom:12,background:"radial-gradient(ellipse at 20% 20%, rgba(255,220,160,0.45) 0%, transparent 55%), radial-gradient(ellipse at 70% 35%, rgba(255,180,190,0.45) 0%, transparent 50%), radial-gradient(ellipse at 30% 70%, rgba(200,185,255,0.40) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(160,230,255,0.40) 0%, transparent 50%), #FFFFFF",border:"0.5px solid rgba(200,180,255,0.3)",boxShadow:"0 2px 20px rgba(200,180,255,0.12)"}}>
       <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:10}}>
         <div style={{display:"flex",alignItems:"center",gap:8}}><Ic n="note" s={16} c="#6B3FA0"/><Title size={16} style={{color:"#4A2880"}}>Journaling</Title></div>
         {!editing&&<button onClick={()=>setEditing(true)} style={{fontSize:10,padding:"4px 10px",borderRadius:20,border:"1px solid #C4A8FF",background:"rgba(255,255,255,0.9)",color:"#6B3FA0",cursor:"pointer",fontFamily:F.body,fontWeight:600}}>{entry?"Modifica ✎":"Scrivi…"}</button>}
       </div>
       {editing?(
         <div>
-          <textarea autoFocus value={text} onChange={e=>setText(e.target.value)} placeholder="Come ti senti oggi? Cosa hai imparato? Cosa ti ha colpita?…" rows={5} style={{width:"100%",padding:"10px 12px",borderRadius:13,border:"1px solid #D4BAFF",fontFamily:F.body,fontSize:13,color:N.text,background:"rgba(250,248,255,0.9)",resize:"none",outline:"none",lineHeight:1.7,boxSizing:"border-box"}}/>
+          <textarea autoFocus value={text} onChange={e=>setText(e.target.value)} placeholder="Come ti senti oggi? Cosa hai imparato? Cosa ti ha colpita?…" rows={5} style={{width:"100%",padding:"10px 12px",borderRadius:13,border:"1px solid rgba(180,160,255,0.3)",fontFamily:F.body,fontSize:13,color:N.text,background:"rgba(255,255,255,0.55)",backdropFilter:"blur(8px)",resize:"none",outline:"none",lineHeight:1.7,boxSizing:"border-box"}}/>
           <div style={{display:"flex",gap:8,marginTop:8}}>
             <button onClick={()=>{setText(entry);setEditing(false);}} style={{flex:1,padding:"10px",borderRadius:12,border:`0.5px solid ${N.border}`,background:"transparent",color:N.muted,fontSize:12,cursor:"pointer",fontFamily:F.body}}>Annulla</button>
             <button onClick={()=>{onSave(text);setEditing(false);}} style={{flex:2,padding:"10px",borderRadius:12,border:"none",background:"linear-gradient(135deg,#C4A8FF,#9B6FCC)",color:"#fff",fontSize:12,cursor:"pointer",fontFamily:F.body,fontWeight:600}}>Salva</button>
