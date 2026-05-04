@@ -76,6 +76,9 @@ car:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeW
 office:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.5" strokeLinecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>,
 protein:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.5" strokeLinecap="round"><path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/><path d="M8 10c-3 1-5 3-5 6v2h18v-2c0-3-2-5-5-6"/></svg>,
 drag:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.5" strokeLinecap="round"><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="18" x2="16" y2="18"/></svg>,
+body:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.5" strokeLinecap="round"><circle cx="12" cy="4" r="2"/><path d="M9 9h6l-1 5-1 7h-2l-1-7-1-5z"/><path d="M7 9l-2 3 2 2"/><path d="M17 9l2 3-2 2"/></svg>,
+fire:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.5" strokeLinecap="round"><path d="M12 22C8 22 5 19 5 15.5c0-2.5 1.5-4.5 3-5.5 0 2 1 3 2 3.5 0-2 .5-5 2-7 0 3 2 5 2 7.5C14 12 16 10 16 8c2 2 3 4.5 3 7.5C19 19 16 22 12 22z"/></svg>,
+ruler:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.5" strokeLinecap="round"><path d="M3 9l18-6-6 18-3-7.5L3 9z"/><line x1="10.5" y1="10.5" x2="8" y2="13"/></svg>,
 };
 return <span style={{display:"inline-flex",alignItems:"center",flexShrink:0,...style}}>{p[n]||p.star}</span>;
 };
@@ -174,9 +177,9 @@ const INIT_FACEYOGA=[
 {id:"fy4",type:"faceyoga",name:"Face Yoga in Ufficio",duration:"3–5 min",freq:"Ogni giorno al PC",grad:"linear-gradient(135deg,#EDE0FF,#D4C0FF)",tc:"#6B3FA0",desc:"Digital Detox alla scrivania.",sections:[{title:"Micro-pause",items:["Reset Posturale: spalle basse e indietro","Mewing: lingua al palato 1 min","Baffo d'Aria: 20 sec","Focus Visivo: punto lontano 10 sec","Pompaggio: 3 scivolamenti + pressione clavicole"]}],tips:["Ogni 2 ore","Invisibile — nessuno noterà nulla"]},
 ];
 const INIT_STRATS=[
-{id:"s1",title:"Productive Lunch Break",icon:"fork",grad:"linear-gradient(135deg,#F2FAF0,#C8E8B8)",tc:"#2A5A18",glow:"rgba(94,168,64,0.15)",steps:["Sigh ciclico pre-pasto","Pasto consapevole da casa","Cuffie + audiolibro + camminata","Obiettivo: 3.000 passi"],summary:"Respira → Mangia → Cammina 3k"},
-{id:"s2",title:"Evening Self-Care",icon:"heart",grad:"linear-gradient(135deg,#FDFAF2,#F0E4B8)",tc:"#7A5C10",glow:"rgba(196,152,10,0.15)",steps:["Scegli una ricetta sana","Mettiti comoda + skincare + candela","Prepara il calice analcolico","Sorseggia mentre cucini"],summary:"Scegli ricetta → Calice → Cucina"},
-{id:"s3",title:"Mindful Night",icon:"moon",grad:"linear-gradient(135deg,#FFF5EE,#FFD9B8)",tc:"#A04A10",glow:"rgba(232,131,74,0.15)",steps:["Cena sul divano","Checkpoint 60 sec: non alzarti","Sigillo crema mani","Timer 4 min: acqua + piatti + tisana"],summary:"Cena → 60s → Crema mani → Tisana"},
+{id:"s1",title:"Productive Lunch Break",icon:"fork",grad:"linear-gradient(135deg,#F2FAF0,#C8E8B8)",tc:"#2A5A18",glow:"rgba(94,168,64,0.15)",steps:["Sigh Ciclico pre-pasto","Cibi sani + Slow eating","Podcast/audiobook/musica + Camminata 15+ min o Commissioni"],summary:"Respira → Mangia → Muoviti"},
+{id:"s2",title:"Evening Self-Care",icon:"heart",grad:"linear-gradient(135deg,#FDFAF2,#F0E4B8)",tc:"#7A5C10",glow:"rgba(196,152,10,0.15)",steps:["Vestiti comodi","Detersione viso","6-10 Respiri consapevoli o 4 cicli 4-7-8","Crea l'atmosfera: metti un audiolibro/podcast/musica, accendi una candela","Prepara un drink analcolico","Sorseggia e cucina"],summary:"Mettiti comoda → Respira → Crea l'atmosfera → Drink analcolico → Cucina"},
+{id:"s3",title:"Mindful Night",icon:"moon",grad:"linear-gradient(135deg,#FFF5EE,#FFD9B8)",tc:"#A04A10",glow:"rgba(232,131,74,0.15)",steps:["Mattina: Scegli una ricetta sana (Healthy scrolling)","Spesa sana","Evening self-care","Cena sul divano con candela","Checkpoint 60 sec: 6-10 Respiri consapevoli o 4 cicli 4-7-8","Timer 4 min: tisana + piatti","Crema mani (Sigillo)","Relax: libro, film, serie tv"],summary:"Healthy scrolling + Spesa sana → Evening self-care → Cena sul divano → Respiri → 4 min → Crema mani + Relax"},
 ];
 const INIT_NOTES=[
 {id:"n1",title:"Frutta — Primavera",color:"#D9F0CE",tc:"#2D6020",icon:"leaf",content:"Fragole · Ciliegie · Albicocche · Kiwi · Limoni · Arance (fino aprile) · Pompelmo"},
@@ -571,49 +574,414 @@ function AddMovimentoModal({onAdd,onClose}){
   </Sheet>);
 }
 
-function DailyTodoList({todos,todoInput,setTodoInput,onAdd,onToggle,onDelete,onEdit}){
-  const[editingId,setEditingId]=useState(null);
-  const[editingText,setEditingText]=useState("");
+function GoalCheck({done,setDone,icon,color,checkColor,label,subtitle,extraLink,onEdit,onDelete}){
+  const[editing,setEditing]=useState(false);
+  const[editLabel,setEditLabel]=useState(label);
+  const[editSub,setEditSub]=useState(subtitle||"");
+  useEffect(()=>{setEditLabel(label);setEditSub(subtitle||"");},[label,subtitle]);
   return(
-    <div style={{borderRadius:18,padding:"14px 15px",background:"linear-gradient(160deg,#F0F4FF 0%,#E4ECFF 55%,#FFFFFF 100%)",border:`0.5px solid ${N.border}`,marginBottom:12}}>
-      <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:12}}>
-        <div style={{display:"flex",alignItems:"center",gap:8}}>
-          <Ic n="check" s={16} c="#3A5FA0"/>
-          <Title size={16} style={{color:"#2A4090"}}>Daily to-do list</Title>
+    <div style={{background:done?color:"#fff",borderRadius:18,padding:"13px 14px",border:`0.5px solid ${done?checkColor:N.border}`,transition:"all .3s"}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6}}>
+        <Ic n={icon} s={18} c={checkColor}/>
+        <div style={{display:"flex",alignItems:"center",gap:4}}>
+          {extraLink&&<a href={extraLink.href} style={{fontSize:9,padding:"2px 7px",borderRadius:99,background:checkColor+"22",color:checkColor,fontFamily:F.body,fontWeight:600,textDecoration:"none"}}>{extraLink.label}</a>}
+          {done&&!editing&&<span style={{fontSize:10,padding:"2px 8px",borderRadius:99,background:checkColor,color:"#fff",fontFamily:F.body,fontWeight:600}}>✓</span>}
+          {onEdit&&<button onClick={()=>setEditing(e=>!e)} style={{background:"transparent",border:"none",cursor:"pointer",padding:2,opacity:.35}}><Ic n="edit" s={13} c={checkColor}/></button>}
+          {onDelete&&<button onClick={onDelete} style={{background:"transparent",border:"none",cursor:"pointer",padding:2,opacity:.35}}><Ic n="trash" s={13} c={checkColor}/></button>}
         </div>
-        <a href="calshow://" style={{display:"flex",alignItems:"center",gap:4,fontSize:10,padding:"4px 10px",borderRadius:20,border:"1px solid #3A5FA044",background:"rgba(255,255,255,0.7)",color:"#2A4090",textDecoration:"none",fontFamily:F.body,fontWeight:600}}>
-          <Ic n="cal" s={11} c="#2A4090"/>Calendario ›
-        </a>
       </div>
-      {todos.length===0&&<p style={{fontSize:12,color:N.muted,fontFamily:F.body,margin:"0 0 10px",fontStyle:"italic"}}>Nessun task per oggi — aggiungine uno!</p>}
-      {todos.map((todo)=>(
-        <div key={todo.id} style={{display:"flex",alignItems:"flex-start",gap:8,padding:"7px 0",borderBottom:`0.5px solid rgba(0,0,0,0.05)`}}>
-          <div onClick={()=>onToggle(todo.id)} style={{width:20,height:20,borderRadius:6,border:todo.done?"none":`1.5px solid ${N.border}`,background:todo.done?"#3A5FA0":"transparent",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,marginTop:2,cursor:"pointer",transition:"all .2s"}}>
-            {todo.done&&<Ic n="check" s={12} c="#fff"/>}
-          </div>
-          {editingId===todo.id?(
-            <div style={{flex:1,display:"flex",gap:6,alignItems:"center"}}>
-              <input autoFocus value={editingText} onChange={e=>setEditingText(e.target.value)} onKeyDown={e=>{if(e.key==="Enter"&&editingText.trim()){onEdit(todo.id,editingText.trim());setEditingId(null);}if(e.key==="Escape")setEditingId(null);}} style={{flex:1,padding:"4px 8px",borderRadius:8,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:13,color:N.text,background:"rgba(255,255,255,0.9)",outline:"none"}}/>
-              <button onClick={()=>{if(editingText.trim()){onEdit(todo.id,editingText.trim());setEditingId(null);}}} style={{width:26,height:26,borderRadius:7,border:"none",background:"#3A5FA0",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",flexShrink:0}}><Ic n="check" s={12} c="#fff"/></button>
-              <button onClick={()=>setEditingId(null)} style={{width:26,height:26,borderRadius:7,border:`0.5px solid ${N.border}`,background:"transparent",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",flexShrink:0}}><Ic n="close" s={12} c={N.muted}/></button>
-            </div>
-          ):(
-            <p onClick={()=>onToggle(todo.id)} style={{fontSize:13,color:todo.done?N.muted:N.text,textDecoration:todo.done?"line-through":"none",margin:0,lineHeight:1.55,fontFamily:F.body,flex:1,cursor:"pointer"}}>{todo.text}</p>
-          )}
-          {editingId!==todo.id&&<div style={{display:"flex",gap:2,flexShrink:0}}>
-            <div onClick={()=>{setEditingId(todo.id);setEditingText(todo.text);}} style={{padding:"2px 4px",cursor:"pointer",opacity:.3}}><Ic n="edit" s={13} c={N.text}/></div>
-            <div onClick={()=>onDelete(todo.id)} style={{padding:"2px 4px",cursor:"pointer",opacity:.3}}><Ic n="trash" s={13} c={N.text}/></div>
-          </div>}
+      {editing&&onEdit?(
+        <div>
+          <Lbl style={{margin:"0 0 3px"}}>NOME</Lbl>
+          <input value={editLabel} onChange={e=>setEditLabel(e.target.value)} style={{width:"100%",padding:"6px 8px",borderRadius:8,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:12,color:N.text,background:N.faint,outline:"none",boxSizing:"border-box",marginBottom:6}}/>
+          <Lbl style={{margin:"0 0 3px"}}>SOTTOTITOLO</Lbl>
+          <input value={editSub} onChange={e=>setEditSub(e.target.value)} style={{width:"100%",padding:"6px 8px",borderRadius:8,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:12,color:N.text,background:N.faint,outline:"none",boxSizing:"border-box",marginBottom:8}}/>
+          <button onClick={()=>{onEdit(editLabel,editSub);setEditing(false);}} style={{width:"100%",padding:"7px",borderRadius:10,border:"none",background:checkColor,color:"#fff",fontSize:11,cursor:"pointer",fontFamily:F.body,fontWeight:600}}>Salva</button>
         </div>
-      ))}
-      <div style={{display:"flex",gap:8,marginTop:10}}>
-        <input value={todoInput} onChange={e=>setTodoInput(e.target.value)} onKeyDown={e=>{if(e.key==="Enter")onAdd();}} placeholder="Aggiungi task…" style={{flex:1,padding:"9px 12px",borderRadius:11,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:12,color:N.text,background:"rgba(255,255,255,0.8)",outline:"none"}}/>
-        <button onClick={onAdd} style={{width:36,height:36,borderRadius:11,border:"none",background:"#3A5FA0",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",flexShrink:0}}><Ic n="plus" s={16} c="#fff"/></button>
+      ):(
+        <>
+          <Lbl>{editLabel.toUpperCase()}</Lbl>
+          {editSub&&<p style={{fontSize:12,color:N.muted,margin:"0 0 8px",fontFamily:F.body,lineHeight:1.4}}>{editSub}</p>}
+          <div onClick={()=>setDone(s=>!s)} style={{display:"flex",alignItems:"center",gap:8,cursor:"pointer",marginTop:editSub?0:8}}>
+            <div style={{width:18,height:18,borderRadius:5,border:done?"none":`1.5px solid ${N.border}`,background:done?checkColor:"transparent",display:"flex",alignItems:"center",justifyContent:"center",transition:"all .2s"}}>{done&&<Ic n="check" s={11} c="#fff"/>}</div>
+            <span style={{fontSize:11,color:N.muted,fontFamily:F.body}}>Completato</span>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+function ExtraGoalCard({g,v,gd,gp,editGoalId,setEditGoalId,onUpdateGoal,onDeleteGoal,onDecrement,onIncrement}){
+  const[lbl,setLbl]=useState(g.label);
+  const[tgt,setTgt]=useState(String(g.target));
+  const[unt,setUnt]=useState(g.unit||"");
+  const isEditing=editGoalId===g.id;
+  useEffect(()=>{if(isEditing){setLbl(g.label);setTgt(String(g.target));setUnt(g.unit||"");}},[isEditing]);
+  return(
+    <div style={{background:gd?g.color:"#fff",borderRadius:18,padding:"13px 14px",border:`0.5px solid ${gd?g.tc+"55":N.border}`,transition:"all .3s"}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6}}>
+        <Ic n={g.icon||"star"} s={18} c={g.tc}/>
+        <div style={{display:"flex",gap:4,alignItems:"center"}}>
+          {gd&&<span style={{fontSize:10,padding:"2px 8px",borderRadius:99,background:g.tc,color:"#fff",fontFamily:F.body,fontWeight:600}}>✓</span>}
+          <button onClick={()=>setEditGoalId(isEditing?null:g.id)} style={{background:"transparent",border:"none",cursor:"pointer",padding:2,opacity:.4}}><Ic n="edit" s={13} c={g.tc}/></button>
+          <button onClick={()=>onDeleteGoal(g.id)} style={{background:"transparent",border:"none",cursor:"pointer",padding:2,opacity:.4}}><Ic n="trash" s={13} c={g.tc}/></button>
+        </div>
+      </div>
+      {isEditing?(
+        <div>
+          {[["Nome",lbl,setLbl],["Target",tgt,setTgt],["Unità",unt,setUnt]].map(([label,val,setter])=>(
+            <div key={label} style={{marginBottom:6}}>
+              <Lbl style={{margin:"0 0 2px"}}>{label.toUpperCase()}</Lbl>
+              <input value={val} onChange={e=>setter(e.target.value)} style={{width:"100%",padding:"6px 8px",borderRadius:8,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:12,color:N.text,background:"rgba(255,255,255,0.9)",outline:"none",boxSizing:"border-box"}}/>
+            </div>
+          ))}
+          <button onClick={()=>{onUpdateGoal(g.id,{label:lbl,target:+tgt||g.target,unit:unt});setEditGoalId(null);}} style={{width:"100%",padding:"8px",borderRadius:10,border:"none",background:g.tc,color:"#fff",fontSize:11,cursor:"pointer",fontFamily:F.body,fontWeight:600,marginTop:4}}>Salva modifiche</button>
+        </div>
+      ):(
+        <>
+          <Lbl>{g.label.toUpperCase()}</Lbl>
+          <p style={{fontFamily:F.heading,fontSize:24,fontWeight:600,color:N.text,margin:"0 0 6px",lineHeight:1}}>{v}<span style={{fontSize:13,color:N.muted}}>/{g.target} {g.unit}</span></p>
+          <div style={{height:4,background:N.faint,borderRadius:99,marginBottom:8,overflow:"hidden"}}><div style={{height:"100%",width:`${gp}%`,background:g.tc,borderRadius:99,transition:"width .3s",opacity:.7}}/></div>
+          <div style={{display:"flex",gap:6}}>
+            <button onClick={onDecrement} style={{flex:1,padding:"5px 0",borderRadius:10,border:`0.5px solid ${N.border}`,background:"transparent",color:N.text,fontSize:15,cursor:"pointer"}}>−</button>
+            <button onClick={onIncrement} style={{flex:1,padding:"5px 0",borderRadius:10,border:"none",background:g.color,color:g.tc,fontSize:15,cursor:"pointer",fontWeight:700}}>+</button>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+function JournalingCard({entry,onSave,dateKey}){
+  const[editing,setEditing]=useState(false);
+  const[text,setText]=useState(entry);
+  useEffect(()=>{setText(entry);},[entry,dateKey]);
+  return(
+    <div style={{borderRadius:20,padding:"15px 16px",marginBottom:12,background:"#FFFFFF",border:"1px solid transparent",backgroundImage:"linear-gradient(#fff,#fff),linear-gradient(135deg,#FFB3BA,#FFDFBA,#FFFFBA,#BAFFC9,#BAE1FF,#D4BAFF)",backgroundOrigin:"border-box",backgroundClip:"padding-box,border-box",boxShadow:"0 2px 16px rgba(200,180,255,0.10)"}}>
+      <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:10}}>
+        <div style={{display:"flex",alignItems:"center",gap:8}}><Ic n="note" s={16} c="#6B3FA0"/><Title size={16} style={{color:"#4A2880"}}>Journaling</Title></div>
+        {!editing&&<button onClick={()=>setEditing(true)} style={{fontSize:10,padding:"4px 10px",borderRadius:20,border:"1px solid #C4A8FF",background:"rgba(255,255,255,0.9)",color:"#6B3FA0",cursor:"pointer",fontFamily:F.body,fontWeight:600}}>{entry?"Modifica ✎":"Scrivi…"}</button>}
+      </div>
+      {editing?(
+        <div>
+          <textarea autoFocus value={text} onChange={e=>setText(e.target.value)} placeholder="Come ti senti oggi? Cosa hai imparato? Cosa ti ha colpita?…" rows={5} style={{width:"100%",padding:"10px 12px",borderRadius:13,border:"1px solid #D4BAFF",fontFamily:F.body,fontSize:13,color:N.text,background:"rgba(250,248,255,0.9)",resize:"none",outline:"none",lineHeight:1.7,boxSizing:"border-box"}}/>
+          <div style={{display:"flex",gap:8,marginTop:8}}>
+            <button onClick={()=>{setText(entry);setEditing(false);}} style={{flex:1,padding:"10px",borderRadius:12,border:`0.5px solid ${N.border}`,background:"transparent",color:N.muted,fontSize:12,cursor:"pointer",fontFamily:F.body}}>Annulla</button>
+            <button onClick={()=>{onSave(text);setEditing(false);}} style={{flex:2,padding:"10px",borderRadius:12,border:"none",background:"linear-gradient(135deg,#C4A8FF,#9B6FCC)",color:"#fff",fontSize:12,cursor:"pointer",fontFamily:F.body,fontWeight:600}}>Salva</button>
+          </div>
+        </div>
+      ):entry?(
+        <p style={{fontSize:13,color:N.text,margin:0,fontFamily:F.body,lineHeight:1.7,whiteSpace:"pre-wrap"}}>{entry}</p>
+      ):(
+        <p style={{fontSize:12,color:"#C4A8FF",margin:0,fontFamily:F.body,fontStyle:"italic"}}>Nessuna riflessione per oggi — tocca "Scrivi…" per iniziare.</p>
+      )}
+    </div>
+  );
+}
+
+function JournalingDiary({journalEntries,onSave}){
+  const[editingDate,setEditingDate]=useState(null);
+  const[editText,setEditText]=useState("");
+  const sorted=Object.entries(journalEntries).filter(([,v])=>v).sort((a,b)=>b[0].localeCompare(a[0]));
+  return(
+    <div>
+      {sorted.length===0&&<div style={{textAlign:"center",padding:"48px 20px"}}><Ic n="note" s={40} c={N.faint} style={{display:"block",margin:"0 auto 14px"}}/><Title size={18} style={{color:N.muted,marginBottom:8}}>Diario vuoto</Title><p style={{fontSize:13,fontFamily:F.body,color:N.muted,lineHeight:1.6}}>Le riflessioni che scrivi nella scheda Journaling di ogni giornata appariranno qui.</p></div>}
+      {sorted.map(([dateKey,text])=>{
+        const isEditing=editingDate===dateKey;
+        const d=new Date(dateKey+"T12:00:00");
+        return(
+          <div key={dateKey} style={{background:"#fff",borderRadius:20,marginBottom:12,border:`0.5px solid ${N.border}`,padding:"15px 16px"}}>
+            <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:8}}>
+              <div>
+                <p style={{fontSize:11,color:N.muted,fontFamily:F.body,margin:0,fontWeight:600,letterSpacing:.5}}>{d.toLocaleDateString("it-IT",{weekday:"long"}).toUpperCase()}</p>
+                <Title size={16}>{d.toLocaleDateString("it-IT",{day:"numeric",month:"long",year:"numeric"})}</Title>
+              </div>
+              <div style={{display:"flex",gap:6}}>
+                <button onClick={()=>{setEditingDate(dateKey);setEditText(text);}} style={{background:"transparent",border:"none",cursor:"pointer",padding:4,opacity:.4}}><Ic n="edit" s={14} c={N.text}/></button>
+                <button onClick={()=>onSave(dateKey,"")} style={{background:"transparent",border:"none",cursor:"pointer",padding:4,opacity:.3}}><Ic n="trash" s={14} c={N.text}/></button>
+              </div>
+            </div>
+            {isEditing?(
+              <div>
+                <textarea autoFocus value={editText} onChange={e=>setEditText(e.target.value)} rows={5} style={{width:"100%",padding:"10px 12px",borderRadius:13,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:13,color:N.text,background:N.faint,resize:"none",outline:"none",lineHeight:1.7,boxSizing:"border-box"}}/>
+                <div style={{display:"flex",gap:8,marginTop:8}}>
+                  <button onClick={()=>setEditingDate(null)} style={{flex:1,padding:"9px",borderRadius:12,border:`0.5px solid ${N.border}`,background:"transparent",color:N.muted,fontSize:12,cursor:"pointer",fontFamily:F.body}}>Annulla</button>
+                  <button onClick={()=>{onSave(dateKey,editText);setEditingDate(null);}} style={{flex:2,padding:"9px",borderRadius:12,border:"none",background:"#6B3FA0",color:"#fff",fontSize:12,cursor:"pointer",fontFamily:F.body,fontWeight:600}}>Salva</button>
+                </div>
+              </div>
+            ):<p style={{fontSize:13,color:N.text,margin:0,fontFamily:F.body,lineHeight:1.7,whiteSpace:"pre-wrap"}}>{text}</p>}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function AlimentazioneSection({plan,viewDateKey,dow,alimNote,setAlimNote,alimEdit,setAlimEdit,alimOverrides,setAlimOverrides,th,onGoProteine}){
+  const[editingField,setEditingField]=useState(null);
+  const[editText,setEditText]=useState("");
+  const[scopeModal,setScopeModal]=useState(null); // {field, text}
+  const getVal=(field)=>{
+    // Priority: today override > weekday override > plan default
+    if(alimOverrides[viewDateKey]?.[field]!==undefined) return alimOverrides[viewDateKey][field];
+    const wdKey="wd_"+dow+"_"+field;
+    if(alimOverrides[wdKey]!==undefined) return alimOverrides[wdKey];
+    if(field==="colazione") return COLAZIONE[plan.colazione]||COLAZIONE.std;
+    return plan[field]||"";
+  };
+  const startEdit=(field)=>{setEditingField(field);setEditText(getVal(field));};
+  const saveField=(field,text,scope)=>{
+    if(scope==="today"){
+      setAlimOverrides({...alimOverrides,[viewDateKey]:{...(alimOverrides[viewDateKey]||{}),[field]:text}});
+    } else {
+      const wdKey="wd_"+dow+"_"+field;
+      setAlimOverrides({...alimOverrides,[wdKey]:text});
+    }
+    setEditingField(null);setScopeModal(null);
+  };
+  const fields=[
+    {key:"colazione",label:"COLAZIONE"},
+    ...(plan.spuntino||alimOverrides["wd_"+dow+"_spuntino"]?[{key:"spuntino",label:"SPUNTINO"}]:[]),
+    ...(plan.aperitivo?[{key:"aperitivo",label:"APERITIVO"}]:[]),
+    {key:"pranzo",label:"PRANZO"},
+    {key:"cena",label:"CENA"},
+  ];
+  return(
+    <div style={{borderRadius:20,padding:"15px 16px",marginBottom:12,background:plan.alimGrad,border:`0.5px solid ${N.border}`}}>
+      {scopeModal&&<div style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.4)",zIndex:200,display:"flex",alignItems:"flex-end",justifyContent:"center"}} onClick={()=>setScopeModal(null)}>
+        <div style={{background:"#fff",borderRadius:"20px 20px 0 0",padding:"20px 20px 36px",width:"100%",maxWidth:430}} onClick={e=>e.stopPropagation()}>
+          <Title size={16} style={{marginBottom:6}}>Salva modifica per</Title>
+          <p style={{fontSize:12,color:N.muted,fontFamily:F.body,margin:"0 0 16px"}}>Vuoi cambiare solo oggi o ogni {["domenica","lunedì","martedì","mercoledì","giovedì","venerdì","sabato"][scopeModal.dow]}?</p>
+          <button onClick={()=>saveField(scopeModal.field,scopeModal.text,"today")} style={{width:"100%",padding:"13px",borderRadius:14,border:`0.5px solid ${N.border}`,background:"#fff",color:N.text,fontSize:13,cursor:"pointer",fontFamily:F.body,fontWeight:600,marginBottom:8}}>Solo oggi</button>
+          <button onClick={()=>saveField(scopeModal.field,scopeModal.text,"weekday")} style={{width:"100%",padding:"13px",borderRadius:14,border:"none",background:N.text,color:"#fff",fontSize:13,cursor:"pointer",fontFamily:F.body,fontWeight:600}}>Ogni {["domenica","lunedì","martedì","mercoledì","giovedì","venerdì","sabato"][scopeModal.dow]}</button>
+        </div>
+      </div>}
+      <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:10}}>
+        <div style={{display:"flex",alignItems:"center",gap:7}}><Ic n="fork" s={15} c={plan.alimText}/><Title size={18} style={{color:plan.alimText}}>Alimentazione</Title></div>
+        <div style={{display:"flex",gap:6}}>
+          <a href="myfitnesspal://" style={{display:"flex",alignItems:"center",gap:4,fontSize:10,padding:"4px 10px",borderRadius:20,border:`1px solid ${plan.alimText}44`,background:"rgba(255,255,255,0.55)",color:plan.alimText,textDecoration:"none",fontFamily:F.body,fontWeight:600}}>MFP ›</a>
+          <button onClick={onGoProteine} style={{display:"flex",alignItems:"center",gap:4,fontSize:10,padding:"4px 10px",borderRadius:20,border:`1px solid ${plan.alimText}44`,background:"rgba(255,255,255,0.55)",color:plan.alimText,cursor:"pointer",fontFamily:F.body,fontWeight:600}}><Ic n="protein" s={11} c={plan.alimText}/>Proteine ›</button>
+        </div>
+      </div>
+      {fields.map(({key,label})=>{
+        const val=getVal(key);
+        const isEditing=editingField===key;
+        const hasOverride=alimOverrides[viewDateKey]?.[key]!==undefined||alimOverrides["wd_"+dow+"_"+key]!==undefined;
+        return(<div key={key} style={{background:"rgba(255,255,255,.6)",borderRadius:13,padding:"9px 12px",marginBottom:6}}>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:isEditing?6:2}}>
+            <div style={{display:"flex",alignItems:"center",gap:5}}>
+              <Lbl style={{margin:0}}>{label}</Lbl>
+              {hasOverride&&<span style={{fontSize:8,padding:"1px 5px",borderRadius:99,background:plan.alimText+"22",color:plan.alimText,fontFamily:F.body,fontWeight:600}}>mod.</span>}
+            </div>
+            {!isEditing&&<button onClick={()=>startEdit(key)} style={{background:"transparent",border:"none",cursor:"pointer",padding:2,opacity:.4}}><Ic n="edit" s={13} c={plan.alimText}/></button>}
+          </div>
+          {isEditing?(
+            <div>
+              <textarea value={editText} onChange={e=>setEditText(e.target.value)} rows={3} style={{width:"100%",padding:"7px 8px",borderRadius:9,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:11,color:N.text,background:"rgba(255,255,255,0.9)",outline:"none",resize:"none",lineHeight:1.5,boxSizing:"border-box"}}/>
+              <div style={{display:"flex",gap:6,marginTop:6}}>
+                <button onClick={()=>setEditingField(null)} style={{flex:1,padding:"7px",borderRadius:10,border:`0.5px solid ${N.border}`,background:"transparent",color:N.muted,fontSize:11,cursor:"pointer",fontFamily:F.body}}>Annulla</button>
+                <button onClick={()=>setScopeModal({field:key,text:editText,dow})} style={{flex:2,padding:"7px",borderRadius:10,border:"none",background:plan.alimText,color:"#fff",fontSize:11,cursor:"pointer",fontFamily:F.body,fontWeight:600}}>Salva…</button>
+              </div>
+            </div>
+          ):<p style={{fontSize:11,color:N.text,margin:0,lineHeight:1.45,fontFamily:F.body}}>{val}</p>}
+        </div>);
+      })}
+      <div style={{background:"rgba(255,255,255,.5)",borderRadius:13,padding:"10px 12px"}}>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:6}}><Lbl style={{margin:0}}>NOTA DEL GIORNO</Lbl><button onClick={()=>setAlimEdit(e=>!e)} style={{background:"transparent",border:"none",cursor:"pointer",padding:0}}><Ic n={alimEdit?"check":"edit"} s={14} c={N.muted}/></button></div>
+        {alimEdit?<textarea value={alimNote} onChange={e=>setAlimNote(e.target.value)} placeholder="Cosa hai mangiato oggi?" rows={3} style={{width:"100%",border:"none",background:"transparent",fontFamily:F.body,fontSize:12,color:N.text,resize:"none",outline:"none",lineHeight:1.6,boxSizing:"border-box"}}/>
+          :<p style={{fontSize:12,color:alimNote?N.text:N.muted,margin:0,lineHeight:1.6,fontFamily:F.body,minHeight:36}}>{alimNote||"Tocca ✎ per aggiungere una nota..."}</p>}
       </div>
     </div>
   );
 }
 
+function BodySection({bodyMeasurements,setBodyMeasurements}){
+  const[editHeight,setEditHeight]=useState(false);
+  const[heightInput,setHeightInput]=useState(String(bodyMeasurements.height));
+  const[showAdd,setShowAdd]=useState(false);
+  const[newEntry,setNewEntry]=useState({weight:"",chest:"",waist:"",hips:"",thigh:"",calf:"",wrist:""});
+  const measureFields=[
+    {key:"weight",label:"Peso",unit:"kg",icon:"body"},
+    {key:"chest",label:"Petto",unit:"cm",icon:"ruler"},
+    {key:"waist",label:"Vita",unit:"cm",icon:"ruler"},
+    {key:"hips",label:"Fianchi",unit:"cm",icon:"ruler"},
+    {key:"thigh",label:"Coscia",unit:"cm",icon:"ruler"},
+    {key:"calf",label:"Polpaccio",unit:"cm",icon:"ruler"},
+    {key:"wrist",label:"Polso",unit:"cm",icon:"ruler"},
+  ];
+  const latestEntry=bodyMeasurements.entries[bodyMeasurements.entries.length-1]||null;
+  const prevEntry=bodyMeasurements.entries.length>1?bodyMeasurements.entries[bodyMeasurements.entries.length-2]:null;
+  const calcBMI=(w,h)=>h>0?+(w/(h*h)).toFixed(1):null;
+  const bmi=latestEntry?.weight&&bodyMeasurements.height?calcBMI(+latestEntry.weight,bodyMeasurements.height):null;
+  const bmiColor=bmi<18.5?"#4E8C40":bmi<25?"#2A5A18":bmi<30?"#C4980A":"#E8733A";
+  const bmiLabel=bmi?bmi<18.5?"Sottopeso":bmi<25?"Normopeso":bmi<30?"Sovrappeso":"Obesità":"—";
+  const diff=(key)=>{if(!latestEntry||!prevEntry||!latestEntry[key]||!prevEntry[key])return null;const d=+(latestEntry[key]-prevEntry[key]).toFixed(1);return d;};
+  return(
+    <div>
+      {/* Header altezza & BMI */}
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:12}}>
+        <div style={{background:"#fff",borderRadius:18,padding:"14px 15px",border:`0.5px solid ${N.border}`}}>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:4}}>
+            <Lbl style={{margin:0}}>ALTEZZA</Lbl>
+            <button onClick={()=>{setEditHeight(true);setHeightInput(String(bodyMeasurements.height));}} style={{background:"transparent",border:"none",cursor:"pointer",padding:0,opacity:.4}}><Ic n="edit" s={13} c={N.text}/></button>
+          </div>
+          {editHeight?(
+            <div style={{display:"flex",gap:6,alignItems:"center"}}>
+              <input autoFocus value={heightInput} onChange={e=>setHeightInput(e.target.value)} onKeyDown={e=>{if(e.key==="Enter"){setBodyMeasurements({...bodyMeasurements,height:+heightInput});setEditHeight(false);}}} style={{flex:1,padding:"4px 8px",borderRadius:8,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:13,color:N.text,outline:"none",width:60}} placeholder="1.70"/>
+              <button onClick={()=>{setBodyMeasurements({...bodyMeasurements,height:+heightInput});setEditHeight(false);}} style={{width:28,height:28,borderRadius:8,border:"none",background:N.text,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer"}}><Ic n="check" s={12} c="#fff"/></button>
+            </div>
+          ):<p style={{fontFamily:F.heading,fontSize:28,fontWeight:600,color:N.text,margin:0,lineHeight:1}}>{bodyMeasurements.height}<span style={{fontSize:13,color:N.muted}}> m</span></p>}
+        </div>
+        <div style={{background:bmi?"#D9F0CE":"#fff",borderRadius:18,padding:"14px 15px",border:`0.5px solid ${bmi?"#4E8C40":N.border}`}}>
+          <Lbl style={{margin:"0 0 4px"}}>BMI</Lbl>
+          <p style={{fontFamily:F.heading,fontSize:28,fontWeight:600,color:bmi?bmiColor:N.muted,margin:"0 0 2px",lineHeight:1}}>{bmi||"—"}</p>
+          <p style={{fontSize:10,color:bmi?bmiColor:N.muted,margin:0,fontFamily:F.body,fontWeight:600}}>{bmiLabel}</p>
+        </div>
+      </div>
+      {/* Latest measurements */}
+      {latestEntry&&<div style={{background:"#fff",borderRadius:18,padding:"14px 15px",marginBottom:12,border:`0.5px solid ${N.border}`}}>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:10}}>
+          <Title size={15}>Ultima rilevazione</Title>
+          <span style={{fontSize:10,color:N.muted,fontFamily:F.body}}>{new Date(latestEntry.date).toLocaleDateString("it-IT",{day:"numeric",month:"short"})}</span>
+        </div>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6}}>
+          {measureFields.map(({key,label,unit})=>latestEntry[key]?(<div key={key} style={{padding:"8px 10px",borderRadius:12,background:N.faint}}>
+            <Lbl style={{margin:"0 0 2px",fontSize:8}}>{label.toUpperCase()}</Lbl>
+            <div style={{display:"flex",alignItems:"baseline",gap:4}}>
+              <span style={{fontFamily:F.heading,fontSize:18,fontWeight:600,color:N.text}}>{latestEntry[key]}</span>
+              <span style={{fontSize:10,color:N.muted,fontFamily:F.body}}>{unit}</span>
+              {diff(key)!==null&&<span style={{fontSize:9,color:diff(key)<0?"#4E8C40":diff(key)>0?"#E8733A":N.muted,fontFamily:F.body,fontWeight:600}}>{diff(key)>0?"+":""}{diff(key)}</span>}
+            </div>
+          </div>):null)}
+        </div>
+      </div>}
+      {/* Add new measurement */}
+      <button onClick={()=>setShowAdd(s=>!s)} style={{width:"100%",padding:"12px",borderRadius:14,border:`1px dashed ${N.border}`,background:"transparent",color:N.muted,fontSize:12,cursor:"pointer",fontFamily:F.body,marginBottom:showAdd?12:0,display:"flex",alignItems:"center",justifyContent:"center",gap:6}}>
+        <Ic n="plus" s={14} c={N.muted}/>{showAdd?"Chiudi":"Aggiungi rilevazione"}
+      </button>
+      {showAdd&&<div style={{background:"#fff",borderRadius:18,padding:"14px 15px",border:`0.5px solid ${N.border}`,marginBottom:12}}>
+        <Title size={15} style={{marginBottom:12}}>Nuova rilevazione</Title>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+          {measureFields.map(({key,label,unit})=>(<div key={key}>
+            <Lbl style={{margin:"0 0 3px"}}>{label} ({unit})</Lbl>
+            <input value={newEntry[key]} onChange={e=>setNewEntry(p=>({...p,[key]:e.target.value}))} placeholder="—" type="number" style={{width:"100%",padding:"8px 10px",borderRadius:10,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:12,color:N.text,background:N.faint,outline:"none",boxSizing:"border-box"}}/>
+          </div>))}
+        </div>
+        <button onClick={()=>{
+          const entry={date:new Date().toISOString().slice(0,10),...Object.fromEntries(Object.entries(newEntry).filter(([,v])=>v))};
+          setBodyMeasurements(prev=>({...prev,entries:[...prev.entries,entry]}));
+          setNewEntry({weight:"",chest:"",waist:"",hips:"",thigh:"",calf:"",wrist:""});
+          setShowAdd(false);
+        }} style={{width:"100%",padding:"12px",borderRadius:14,border:"none",background:N.text,color:"#fff",fontSize:13,cursor:"pointer",fontFamily:F.body,fontWeight:600,marginTop:12}}>Salva rilevazione</button>
+      </div>}
+      {/* History */}
+      {bodyMeasurements.entries.length>1&&<div style={{marginTop:4}}>
+        <Title size={15} style={{marginBottom:8}}>Storico</Title>
+        {[...bodyMeasurements.entries].reverse().slice(0,10).map((entry,i)=>(
+          <div key={i} style={{background:"#fff",borderRadius:14,padding:"10px 12px",marginBottom:6,border:`0.5px solid ${N.border}`}}>
+            <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:6}}>
+              <span style={{fontSize:11,fontFamily:F.body,fontWeight:600,color:N.text}}>{new Date(entry.date).toLocaleDateString("it-IT",{weekday:"short",day:"numeric",month:"short",year:"numeric"})}</span>
+              <button onClick={()=>setBodyMeasurements(prev=>({...prev,entries:prev.entries.filter((_,j)=>prev.entries.length-1-j!==i)}))} style={{background:"transparent",border:"none",cursor:"pointer",padding:0,opacity:.3}}><Ic n="trash" s={13} c={N.text}/></button>
+            </div>
+            <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
+              {measureFields.map(({key,label,unit})=>entry[key]?(<span key={key} style={{fontSize:10,fontFamily:F.body,color:N.muted}}><span style={{fontWeight:600,color:N.text}}>{entry[key]}{unit}</span> {label}</span>):null)}
+            </div>
+          </div>
+        ))}
+      </div>}
+    </div>
+  );
+}
+
+const PASTEL_PALETTE=[
+  {bg:"#D9F0CE",tc:"#2A5A18"},// verde
+  {bg:"#FFD5B8",tc:"#A04010"},// arancio
+  {bg:"#F0E4B8",tc:"#7A5C10"},// giallo
+  {bg:"#EDE0FF",tc:"#6B3FA0"},// viola
+  {bg:"#FFD9E8",tc:"#A03050"},// rosa
+  {bg:"#BAE1FF",tc:"#1A4A80"},// azzurro
+  {bg:"#FFDCE0",tc:"#8A2030"},// rosso pastello
+  {bg:"#D4F5F0",tc:"#1A6050"},// turchese
+];
+let _paletteIdx=0;
+const nextPastel=()=>{const c=PASTEL_PALETTE[_paletteIdx%PASTEL_PALETTE.length];_paletteIdx++;return c;};
+
+function DailyTodoList({todos,todoInput,setTodoInput,onAdd,onToggle,onDelete,onEdit,onToggleSubstep,rituals}){
+  const[editingId,setEditingId]=useState(null);
+  const[editingText,setEditingText]=useState("");
+  const[showRitualPicker,setShowRitualPicker]=useState(false);
+  return(
+    <div style={{borderRadius:18,padding:"14px 15px",background:"#FFFFFF",border:`0.5px solid ${N.border}`,marginBottom:12,boxShadow:"0 2px 8px rgba(0,0,0,0.04)"}}>
+      <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:12}}>
+        <div style={{display:"flex",alignItems:"center",gap:8}}>
+          <Ic n="check" s={16} c="#3A5FA0"/>
+          <Title size={16} style={{color:"#2A4090"}}>Daily to-do list</Title>
+        </div>
+        <a href="calshow://" style={{display:"flex",alignItems:"center",gap:4,fontSize:10,padding:"4px 10px",borderRadius:20,border:"1px solid #3A5FA044",background:"#F0F4FF",color:"#2A4090",textDecoration:"none",fontFamily:F.body,fontWeight:600}}>
+          <Ic n="cal" s={11} c="#2A4090"/>Calendario ›
+        </a>
+      </div>
+      {todos.length===0&&<p style={{fontSize:12,color:N.muted,fontFamily:F.body,margin:"0 0 10px",fontStyle:"italic"}}>Nessun task per oggi — aggiungine uno!</p>}
+      {todos.map((todo)=>{
+        const bg=todo.color?.bg||"#F7F5F0";
+        const tc=todo.color?.tc||N.text;
+        return(
+        <div key={todo.id} style={{borderRadius:12,marginBottom:6,background:bg,border:`0.5px solid ${tc}22`,overflow:"hidden"}}>
+          <div style={{display:"flex",alignItems:"flex-start",gap:8,padding:"8px 10px"}}>
+            <div onClick={()=>onToggle(todo.id)} style={{width:20,height:20,borderRadius:6,border:todo.done?"none":`1.5px solid ${tc}55`,background:todo.done?tc:"transparent",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,marginTop:2,cursor:"pointer",transition:"all .2s"}}>
+              {todo.done&&<Ic n="check" s={12} c="#fff"/>}
+            </div>
+            {editingId===todo.id?(
+              <div style={{flex:1,display:"flex",gap:6,alignItems:"center"}}>
+                <input autoFocus value={editingText} onChange={e=>setEditingText(e.target.value)} onKeyDown={e=>{if(e.key==="Enter"&&editingText.trim()){onEdit(todo.id,editingText.trim());setEditingId(null);}if(e.key==="Escape")setEditingId(null);}} style={{flex:1,padding:"4px 8px",borderRadius:8,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:13,color:N.text,background:"rgba(255,255,255,0.9)",outline:"none"}}/>
+                <button onClick={()=>{if(editingText.trim()){onEdit(todo.id,editingText.trim());setEditingId(null);}}} style={{width:26,height:26,borderRadius:7,border:"none",background:tc,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",flexShrink:0}}><Ic n="check" s={12} c="#fff"/></button>
+                <button onClick={()=>setEditingId(null)} style={{width:26,height:26,borderRadius:7,border:`0.5px solid ${N.border}`,background:"transparent",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",flexShrink:0}}><Ic n="close" s={12} c={N.muted}/></button>
+              </div>
+            ):(
+              <p onClick={()=>onToggle(todo.id)} style={{fontSize:13,color:todo.done?N.muted:tc,textDecoration:todo.done?"line-through":"none",margin:0,lineHeight:1.55,fontFamily:F.body,flex:1,cursor:"pointer",fontWeight:todo.substeps?600:500}}>{todo.text}</p>
+            )}
+            {editingId!==todo.id&&<div style={{display:"flex",gap:2,flexShrink:0}}>
+              <div onClick={()=>{setEditingId(todo.id);setEditingText(todo.text);}} style={{padding:"2px 4px",cursor:"pointer",opacity:.4}}><Ic n="edit" s={13} c={tc}/></div>
+              <div onClick={()=>onDelete(todo.id)} style={{padding:"2px 4px",cursor:"pointer",opacity:.4}}><Ic n="trash" s={13} c={tc}/></div>
+            </div>}
+          </div>
+          {todo.substeps&&<div style={{borderTop:`0.5px solid ${tc}22`,padding:"4px 10px 6px 38px"}}>
+            {todo.substeps.map((ss,si)=>(
+              <div key={si} onClick={()=>onToggleSubstep(todo.id,si)} style={{display:"flex",alignItems:"flex-start",gap:7,padding:"3px 0",cursor:"pointer"}}>
+                <div style={{width:14,height:14,borderRadius:3,border:ss.done?"none":`1.5px solid ${tc}55`,background:ss.done?tc:"transparent",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,marginTop:2,transition:"all .2s"}}>
+                  {ss.done&&<Ic n="check" s={8} c="#fff"/>}
+                </div>
+                <p style={{fontSize:11,color:ss.done?N.muted:tc,textDecoration:ss.done?"line-through":"none",margin:0,lineHeight:1.5,fontFamily:F.body,opacity:ss.done?.6:1}}>{si+1}. {ss.text}</p>
+              </div>
+            ))}
+          </div>}
+        </div>);
+      })}
+      <div style={{display:"flex",gap:8,marginTop:10}}>
+        <input value={todoInput} onChange={e=>setTodoInput(e.target.value)} onKeyDown={e=>{if(e.key==="Enter")onAdd();}} placeholder="Aggiungi task…" style={{flex:1,padding:"9px 12px",borderRadius:11,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:12,color:N.text,background:N.faint,outline:"none"}}/>
+        <button onClick={onAdd} style={{width:36,height:36,borderRadius:11,border:"none",background:"#3A5FA0",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",flexShrink:0}}><Ic n="plus" s={16} c="#fff"/></button>
+      </div>
+      {rituals&&rituals.length>0&&<>
+        <button onClick={()=>setShowRitualPicker(s=>!s)} style={{marginTop:8,width:"100%",padding:"8px",borderRadius:11,border:"1px dashed #6B3FA044",background:"rgba(107,63,160,0.04)",color:"#6B3FA0",fontSize:11,cursor:"pointer",fontFamily:F.body,fontWeight:600,display:"flex",alignItems:"center",justifyContent:"center",gap:6}}>
+          <Ic n="ritual" s={13} c="#6B3FA0"/>{showRitualPicker?"Chiudi":"Aggiungi un rituale"}
+        </button>
+        {showRitualPicker&&<div style={{marginTop:8,display:"flex",flexDirection:"column",gap:6}}>
+          {rituals.map(r=>(
+            <button key={r.id} onClick={()=>{onAdd(null,r);setShowRitualPicker(false);}} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",borderRadius:13,border:`1px solid ${r.tc}22`,background:r.grad,cursor:"pointer",textAlign:"left"}}>
+              <div style={{width:32,height:32,borderRadius:10,background:"rgba(255,255,255,0.6)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}><Ic n={r.icon||"star"} s={16} c={r.tc}/></div>
+              <div style={{flex:1}}>
+                <p style={{fontSize:12,fontWeight:600,color:r.tc,margin:0,fontFamily:F.body}}>{r.title}</p>
+                <p style={{fontSize:10,color:r.tc,opacity:.7,margin:0,fontFamily:F.body}}>{r.steps.length} passi · {r.summary}</p>
+              </div>
+              <Ic n="plus" s={14} c={r.tc}/>
+            </button>
+          ))}
+        </div>}
+      </>}
+    </div>
+  );
+}
 function DailyPhrase({todayKey}){
   const key="bm_d_phrase_"+todayKey;
   const[phrase,setPhrase]=useState("");
@@ -760,6 +1128,12 @@ export default function App(){
   const [alignDone,setAlignDone]=useState(false);
   const [dailyTodos,setDailyTodos]=useState({});
   const [todoInput,setTodoInput]=useState("");
+  const [bodyMeasurements,setBodyMeasurements]=useState({height:1.70,entries:[]});
+  const [alimOverrides,setAlimOverrides]=useState({});
+  const [journalEntries,setJournalEntries]=useState({});
+  const [duranteChecked,setDuranteChecked]=useState({});
+  const [readLabel,setReadLabel]=useState({label:"Lettura",sub:"Almeno 1 capitolo"});
+  const [alignLabel,setAlignLabel]=useState({label:"Alignment",sub:""});
 
   const getWeekStart=()=>{
     const d=new Date(now);
@@ -784,7 +1158,11 @@ export default function App(){
         }
         return fb;
       };
-      setStrats(await load("strats",INIT_STRATS));
+      const savedStrats=await load("strats",INIT_STRATS);
+      // Aggiorna sempre i rituali built-in (s1,s2,s3) mantenendo eventuali rituali custom
+      const builtinIds=new Set(INIT_STRATS.map(s=>s.id));
+      const merged=[...INIT_STRATS,...savedStrats.filter(s=>!builtinIds.has(s.id))];
+      setStrats(merged);
       setRicette(await load("ricette",INIT_RIC));
       setNotes(await load("notes",INIT_NOTES));
       setProgressLog(await load("progressLog",[]));
@@ -804,6 +1182,9 @@ export default function App(){
       const ws=getWeekStart();
       setWeekProteins(allP.filter(e=>e.date>=ws));
       setDailyTodos(await load("dailyTodos",{}));
+      setBodyMeasurements(await load("bodyMeasurements",{height:1.70,entries:[]}));
+      setAlimOverrides(await load("alimOverrides",{}));
+      setJournalEntries(await load("journalEntries",{}));
       setChecked(await loadDaily("checked",{}));
       setWaterCount(await loadDaily("water",0));
       setStepsReached(await loadDaily("stepsReached",false));
@@ -855,6 +1236,7 @@ export default function App(){
       setHidden(await loadDay("hidden",{mattina:[],sera:[]}));
       setReadDone(await loadDay("readDone",false));
       setAlignDone(await loadDay("alignDone",false));
+      setDuranteChecked(await loadDay("duranteChecked",{}));
     })();
   },[viewDateKey,loaded]);
 
@@ -888,10 +1270,19 @@ export default function App(){
     readDone:mkSet(setReadDone,"readDone",true),
     alignDone:mkSet(setAlignDone,"alignDone",true),
     dailyTodos:mkSet(setDailyTodos,"dailyTodos"),
+    bodyMeasurements:mkSet(setBodyMeasurements,"bodyMeasurements"),
+    alimOverrides:mkSet(setAlimOverrides,"alimOverrides"),
+    journalEntries:mkSet(setJournalEntries,"journalEntries"),
+    duranteChecked:mkSet(setDuranteChecked,"duranteChecked",true),
   };
 
+  const[editWater,setEditWater]=useState(false);
+  const[waterTarget,setWaterTarget]=useState(8);
+  const[editSteps,setEditSteps]=useState(false);
+  const[stepsTarget,setStepsTarget]=useState(5000);
   const[tab,setTab]=useState("oggi");
   const[subTab,setSubTab]=useState(null);
+  const[editGoalId,setEditGoalId]=useState(null);
   const[stratOpen,setStratOpen]=useState(null);
   const[ricOpen,setRicOpen]=useState(null);
   const[movOpen,setMovOpen]=useState(null);
@@ -962,7 +1353,7 @@ export default function App(){
   useEffect(()=>{
     if(!loaded)return;
     setProgressLog(prev=>{
-      const existing=prev.findIndex(p=>p.date===todayKey);
+      const existing=prev.findIndex(p=>p.date===viewDateKey);
       const goalSnap={
         water:waterCount>=8,
         steps:stepsReached,
@@ -977,13 +1368,13 @@ export default function App(){
         return next;
       } else {
         if(pct===0)return prev;
-        const entry={id:"auto_"+todayKey,date:todayKey,routine:pct,energia:"3",umore:"3",peso:"",note:"",auto:true,goals:goalSnap};
-        const next=[entry,...prev];
+        const entry={id:"auto_"+viewDateKey,date:viewDateKey,routine:pct,energia:"3",umore:"3",peso:"",note:"",auto:true,goals:goalSnap};
+        const next=[entry,...prev].sort((a,b)=>b.date.localeCompare(a.date));
         storeSet("bm_progressLog",next);
         return next;
       }
     });
-  },[pct,waterCount,stepsReached,readDone,alignDone,goalVals,loaded]);
+  },[pct,waterCount,stepsReached,readDone,alignDone,goalVals,viewDateKey,loaded]);
 
   const greeting=hour<12?"Buongiorno":hour<18?"Buon pomeriggio":"Buona sera";
   const todayIcon=hour<6?"moon":hour<9?"sunrise":hour<19?"fullsun":(hour<20||(hour===20&&now.getMinutes()<=30))?"sunset":"moon";
@@ -998,18 +1389,6 @@ export default function App(){
   const filtRic=ricFilter==="Tutti"?ricette:ricette.filter(r=>r.cat===ricFilter||r.tag===ricFilter);
   const allMov=[...workouts,...yogaPractices,...faceYogaPractices];
   const filtMov=movFilter==="tutti"?allMov:movFilter==="allenamento"?workouts:movFilter==="yoga"?yogaPractices:faceYogaPractices;
-
-  const GoalCheck=({done,setDone,icon,color,checkColor,label,subtitle})=>(
-    <div style={{background:done?color:"#fff",borderRadius:18,padding:"13px 14px",border:`0.5px solid ${done?checkColor:N.border}`,transition:"all .3s"}}>
-      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6}}><Ic n={icon} s={18} c={checkColor}/>{done&&<span style={{fontSize:10,padding:"2px 8px",borderRadius:99,background:checkColor,color:"#fff",fontFamily:F.body,fontWeight:600}}>✓</span>}</div>
-      <Lbl>{label}</Lbl>
-      {subtitle&&<p style={{fontSize:12,color:N.muted,margin:"0 0 8px",fontFamily:F.body,lineHeight:1.4}}>{subtitle}</p>}
-      <div onClick={()=>setDone(s=>!s)} style={{display:"flex",alignItems:"center",gap:8,cursor:"pointer",marginTop:subtitle?0:8}}>
-        <div style={{width:18,height:18,borderRadius:5,border:done?"none":`1.5px solid ${N.border}`,background:done?checkColor:"transparent",display:"flex",alignItems:"center",justifyContent:"center",transition:"all .2s"}}>{done&&<Ic n="check" s={11} c="#fff"/>}</div>
-        <span style={{fontSize:11,color:N.muted,fontFamily:F.body}}>Completato</span>
-      </div>
-    </div>
-  );
 
   if(!loaded)return(<div style={{maxWidth:430,margin:"0 auto",minHeight:"100vh",background:N.bg,display:"flex",alignItems:"center",justifyContent:"center"}}><div style={{textAlign:"center"}}><Ic n="sparkle" s={32} c={N.muted}/><p style={{fontFamily:F.body,fontSize:13,color:N.muted,marginTop:12}}>Caricamento…</p></div></div>);
 
@@ -1093,77 +1472,89 @@ export default function App(){
               </div>
             )}
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
-              <div style={{background:waterCount>=8?"#D9F0CE":"#fff",borderRadius:18,padding:"13px 14px",border:`0.5px solid ${waterCount>=8?"#4E8C40":N.border}`,transition:"all .3s"}}>
-                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6}}><Ic n="drop" s={18} c="#4E8C40"/>{waterCount>=8&&<span style={{fontSize:10,padding:"2px 8px",borderRadius:99,background:"#2A5A18",color:"#fff",fontFamily:F.body,fontWeight:600}}>✓</span>}</div>
-                <Lbl>ACQUA</Lbl>
-                <p style={{fontFamily:F.heading,fontSize:26,fontWeight:600,color:N.text,margin:"0 0 6px",lineHeight:1}}>{waterCount}<span style={{fontSize:14,color:N.muted}}>/8</span></p>
-                <div style={{height:4,background:N.faint,borderRadius:99,marginBottom:8,overflow:"hidden"}}><div style={{height:"100%",width:`${Math.min(Math.round(waterCount/8*100),100)}%`,background:"#4E8C40",borderRadius:99,transition:"width .3s",opacity:.7}}/></div>
-                <div style={{display:"flex",gap:6}}>
-                  <button onClick={()=>S.water(c=>Math.max(0,c-1))} style={{flex:1,padding:"5px 0",borderRadius:10,border:`0.5px solid ${N.border}`,background:"transparent",color:N.text,fontSize:15,cursor:"pointer"}}>−</button>
-                  <button onClick={()=>S.water(c=>Math.min(8,c+1))} style={{flex:1,padding:"5px 0",borderRadius:10,border:"none",background:"#D9F0CE",color:"#2A5A18",fontSize:15,cursor:"pointer",fontWeight:700}}>+</button>
+              {/* ACQUA */}
+              <div style={{background:waterCount>=waterTarget?"#D9F0CE":"#fff",borderRadius:18,padding:"13px 14px",border:`0.5px solid ${waterCount>=waterTarget?"#4E8C40":N.border}`,transition:"all .3s"}}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6}}>
+                  <Ic n="drop" s={18} c="#4E8C40"/>
+                  <div style={{display:"flex",gap:4,alignItems:"center"}}>
+                    {waterCount>=waterTarget&&<span style={{fontSize:10,padding:"2px 8px",borderRadius:99,background:"#2A5A18",color:"#fff",fontFamily:F.body,fontWeight:600}}>✓</span>}
+                    <button onClick={()=>setEditWater(e=>!e)} style={{background:"transparent",border:"none",cursor:"pointer",padding:2,opacity:.35}}><Ic n="edit" s={13} c="#4E8C40"/></button>
+                  </div>
                 </div>
+                {editWater?(
+                  <div>
+                    <Lbl style={{margin:"0 0 4px"}}>OBIETTIVO (bicchieri)</Lbl>
+                    <div style={{display:"flex",gap:6,alignItems:"center",marginBottom:8}}>
+                      <input type="number" value={waterTarget} onChange={e=>setWaterTarget(+e.target.value||8)} style={{flex:1,padding:"6px 8px",borderRadius:8,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:13,color:N.text,background:N.faint,outline:"none"}}/>
+                      <button onClick={()=>setEditWater(false)} style={{width:30,height:30,borderRadius:9,border:"none",background:"#4E8C40",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer"}}><Ic n="check" s={13} c="#fff"/></button>
+                    </div>
+                    <button onClick={()=>{S.water(()=>0);}} style={{width:"100%",padding:"6px",borderRadius:9,border:`0.5px solid ${N.border}`,background:"transparent",color:"#C05050",fontSize:11,cursor:"pointer",fontFamily:F.body}}>Azzera contatore</button>
+                  </div>
+                ):(
+                  <>
+                    <Lbl>ACQUA</Lbl>
+                    <p style={{fontFamily:F.heading,fontSize:26,fontWeight:600,color:N.text,margin:"0 0 6px",lineHeight:1}}>{waterCount}<span style={{fontSize:14,color:N.muted}}>/{waterTarget}</span></p>
+                    <div style={{height:4,background:N.faint,borderRadius:99,marginBottom:8,overflow:"hidden"}}><div style={{height:"100%",width:`${Math.min(Math.round(waterCount/waterTarget*100),100)}%`,background:"#4E8C40",borderRadius:99,transition:"width .3s",opacity:.7}}/></div>
+                    <div style={{display:"flex",gap:6}}>
+                      <button onClick={()=>S.water(c=>Math.max(0,c-1))} style={{flex:1,padding:"5px 0",borderRadius:10,border:`0.5px solid ${N.border}`,background:"transparent",color:N.text,fontSize:15,cursor:"pointer"}}>−</button>
+                      <button onClick={()=>S.water(c=>c+1)} style={{flex:1,padding:"5px 0",borderRadius:10,border:"none",background:"#D9F0CE",color:"#2A5A18",fontSize:15,cursor:"pointer",fontWeight:700}}>+</button>
+                    </div>
+                  </>
+                )}
               </div>
+              {/* PASSI */}
               <div style={{background:stepsReached?"#FFD5B8":"#fff",borderRadius:18,padding:"13px 14px",border:`0.5px solid ${stepsReached?"#E8733A":N.border}`,transition:"all .3s"}}>
                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6}}>
                   <Ic n="walk" s={18} c="#E8733A"/>
-                  <div style={{display:"flex",alignItems:"center",gap:6}}>
+                  <div style={{display:"flex",alignItems:"center",gap:4}}>
                     {stepsReached&&<span style={{fontSize:10,padding:"2px 8px",borderRadius:99,background:"#A04010",color:"#fff",fontFamily:F.body,fontWeight:600}}>✓</span>}
                     <a href="x-apple-health://" style={{fontSize:10,padding:"2px 8px",borderRadius:99,background:"rgba(232,115,58,0.12)",color:"#A04010",textDecoration:"none",fontFamily:F.body,fontWeight:600}}>Salute ›</a>
+                    <button onClick={()=>setEditSteps(e=>!e)} style={{background:"transparent",border:"none",cursor:"pointer",padding:2,opacity:.35}}><Ic n="edit" s={13} c="#E8733A"/></button>
                   </div>
                 </div>
-                <Lbl>PASSI</Lbl>
-                <div style={{display:"flex",alignItems:"baseline",gap:4,marginBottom:6}}>
-                  <input value={stepsVal} onChange={e=>{const v=e.target.value.replace(/\D/g,"");S.stepsVal(v);}} placeholder="0" style={{fontFamily:F.heading,fontSize:22,fontWeight:600,color:N.text,background:"transparent",border:"none",outline:"none",width:"70px",padding:0}}/>
-                  <span style={{fontSize:11,color:N.muted,fontFamily:F.body}}>/5.000</span>
-                </div>
-                <div style={{height:4,background:N.faint,borderRadius:99,marginBottom:8,overflow:"hidden"}}><div style={{height:"100%",width:`${Math.min(Math.round((parseInt(stepsVal)||0)/5000*100),100)}%`,background:"#E8733A",borderRadius:99,transition:"width .3s",opacity:.7}}/></div>
-                <div onClick={()=>S.stepsReached(s=>!s)} style={{display:"flex",alignItems:"center",gap:8,cursor:"pointer"}}>
-                  <div style={{width:18,height:18,borderRadius:5,border:stepsReached?"none":`1.5px solid ${N.border}`,background:stepsReached?"#A04010":"transparent",display:"flex",alignItems:"center",justifyContent:"center",transition:"all .2s"}}>{stepsReached&&<Ic n="check" s={11} c="#fff"/>}</div>
-                  <span style={{fontSize:11,color:N.muted,fontFamily:F.body}}>Raggiunto</span>
-                </div>
+                {editSteps?(
+                  <div>
+                    <Lbl style={{margin:"0 0 4px"}}>OBIETTIVO (passi)</Lbl>
+                    <div style={{display:"flex",gap:6,alignItems:"center",marginBottom:8}}>
+                      <input type="number" value={stepsTarget} onChange={e=>setStepsTarget(+e.target.value||5000)} style={{flex:1,padding:"6px 8px",borderRadius:8,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:13,color:N.text,background:N.faint,outline:"none"}}/>
+                      <button onClick={()=>setEditSteps(false)} style={{width:30,height:30,borderRadius:9,border:"none",background:"#E8733A",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer"}}><Ic n="check" s={13} c="#fff"/></button>
+                    </div>
+                    <button onClick={()=>{S.stepsVal("");S.stepsReached(false);}} style={{width:"100%",padding:"6px",borderRadius:9,border:`0.5px solid ${N.border}`,background:"transparent",color:"#C05050",fontSize:11,cursor:"pointer",fontFamily:F.body}}>Azzera</button>
+                  </div>
+                ):(
+                  <>
+                    <Lbl>PASSI</Lbl>
+                    <div style={{display:"flex",alignItems:"baseline",gap:4,marginBottom:6}}>
+                      <input value={stepsVal} onChange={e=>{const v=e.target.value.replace(/\D/g,"");S.stepsVal(v);if((parseInt(v)||0)>=stepsTarget) S.stepsReached(true);}} placeholder="0" style={{fontFamily:F.heading,fontSize:22,fontWeight:600,color:N.text,background:"transparent",border:"none",outline:"none",width:"70px",padding:0}}/>
+                      <span style={{fontSize:11,color:N.muted,fontFamily:F.body}}>/{stepsTarget.toLocaleString("it-IT")}</span>
+                    </div>
+                    <div style={{height:4,background:N.faint,borderRadius:99,marginBottom:8,overflow:"hidden"}}><div style={{height:"100%",width:`${Math.min(Math.round((parseInt(stepsVal)||0)/stepsTarget*100),100)}%`,background:"#E8733A",borderRadius:99,transition:"width .3s",opacity:.7}}/></div>
+                    <div onClick={()=>S.stepsReached(s=>!s)} style={{display:"flex",alignItems:"center",gap:8,cursor:"pointer"}}>
+                      <div style={{width:18,height:18,borderRadius:5,border:stepsReached?"none":`1.5px solid ${N.border}`,background:stepsReached?"#A04010":"transparent",display:"flex",alignItems:"center",justifyContent:"center",transition:"all .2s"}}>{stepsReached&&<Ic n="check" s={11} c="#fff"/>}</div>
+                      <span style={{fontSize:11,color:N.muted,fontFamily:F.body}}>Raggiunto</span>
+                    </div>
+                  </>
+                )}
               </div>
-              <GoalCheck done={readDone} setDone={S.readDone} icon="openbook" color="#F0E4B8" checkColor="#7A5C10" label="LETTURA" subtitle="Almeno 1 capitolo"/>
-              <GoalCheck done={alignDone} setDone={S.alignDone} icon="align" color="#FFD9B8" checkColor="#A04A10" label="ALIGNMENT" subtitle={null}/>
-              {extraGoals.map(g=>{const v=goalVals[g.id]||0;const gd=v>=g.target;const gp=Math.min(Math.round(v/g.target*100),100);return(<div key={g.id} style={{background:gd?g.color:"#fff",borderRadius:18,padding:"13px 14px",border:`0.5px solid ${gd?g.tc+"55":N.border}`,transition:"all .3s"}}>
-                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6}}><Ic n={g.icon||"star"} s={18} c={g.tc}/>{gd&&<span style={{fontSize:10,padding:"2px 8px",borderRadius:99,background:g.tc,color:"#fff",fontFamily:F.body,fontWeight:600}}>✓</span>}</div>
-                <Lbl>{g.label.toUpperCase()}</Lbl>
-                <p style={{fontFamily:F.heading,fontSize:24,fontWeight:600,color:N.text,margin:"0 0 6px",lineHeight:1}}>{v}<span style={{fontSize:13,color:N.muted}}>/{g.target} {g.unit}</span></p>
-                <div style={{height:4,background:N.faint,borderRadius:99,marginBottom:8,overflow:"hidden"}}><div style={{height:"100%",width:`${gp}%`,background:g.tc,borderRadius:99,transition:"width .3s",opacity:.7}}/></div>
-                <div style={{display:"flex",gap:6}}>
-                  <button onClick={()=>S.goalVals(p=>({...p,[g.id]:Math.max(0,(p[g.id]||0)-1)}))} style={{flex:1,padding:"5px 0",borderRadius:10,border:`0.5px solid ${N.border}`,background:"transparent",color:N.text,fontSize:15,cursor:"pointer"}}>−</button>
-                  <button onClick={()=>S.goalVals(p=>({...p,[g.id]:Math.min(g.target,(p[g.id]||0)+1)}))} style={{flex:1,padding:"5px 0",borderRadius:10,border:"none",background:g.color,color:g.tc,fontSize:15,cursor:"pointer",fontWeight:700}}>+</button>
-                </div>
-              </div>);})}
+              <GoalCheck done={readDone} setDone={S.readDone} icon="openbook" color="#F0E4B8" checkColor="#7A5C10" label={readLabel.label} subtitle={readLabel.sub} extraLink={{href:"mobilenotes://",label:"📝 Note"}} onEdit={(l,s)=>setReadLabel({label:l,sub:s})}/>
+              <GoalCheck done={alignDone} setDone={S.alignDone} icon="align" color="#FFD9B8" checkColor="#A04A10" label={alignLabel.label} subtitle={alignLabel.sub} onEdit={(l,s)=>setAlignLabel({label:l,sub:s})}/>
+              {extraGoals.map(g=>{const v=goalVals[g.id]||0;const gd=v>=g.target;const gp=Math.min(Math.round(v/g.target*100),100);return(<ExtraGoalCard key={g.id} g={g} v={v} gd={gd} gp={gp} editGoalId={editGoalId} setEditGoalId={setEditGoalId} onUpdateGoal={(id,patch)=>S.extraGoals(p=>p.map(x=>x.id===id?{...x,...patch}:x))} onDeleteGoal={(id)=>S.extraGoals(p=>p.filter(x=>x.id!==id))} onDecrement={()=>S.goalVals(p=>({...p,[g.id]:Math.max(0,(p[g.id]||0)-1)}))} onIncrement={()=>S.goalVals(p=>({...p,[g.id]:(p[g.id]||0)+1}))}/>);})}
             </div>
           </div>
 
-          <div style={{borderRadius:20,padding:"15px 16px",marginBottom:12,background:plan.alimGrad,border:`0.5px solid ${N.border}`}}>
-            <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:10}}>
-              <div style={{display:"flex",alignItems:"center",gap:7}}><Ic n="fork" s={15} c={plan.alimText}/><Title size={18} style={{color:plan.alimText}}>Alimentazione</Title></div>
-              <div style={{display:"flex",gap:6}}>
-                <a href="myfitnesspal://" style={{display:"flex",alignItems:"center",gap:4,fontSize:10,padding:"4px 10px",borderRadius:20,border:`1px solid ${plan.alimText}44`,background:"rgba(255,255,255,0.55)",color:plan.alimText,textDecoration:"none",fontFamily:F.body,fontWeight:600}}>
-                  MFP ›
-                </a>
-                <button onClick={()=>{setTab("altro");setSubTab("proteine");}} style={{display:"flex",alignItems:"center",gap:4,fontSize:10,padding:"4px 10px",borderRadius:20,border:`1px solid ${plan.alimText}44`,background:"rgba(255,255,255,0.55)",color:plan.alimText,cursor:"pointer",fontFamily:F.body,fontWeight:600}}>
-                  <Ic n="protein" s={11} c={plan.alimText}/>Proteine ›
-                </button>
-              </div>
-            </div>
-            <div style={{background:"rgba(255,255,255,.6)",borderRadius:13,padding:"10px 12px",marginBottom:8}}><Lbl>COLAZIONE</Lbl><p style={{fontSize:12,color:N.text,margin:0,lineHeight:1.55,fontFamily:F.body}}>{COLAZIONE[plan.colazione]||COLAZIONE.std}</p></div>
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:6,marginBottom:10}}>
-              {[
-                plan.spuntino?["Spuntino",plan.spuntino]:null,
-                plan.aperitivo?["Aperitivo",plan.aperitivo]:null,
-                ["Pranzo",plan.pranzo],
-                ["Cena",plan.cena]
-              ].filter(Boolean).map(([lbl,val])=>(<div key={lbl} style={{background:"rgba(255,255,255,.6)",borderRadius:13,padding:"9px 10px"}}><Lbl>{lbl.toUpperCase()}</Lbl><p style={{fontSize:11,color:N.text,margin:0,lineHeight:1.45,fontFamily:F.body}}>{val}</p></div>))}
-            </div>
-            <div style={{background:"rgba(255,255,255,.5)",borderRadius:13,padding:"10px 12px"}}>
-              <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:6}}><Lbl style={{margin:0}}>NOTA DEL GIORNO</Lbl><button onClick={()=>setAlimEdit(e=>!e)} style={{background:"transparent",border:"none",cursor:"pointer",padding:0}}><Ic n={alimEdit?"check":"edit"} s={14} c={N.muted}/></button></div>
-              {alimEdit?<textarea value={alimNote} onChange={e=>S.alimNote(e.target.value)} placeholder="Cosa hai mangiato oggi?" rows={3} style={{width:"100%",border:"none",background:"transparent",fontFamily:F.body,fontSize:12,color:N.text,resize:"none",outline:"none",lineHeight:1.6,boxSizing:"border-box"}}/>
-                :<p style={{fontSize:12,color:alimNote?N.text:N.muted,margin:0,lineHeight:1.6,fontFamily:F.body,minHeight:36}}>{alimNote||"Tocca ✎ per aggiungere una nota..."}</p>}
-            </div>
-          </div>
+          <AlimentazioneSection
+            plan={plan}
+            viewDateKey={viewDateKey}
+            dow={dow}
+            alimNote={alimNote}
+            setAlimNote={v=>S.alimNote(v)}
+            alimEdit={alimEdit}
+            setAlimEdit={setAlimEdit}
+            alimOverrides={alimOverrides}
+            setAlimOverrides={v=>S.alimOverrides(v)}
+            th={th}
+            onGoProteine={()=>{setTab("altro");setSubTab("proteine");}}
+          />
 
           <RSection list={mList} type="mattina" gradStyle="linear-gradient(160deg,#FFFDF0 0%,#FFF6CC 55%,#FFFFFF 100%)" checked={checked} onToggle={k=>S.checked(p=>({...p,[k]:!p[k]}))} onAdd={setAddModal} onDel={(item,type)=>setDelModal({item,type})} onEdit={(item,newText,type)=>{
                 if(item.key.startsWith("aw_")){
@@ -1183,10 +1574,23 @@ export default function App(){
             todos={dailyTodos[viewDateKey]||[]}
             todoInput={todoInput}
             setTodoInput={setTodoInput}
-            onAdd={()=>{const t=todoInput.trim();if(!t)return;S.dailyTodos(prev=>({...prev,[viewDateKey]:[...(prev[viewDateKey]||[]),{id:"td"+Date.now(),text:t,done:false}]}));setTodoInput("");}}
+            onAdd={(directText,ritual)=>{
+              if(ritual){
+                const item={id:"td"+Date.now(),text:ritual.title,done:false,substeps:ritual.steps.map(s=>({text:s,done:false})),ritualId:ritual.id,color:{bg:ritual.grad.includes("F2FAF0")?"#D9F0CE":ritual.grad.includes("FDFAF2")?"#F0E4B8":ritual.grad.includes("FFF5EE")?"#FFD9B8":ritual.grad.includes("EDE0FF")?"#EDE0FF":"#F0E4B8",tc:ritual.tc}};
+                S.dailyTodos(prev=>({...prev,[viewDateKey]:[...(prev[viewDateKey]||[]),item]}));
+              } else {
+                const t=(directText||todoInput).trim();
+                if(!t)return;
+                const color=nextPastel();
+                S.dailyTodos(prev=>({...prev,[viewDateKey]:[...(prev[viewDateKey]||[]),{id:"td"+Date.now(),text:t,done:false,color}]}));
+                if(!directText)setTodoInput("");
+              }
+            }}
             onToggle={(id)=>S.dailyTodos(prev=>({...prev,[viewDateKey]:(prev[viewDateKey]||[]).map(t=>t.id===id?{...t,done:!t.done}:t)}))}
             onDelete={(id)=>S.dailyTodos(prev=>({...prev,[viewDateKey]:(prev[viewDateKey]||[]).filter(t=>t.id!==id)}))}
             onEdit={(id,newText)=>S.dailyTodos(prev=>({...prev,[viewDateKey]:(prev[viewDateKey]||[]).map(t=>t.id===id?{...t,text:newText}:t)}))}
+            onToggleSubstep={(id,si)=>S.dailyTodos(prev=>({...prev,[viewDateKey]:(prev[viewDateKey]||[]).map(t=>t.id===id?{...t,substeps:t.substeps.map((ss,i)=>i===si?{...ss,done:!ss.done}:ss)}:t)}))}
+            rituals={strats}
           />
 
           {/* ── Durante la giornata — solo feriali ── */}
@@ -1194,22 +1598,26 @@ export default function App(){
             <div style={{display:"flex",alignItems:"center",gap:7,marginBottom:12}}><Ic n="walk" s={15} c={N.muted}/><Title size={16}>Durante la giornata</Title></div>
             {plan.ufficio.length>0&&<>
               <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:6}}><Ic n="office" s={13} c="#5A5652"/><p style={{fontSize:12,fontWeight:600,color:"#5A5652",margin:0,fontFamily:F.body}}>In ufficio</p></div>
-              {plan.ufficio.map((item,i)=>(
-                <div key={i} style={{display:"flex",gap:8,padding:"5px 0 5px 20px",borderBottom:i<plan.ufficio.length-1?`0.5px solid ${N.faint}`:"none"}}>
-                  <span style={{color:th.dark,fontSize:12,flexShrink:0}}>→</span>
-                  <p style={{fontSize:12,color:N.text,margin:0,lineHeight:1.55,fontFamily:F.body}}>{item}</p>
-                </div>
-              ))}
+              {plan.ufficio.map((item,i)=>{
+                const k="uff_"+i;
+                const done=duranteChecked[k];
+                return(<div key={i} onClick={()=>S.duranteChecked(p=>({...p,[k]:!p[k]}))} style={{display:"flex",gap:8,padding:"6px 0 6px 4px",borderBottom:i<plan.ufficio.length-1?`0.5px solid ${N.faint}`:"none",cursor:"pointer",alignItems:"flex-start"}}>
+                  <div style={{width:18,height:18,borderRadius:5,border:done?"none":`1.5px solid ${N.border}`,background:done?th.dark:"transparent",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,marginTop:2,transition:"all .2s"}}>{done&&<Ic n="check" s={11} c="#fff"/>}</div>
+                  <p style={{fontSize:12,color:done?N.muted:N.text,textDecoration:done?"line-through":"none",margin:0,lineHeight:1.55,fontFamily:F.body}}>{item}</p>
+                </div>);
+              })}
               <div style={{height:"0.5px",background:N.faint,margin:"10px 0"}}/>
             </>}
             <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:6}}><Ic n="car" s={13} c="#5A5652"/><p style={{fontSize:12,fontWeight:600,color:"#5A5652",margin:0,fontFamily:F.body}}>In auto</p></div>
-            <p style={{fontSize:12,color:N.muted,margin:"0 0 10px 20px",fontFamily:F.body,lineHeight:1.5}}>Esercizi invisibili ai semafori — tieni premuto per vedere i dettagli.</p>
-            {FY_AUTO.map((ex,i)=>(
-              <div key={i} style={{display:"flex",gap:8,padding:"5px 0 5px 20px",borderBottom:i<FY_AUTO.length-1?`0.5px solid ${N.faint}`:"none"}}>
-                <span style={{color:"#6B3FA0",fontSize:12,flexShrink:0}}>◆</span>
-                <p style={{fontSize:12,color:N.text,margin:0,lineHeight:1.55,fontFamily:F.body,fontWeight:500}}>{ex.name}</p>
-              </div>
-            ))}
+            <p style={{fontSize:12,color:N.muted,margin:"0 0 8px 4px",fontFamily:F.body,lineHeight:1.5}}>Esercizi invisibili ai semafori — tieni premuto per i dettagli.</p>
+            {FY_AUTO.map((ex,i)=>{
+              const k="auto_"+i;
+              const done=duranteChecked[k];
+              return(<div key={i} onClick={()=>S.duranteChecked(p=>({...p,[k]:!p[k]}))} style={{display:"flex",gap:8,padding:"6px 0 6px 4px",borderBottom:i<FY_AUTO.length-1?`0.5px solid ${N.faint}`:"none",cursor:"pointer",alignItems:"flex-start"}}>
+                <div style={{width:18,height:18,borderRadius:5,border:done?"none":`1.5px solid #6B3FA0`,background:done?"#6B3FA0":"transparent",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,marginTop:2,transition:"all .2s"}}>{done&&<Ic n="check" s={11} c="#fff"/>}</div>
+                <p style={{fontSize:12,color:done?N.muted:N.text,textDecoration:done?"line-through":"none",margin:0,lineHeight:1.55,fontFamily:F.body,fontWeight:500}}>{ex.name}</p>
+              </div>);
+            })}
             <div style={{marginTop:12,display:"flex",gap:8}}>
               <button onClick={()=>setFyAutoOpen(true)} style={{flex:1,display:"flex",alignItems:"center",justifyContent:"center",gap:6,padding:"9px 10px",borderRadius:14,border:`1px solid #9B6FCC`,background:"linear-gradient(135deg,#F5EFFF,#E8D8FF)",color:"#6B3FA0",cursor:"pointer",fontFamily:F.body,fontSize:11,fontWeight:600}}>
                 <Ic n="car" s={13} c="#6B3FA0"/>Auto ›
@@ -1269,6 +1677,13 @@ export default function App(){
                   S.alwaysExtra(p=>({...p,[type]:[...p[type],newText]}));
                 }
               }} onReorder={nl=>S.routineOrder(p=>({...p,sera:nl.map(x=>x.key)}))} th={th} plan={plan} onFYOpen={()=>setFyOpen(true)}/>
+
+          {/* ── Journaling — in fondo, dopo la night routine ── */}
+          <JournalingCard
+            entry={journalEntries[viewDateKey]||""}
+            onSave={text=>S.journalEntries(prev=>({...prev,[viewDateKey]:text}))}
+            dateKey={viewDateKey}
+          />
         </div>}
 
         {/* ── CALENDARIO ── */}
@@ -1323,6 +1738,8 @@ export default function App(){
               {k:"skincare",icon:"flower",label:"Skincare",desc:"Mattina · Sera A/B/C · prodotti & passi",grad:"linear-gradient(135deg,#FFF0F5,#FFD0E0)",tc:"#A03050"},
               {k:"note",icon:"note",label:"Note & Info utili",desc:"Stagionalità, skincare, integratori",grad:"linear-gradient(135deg,#EDE0FF,#D4C0FF)",tc:"#6B3FA0"},
               {k:"progressi",icon:"chart",label:"Progressi",desc:"Costanza nelle routine",grad:"linear-gradient(135deg,#FFF5EE,#FFD9B8)",tc:"#A04A10"},
+              {k:"corpo",icon:"body",label:"Corpo",desc:"Peso, misure & BMI",grad:"linear-gradient(135deg,#F0F5FF,#D8E8FF)",tc:"#2A4090"},
+              {k:"journaling",icon:"note",label:"Journaling",desc:"Il tuo diario personale",grad:"linear-gradient(135deg,#F5F0FF,#E4D8FF)",tc:"#6B3FA0"},
             ].map(item=>(
               <div key={item.k} onClick={()=>setSubTab(item.k)} style={{borderRadius:20,padding:"18px 20px",marginBottom:12,background:item.grad,border:`0.5px solid ${N.border}`,cursor:"pointer",display:"flex",alignItems:"center",gap:16}}>
                 <div style={{width:52,height:52,borderRadius:16,background:"rgba(255,255,255,0.7)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}><Ic n={item.icon} s={24} c={item.tc}/></div>
@@ -1440,16 +1857,40 @@ export default function App(){
           </div>
         </div>}
 
+        {tab==="altro"&&subTab==="journaling"&&<JournalingDiary journalEntries={journalEntries} onSave={(dateKey,text)=>S.journalEntries(prev=>({...prev,[dateKey]:text}))}/>}
+
+        {tab==="altro"&&subTab==="corpo"&&<BodySection bodyMeasurements={bodyMeasurements} setBodyMeasurements={v=>S.bodyMeasurements(v)}/>}
+
         {tab==="altro"&&subTab==="progressi"&&<div>
           <div style={{display:"flex",justifyContent:"flex-end",marginBottom:14}}><button onClick={()=>setShowAddProg(s=>!s)} style={{display:"flex",alignItems:"center",gap:5,fontSize:11,padding:"5px 12px",borderRadius:20,border:`1px solid ${N.border}`,background:"#fff",color:N.muted,cursor:"pointer",fontFamily:F.body}}><Ic n="edit" s={12} c={N.muted}/>Modifica oggi</button></div>
 
           {progressLog.length>0&&(()=>{
             const last7=progressLog.slice(0,7);
             const avgR=Math.round(last7.reduce((a,p)=>a+(p.routine||0),0)/last7.length);
-            const streak=progressLog.filter(p=>(p.routine||0)>=80).length;
-            return(<div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:16}}>
-              {[{label:"OGGI",val:`${pct}%`,color:"#FFD5B8",tc:"#A04010"},{label:"MEDIA 7gg",val:`${avgR}%`,color:"#D9F0CE",tc:"#2A5A18"},{label:"GIORNI ≥80%",val:streak,color:"#EDE0FF",tc:"#6B3FA0"}].map(x=>(<div key={x.label} style={{background:x.color,borderRadius:16,padding:"12px 12px"}}><Lbl style={{margin:"0 0 4px"}}>{x.label}</Lbl><p style={{fontFamily:F.heading,fontSize:24,fontWeight:600,color:x.tc,margin:0}}>{x.val}</p></div>))}
-            </div>);
+            // Calcola streak globale: giorni consecutivi con routine ≥80% partendo da oggi
+            const sortedLog=[...progressLog].sort((a,b)=>b.date.localeCompare(a.date));
+            let streak=0;
+            let checkDate=new Date(todayKey+"T12:00:00");
+            for(let i=0;i<sortedLog.length;i++){
+              const d=sortedLog[i].date;
+              const cd=checkDate.toISOString().slice(0,10);
+              if(d===cd&&(sortedLog[i].routine||0)>=80){streak++;checkDate.setDate(checkDate.getDate()-1);}
+              else if(d<cd) break;
+            }
+            const totalGood=progressLog.filter(p=>(p.routine||0)>=80).length;
+            return(<>
+              {streak>0&&<div style={{background:"linear-gradient(135deg,#FFF8E8,#FFE8A0)",borderRadius:20,padding:"16px 18px",marginBottom:12,border:"0.5px solid #E8C840",display:"flex",alignItems:"center",gap:14}}>
+                <div style={{fontSize:36,lineHeight:1}}>🔥</div>
+                <div style={{flex:1}}>
+                  <p style={{fontFamily:F.heading,fontSize:32,fontWeight:600,color:"#A07800",margin:0,lineHeight:1}}>{streak}<span style={{fontSize:14,fontWeight:400}}> {streak===1?"giorno":"giorni"}</span></p>
+                  <p style={{fontFamily:F.body,fontSize:11,color:"#A07800",margin:0,opacity:.8}}>streak consecutivi ≥80%</p>
+                </div>
+                {streak>=7&&<div style={{background:"#A07800",borderRadius:12,padding:"6px 10px",textAlign:"center"}}><p style={{fontSize:10,color:"#FFE8A0",margin:0,fontFamily:F.body,fontWeight:600}}>🏆 {Math.floor(streak/7)}w</p></div>}
+              </div>}
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:16}}>
+                {[{label:"OGGI",val:`${pct}%`,color:"#FFD5B8",tc:"#A04010"},{label:"MEDIA 7gg",val:`${avgR}%`,color:"#D9F0CE",tc:"#2A5A18"},{label:"TOTALE ≥80%",val:totalGood,color:"#EDE0FF",tc:"#6B3FA0"}].map(x=>(<div key={x.label} style={{background:x.color,borderRadius:16,padding:"12px 12px"}}><Lbl style={{margin:"0 0 4px"}}>{x.label}</Lbl><p style={{fontFamily:F.heading,fontSize:24,fontWeight:600,color:x.tc,margin:0}}>{x.val}</p></div>))}
+              </div>
+            </>);
           })()}
 
           {showAddProg&&(
