@@ -1,10 +1,24 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
+// ══════════════════════════════════════════════════════
+// INDICE — cerca (Ctrl/Cmd+F) uno di questi marcatori "── ... ──" per saltare alla sezione:
+//   DATI: temi giornalieri | Face Yoga | piano settimanale (DD) | nomi giorni/mesi
+//   DATI: proteine | schede allenamento/yoga/rituali/note/ricette | skincare
+//   HELPER UI di base (Lbl, Title, Card, SortableList, Sheet)
+//   MODALI (aggiungi/rimuovi voci)
+//   COMPONENTI: obiettivi | journaling | alimentazione | misure corporee | to-do | frase del giorno | routine
+//   APP PRINCIPALE (stato globale + tab Oggi/Calendario/Rituali/Altro)
+// ══════════════════════════════════════════════════════
+
 const fontLink = document.createElement("link");
 fontLink.rel = "stylesheet";
 fontLink.href = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Poppins:wght@300;400;500;600&display=swap";
 document.head.appendChild(fontLink);
 document.title = "Better Me";
+
+const shimmerStyle = document.createElement("style");
+shimmerStyle.textContent = `@keyframes plantShine{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}`;
+document.head.appendChild(shimmerStyle);
 
 const F={heading:"'Cormorant Garamond',serif",body:"'Poppins',sans-serif"};
 const N={bg:"#F7F5F0",card:"#FFFFFF",border:"rgba(0,0,0,0.07)",text:"#1C1C1A",muted:"#8A8680",faint:"#F0EDE8"};
@@ -79,10 +93,19 @@ drag:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} stroke
 body:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.5" strokeLinecap="round"><circle cx="12" cy="4" r="2"/><path d="M9 9h6l-1 5-1 7h-2l-1-7-1-5z"/><path d="M7 9l-2 3 2 2"/><path d="M17 9l2 3-2 2"/></svg>,
 fire:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.5" strokeLinecap="round"><path d="M12 22C8 22 5 19 5 15.5c0-2.5 1.5-4.5 3-5.5 0 2 1 3 2 3.5 0-2 .5-5 2-7 0 3 2 5 2 7.5C14 12 16 10 16 8c2 2 3 4.5 3 7.5C19 19 16 22 12 22z"/></svg>,
 ruler:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.5" strokeLinecap="round"><path d="M3 9l18-6-6 18-3-7.5L3 9z"/><line x1="10.5" y1="10.5" x2="8" y2="13"/></svg>,
+apple:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 8.5c-3.3 0-6 2.6-6 6.8 0 3.6 2.3 6.7 4.6 6.7.9 0 1.2-.4 1.4-.4s.6.4 1.4.4c2.4 0 4.6-3.1 4.6-6.7 0-4.2-2.7-6.8-6-6.8z"/><path d="M12 8.5V6c0-1 .8-2 2-2.3"/><path d="M9.3 4.2c1.2 0 2.3.6 2.9 1.6"/></svg>,
+avocado:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.5" strokeLinecap="round"><path d="M12 3c3.5 1 5.5 5 5.5 9 0 5-2.5 9-5.5 9s-5.5-4-5.5-9c0-4 2-8 5.5-9z"/><circle cx="12" cy="14" r="3"/></svg>,
+noAlcohol:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.5" strokeLinecap="round"><path d="M7 3h10l-1.2 6.5a3.8 3.8 0 0 1-7.6 0z"/><line x1="12" y1="9.5" x2="12" y2="17"/><line x1="8.5" y1="17" x2="15.5" y2="17"/><line x1="8" y1="4" x2="16" y2="10"/><line x1="16" y1="4" x2="8" y2="10"/></svg>,
+meditate:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.5" strokeLinecap="round"><circle cx="12" cy="5" r="1.8"/><path d="M12 7v3"/><path d="M12 10c-2 0-3.5 1-4.5 2.5-.5.8-1.5 1-2.5.8"/><path d="M12 10c2 0 3.5 1 4.5 2.5.5.8 1.5 1 2.5.8"/><path d="M6 16c1.5 1.5 3.5 2 6 2s4.5-.5 6-2"/></svg>,
+target:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.5" strokeLinecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5.5"/><circle cx="12" cy="12" r="2"/></svg>,
+brain:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.5" strokeLinecap="round"><path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-1.5 5.5A3 3 0 0 0 6 18a3 3 0 0 0 3 2.5V4z"/><path d="M15 4a3 3 0 0 1 3 3 3 3 0 0 1 1.5 5.5A3 3 0 0 1 18 18a3 3 0 0 1-3 2.5V4z"/></svg>,
+smile:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.5" strokeLinecap="round"><circle cx="12" cy="12" r="9"/><path d="M8 13.5c1 1.5 2.4 2.3 4 2.3s3-.8 4-2.3"/><line x1="8.5" y1="9.5" x2="8.5" y2="9.5"/><line x1="15.5" y1="9.5" x2="15.5" y2="9.5"/></svg>,
+bed:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.5" strokeLinecap="round"><path d="M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7"/><path d="M3 18v2"/><path d="M21 18v2"/><path d="M3 13V7a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v2"/><line x1="10" y1="13" x2="21" y2="13"/></svg>,
 };
 return <span style={{display:"inline-flex",alignItems:"center",flexShrink:0,...style}}>{p[n]||p.star}</span>;
 };
 
+// ── DATI: temi giornalieri (colori/gradiente per ogni giorno) ──
 const TH={
 boost:{name:"Monday Boost",grad:"linear-gradient(135deg,#F0FFF4,#C8F0D0)",pill:"#C8F0D0",pillText:"#1A6B35",accent:"#2ECC71",dark:"#1A6B35",blob:"rgba(46,204,113,0.15)",icon:"sparkle"},
 forza_ret:{name:"Lower Body + Radiance",grad:"linear-gradient(135deg,#FFF4EE,#FFD5B8)",pill:"#FFD5B8",pillText:"#A04010",accent:"#E8733A",dark:"#A04010",blob:"rgba(232,115,58,0.15)",icon:"dumbbell"},
@@ -93,6 +116,7 @@ sabato:{name:"Clean & Slow down",grad:"linear-gradient(135deg,#FDFAF2,#F0E4B8)",
 domenica:{name:"Relax",grad:"linear-gradient(135deg,#FFF5EE,#FFD9B8)",pill:"#FFD9B8",pillText:"#A04A10",accent:"#E8834A",dark:"#A04A10",blob:"rgba(232,131,74,0.15)",icon:"moon"},
 };
 
+// ── DATI: esercizi di Face Yoga (mattina/sera/auto/ufficio) ──
 const FY_M=[
 {name:"Apertura Rubini",desc:"10 pompaggi sopra le clavicole"},
 {name:"Forchetta",desc:"15 scivolamenti orecchie → collo → clavicole"},
@@ -123,6 +147,7 @@ const FY_OFFICE=[
 {name:"Pompaggio Rapido",desc:"Se gli occhi sono stanchi: 3 scivolamenti verso le tempie + pressione clavicole"},
 ];
 
+// ── DATI: piano settimanale (integratori, colazioni, DD = Day Data) ──
 const SR="Bromelina + Multi Probiotico";
 const SC="Vitamina D3 · Omega 3 · Biotina · Acido Folico · Diosmina + Esperidina";
 const COLAZIONE={
@@ -143,10 +168,12 @@ const DD={
 0:{th:TH.domenica,colazione:"detox",mattina:["NO sveglia — riposo","Nettalingua","Detersione viso","Probiotici + Bromelina","30 Calf Raises lenti – Vacuum 3×30″","Dry Brush","Morning Skincare","Morning face yoga","Mattinata libera: relax, piante, lettura","11:00 — Bromelina","13:30 — Vitamina D3 + Acido Folico","Brush teeth"],alimLabel:"Giornata di relax + pinsa serale",alimGrad:AG,alimText:AT,spuntino:"Aperitivo o spuntino libero",aperitivo:null,pranzo:"Pasta sfiziosa + contorno veggies — 13:30",cena:"Pinsa + mozzarella light + birra analcolica",sera:["Gentle Foam Roller","Dry Brush","Massaggio con crema","Skincare Sera C — Idratazione + Face Yoga completo","Gambe al muro 10'","½ Bromelina + Magnesio + Potassio"],ufficio:[],faceYoga:FY_C,fyLabel:"Face Yoga Sera C — Completo"},
 };
 
+// ── DATI: nomi giorni/mesi in italiano ──
 const DN=["domenica","lunedì","martedì","mercoledì","giovedì","venerdì","sabato"];
 const DS=["Dom","Lun","Mar","Mer","Gio","Ven","Sab"];
 const MN=["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
 
+// ── DATI: tipi di proteine e limiti settimanali ──
 const PROTEIN_TYPES=[
 {id:"pollo",label:"Pollo/Tacchino",max:3,color:"#FFD5B8",tc:"#A04010",icon:"🍗"},
 {id:"uova",label:"Uova",max:6,color:"#FFF6B8",tc:"#8A6A00",icon:"🥚",unit:"uova"},
@@ -158,6 +185,7 @@ const PROTEIN_TYPES=[
 {id:"latticini",label:"Latticini",max:2,color:"#FFF9E6",tc:"#8A6A00",icon:"🧀"},
 ];
 
+// ── DATI: schede allenamento / yoga / face yoga / rituali / note / ricette (stato iniziale) ──
 const INIT_WORKOUTS=[
 {id:"w1",type:"glutei",name:"Scheda Focus Glutei & Gambe",freq:"2× a settimana · 48–72h di riposo",grad:"linear-gradient(135deg,#FFF4EE,#FFD5B8)",tc:"#A04010",sections:[{title:"Riscaldamento",items:["5–10 min mobilità articolare","5' Surya Namaskara"]},{title:"Attivazione",items:["20 Glute Bridge","15 × lato Clamshell","10 × lato Bird-Dog","20 Frog Pumps"]},{title:"Forza",items:["Hip Thrust: 4 × 10–12","Squat Bulgaro: 3 × 12","Stacchi Rumeni: 3 × 12"]},{title:"Defaticamento",items:["Gambe a muro 5'"]}],tips:["Visualizza il gluteo","Progressione settimanale","Senza scarpe"]},
 {id:"w2",type:"upper",name:"Allenamento Upper & Core",freq:"1–2× a settimana",grad:"linear-gradient(135deg,#FFF4EE,#FFD5B8)",tc:"#A04010",sections:[{title:"Forza · 3 giri · 45\" pausa",items:["Around the World: 12","Bent-over Row: 15","Alzate Laterali: 12","Chest Opener: 12","Dead Bug: 10/gamba"]},{title:"Power Flow · 3 giri",items:["Down Dog → Dolphin: 5–10","Dolphin Push-ups: 10","Plank Knee-to-Elbow: 20","Plank Shoulder Taps: 10/lato","Ardha Navasana: 10 respiri","V-ups alternati: 10/lato","Low Navasana Hold: 30\""]},{title:"Compensazione",items:["Ginocchia al petto","Rolling like a ball","Malasana","Anahatasana","Bhujangasana","Supine Twist"]}],tips:["Rematore + Face Pull per postura","Vacuum addominale ogni mattina"]},
@@ -277,6 +305,7 @@ const INIT_RIC=[
 ];
 
 // ── Skincare data ──
+// ── DATI: routine skincare (mattina/sera A-B-C) ──
 const SKINCARE_ROUTINES=[
 {id:"sk_mattina",label:"Mattina",tag:"Wake-Up & Protect",tagColor:"#FFD5B8",tagTc:"#A04010",grad:"linear-gradient(135deg,#FFF8F0,#FFE8CC)",tc:"#A04010",icon:"sun",obiettivo:"Drenaggio linfatico, idratazione profonda e protezione.",steps:[
 {n:"Detersione",desc:"Solo acqua tiepida o detergente delicato."},
@@ -314,10 +343,133 @@ const SKINCARE_ROUTINES=[
 ]},
 ];
 
+// ── DATI: "20+ piante a settimana" — categorie ispirate all'American Gut Project ──
+// ── DATI: palette e icone condivise per tutti gli obiettivi (giornalieri ed extra settimanali) ──
+// GOAL_COLORS: coppie [sfondo pastello, colore testo/accento] — riusate ovunque si scelga un colore per un obiettivo.
+const GOAL_COLORS=[
+["#D9F0CE","#2A5A18"],// verde salvia
+["#F0E4B8","#7A5C10"],// giallo miele
+["#FFD5B8","#A04010"],// pesca
+["#FCDDE5","#A03050"],// rosa cipria
+["#EDE0FF","#6B3FA0"],// lavanda
+["#B8E8FF","#0A4A7A"],// azzurro cielo
+["#D8E8FF","#2A4090"],// blu polvere
+["#C8F0D0","#1A6B35"],// verde acqua
+["#FFD9CC","#B04A2A"],// corallo tenue
+["#E8E4DC","#6A6560"],// grigio perla (neutro)
+];
+// GOAL_ICONS: icone selezionabili per un obiettivo (giornaliero o settimanale).
+const GOAL_ICONS=["star","heart","leaf","drop","walk","book","openbook","align","yoga","meditate","apple","avocado","noAlcohol","target","brain","smile","bed","flower","sparkle","sun","moon","dumbbell","fire","tag","cal"];
+
+const PLANT_GOAL_BASE=20;
+const PLANT_GOAL_GOLD=30;
+const PLANT_CATEGORIES=[
+{label:"Verdura",points:"1 punto",examples:"spinaci, broccoli, carote, cavolfiore, cipolla rossa",icon:"leaf",color:"#D9F0CE",tc:"#2D6020"},
+{label:"Frutta",points:"1 punto",examples:"mele, banane, frutti di bosco, agrumi, kiwi",icon:"leaf",color:"#F0E4B8",tc:"#7A5C10"},
+{label:"Cereali integrali",points:"1 punto",examples:"quinoa, riso integrale, avena, farro, orzo",icon:"leaf",color:"#FFD5B8",tc:"#A04010"},
+{label:"Legumi",points:"1 punto",examples:"lenticchie, ceci, fagioli, piselli",icon:"leaf",color:"#E8D8FF",tc:"#6B3FA0"},
+{label:"Semi oleosi e frutta secca",points:"1 punto",examples:"mandorle, noci, semi di lino, chia, girasole, zucca",icon:"leaf",color:"#B8E8FF",tc:"#0A4A7A"},
+{label:"Erbe e spezie",points:"0,5 punti",examples:"basilico, prezzemolo, coriandolo, menta, rosmarino, curcuma",icon:"leaf",color:"#FCDDE5",tc:"#A03050"},
+];
+// normalizeText: minuscolo + rimozione accenti, per un confronto più robusto ("più"→"piu").
+const normalizeText=(s)=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+
+// PLANT_DB: database di alimenti vegetali riconosciuti automaticamente, con relativo valore in punti.
+// name = nome mostrato nei suggerimenti; alt = forme alternative (singolare/plurale, sinonimi) su cui viene fatta la ricerca.
+// 1 punto: frutta, verdura, cereali integrali, legumi, semi oleosi e frutta secca, funghi.
+// 0,5 punti: erbe e spezie (quantità minime).
+const PLANT_DB=[
+// ── Frutta ──
+{name:"Mele",points:1,alt:["mela"]},{name:"Pere",points:1,alt:["pera"]},{name:"Banane",points:1,alt:["banana"]},
+{name:"Arance",points:1,alt:["arancia"]},{name:"Mandarini",points:1,alt:["mandarino"]},{name:"Clementine",points:1,alt:["clementina"]},
+{name:"Limoni",points:1,alt:["limone"]},{name:"Pompelmo",points:1,alt:["pompelmi"]},{name:"Uva",points:1,alt:[]},
+{name:"Uva passa",points:1,alt:["uvetta"]},{name:"Fragole",points:1,alt:["fragola"]},{name:"Mirtilli",points:1,alt:["mirtillo"]},
+{name:"Lamponi",points:1,alt:["lampone"]},{name:"More",points:1,alt:["mora"]},{name:"Ribes",points:1,alt:[]},
+{name:"Ciliegie",points:1,alt:["ciliegia"]},{name:"Pesche",points:1,alt:["pesca"]},{name:"Albicocche",points:1,alt:["albicocca"]},
+{name:"Prugne",points:1,alt:["prugna","susine","susina"]},{name:"Kiwi",points:1,alt:[]},{name:"Ananas",points:1,alt:[]},
+{name:"Mango",points:1,alt:[]},{name:"Papaya",points:1,alt:[]},{name:"Melone",points:1,alt:[]},
+{name:"Anguria",points:1,alt:["cocomero"]},{name:"Fichi",points:1,alt:["fico"]},{name:"Cachi",points:1,alt:["kaki"]},
+{name:"Melograno",points:1,alt:[]},{name:"Castagne",points:1,alt:["castagna"]},{name:"Avocado",points:1,alt:[]},
+{name:"Datteri",points:1,alt:["dattero"]},{name:"Cocco",points:1,alt:[]},{name:"Nespole",points:1,alt:["nespola"]},
+// ── Verdura ──
+{name:"Pomodori",points:1,alt:["pomodoro"]},{name:"Cetrioli",points:1,alt:["cetriolo"]},{name:"Zucchine",points:1,alt:["zucchina"]},
+{name:"Melanzane",points:1,alt:["melanzana"]},{name:"Peperoni",points:1,alt:["peperone"]},{name:"Carote",points:1,alt:["carota"]},
+{name:"Patate",points:1,alt:["patata"]},{name:"Patate dolci",points:1,alt:["patata dolce","batata"]},{name:"Cipolle",points:1,alt:["cipolla"]},
+{name:"Sedano",points:1,alt:[]},{name:"Finocchi",points:1,alt:["finocchio"]},{name:"Broccoli",points:1,alt:["broccolo"]},
+{name:"Cavolfiore",points:1,alt:[]},{name:"Cavolo",points:1,alt:["cavoli"]},{name:"Cavolo nero",points:1,alt:[]},
+{name:"Cavoletti di Bruxelles",points:1,alt:["cavolini"]},{name:"Verza",points:1,alt:[]},{name:"Spinaci",points:1,alt:["spinacio"]},
+{name:"Bietole",points:1,alt:["bietola"]},{name:"Lattuga",points:1,alt:["insalata"]},{name:"Rucola",points:1,alt:[]},
+{name:"Radicchio",points:1,alt:[]},{name:"Asparagi",points:1,alt:["asparago"]},{name:"Carciofi",points:1,alt:["carciofo"]},
+{name:"Zucca",points:1,alt:[]},{name:"Barbabietola",points:1,alt:["barbabietole"]},{name:"Ravanelli",points:1,alt:["ravanello"]},
+{name:"Piselli",points:1,alt:["pisello"]},{name:"Fave",points:1,alt:["fava"]},{name:"Fagiolini",points:1,alt:["fagiolino"]},
+{name:"Porri",points:1,alt:["porro"]},{name:"Scalogno",points:1,alt:[]},{name:"Cicoria",points:1,alt:[]},
+{name:"Cime di rapa",points:1,alt:[]},{name:"Funghi",points:1,alt:["fungo","champignon","porcini"]},
+// ── Cereali integrali ──
+{name:"Riso integrale",points:1,alt:["riso"]},{name:"Farro",points:1,alt:[]},{name:"Orzo",points:1,alt:[]},
+{name:"Avena",points:1,alt:["fiocchi d'avena"]},{name:"Quinoa",points:1,alt:[]},{name:"Grano saraceno",points:1,alt:["saraceno"]},
+{name:"Miglio",points:1,alt:[]},{name:"Segale",points:1,alt:[]},{name:"Mais",points:1,alt:["polenta"]},
+{name:"Pane integrale",points:1,alt:[]},{name:"Pasta integrale",points:1,alt:[]},{name:"Amaranto",points:1,alt:[]},
+// ── Legumi ──
+{name:"Lenticchie",points:1,alt:["lenticchia"]},{name:"Ceci",points:1,alt:["cece"]},{name:"Fagioli",points:1,alt:["fagiolo","cannellini","borlotti"]},
+{name:"Soia",points:1,alt:[]},{name:"Edamame",points:1,alt:[]},{name:"Tofu",points:1,alt:[]},{name:"Tempeh",points:1,alt:[]},
+{name:"Arachidi",points:1,alt:["noccioline"]},
+// ── Semi oleosi e frutta secca ──
+{name:"Mandorle",points:1,alt:["mandorla"]},{name:"Noci",points:1,alt:["noce"]},{name:"Nocciole",points:1,alt:["nocciola"]},
+{name:"Pistacchi",points:1,alt:["pistacchio"]},{name:"Anacardi",points:1,alt:["anacardio"]},{name:"Pinoli",points:1,alt:[]},
+{name:"Semi di lino",points:1,alt:["lino"]},{name:"Semi di chia",points:1,alt:["chia"]},{name:"Semi di girasole",points:1,alt:[]},
+{name:"Semi di zucca",points:1,alt:[]},{name:"Semi di sesamo",points:1,alt:["sesamo","tahin"]},{name:"Semi di canapa",points:1,alt:["canapa"]},
+// ── Erbe e spezie (0,5 punti) ──
+{name:"Basilico",points:0.5,alt:[]},{name:"Prezzemolo",points:0.5,alt:[]},{name:"Coriandolo",points:0.5,alt:[]},
+{name:"Menta",points:0.5,alt:[]},{name:"Rosmarino",points:0.5,alt:[]},{name:"Timo",points:0.5,alt:[]},
+{name:"Curcuma",points:0.5,alt:[]},{name:"Origano",points:0.5,alt:[]},{name:"Salvia",points:0.5,alt:[]},
+{name:"Alloro",points:0.5,alt:[]},{name:"Cannella",points:0.5,alt:[]},{name:"Cumino",points:0.5,alt:[]},
+{name:"Paprika",points:0.5,alt:[]},{name:"Zafferano",points:0.5,alt:[]},{name:"Aglio",points:0.5,alt:[]},
+{name:"Peperoncino",points:0.5,alt:["peperoncini"]},{name:"Pepe",points:0.5,alt:[]},{name:"Chiodi di garofano",points:0.5,alt:["garofano"]},
+{name:"Noce moscata",points:0.5,alt:[]},{name:"Cardamomo",points:0.5,alt:[]},{name:"Erba cipollina",points:0.5,alt:[]},
+{name:"Dragoncello",points:0.5,alt:["estragone"]},{name:"Maggiorana",points:0.5,alt:[]},{name:"Anice",points:0.5,alt:[]},
+{name:"Zenzero",points:0.5,alt:["ginger"]},{name:"Vaniglia",points:0.5,alt:[]},{name:"Senape",points:0.5,alt:[]},
+{name:"Santoreggia",points:0.5,alt:[]},{name:"Curry",points:0.5,alt:[]},{name:"Semi di finocchio",points:0.5,alt:["finocchietto"]},
+];
+// searchPlantDb: suggerimenti mentre si digita — priorità alle voci che iniziano con il testo, poi quelle che lo contengono.
+const searchPlantDb=(query,limit=6)=>{
+  const q=normalizeText(query.trim());
+  if(q.length<2)return[];
+  const starts=[],contains=[];
+  PLANT_DB.forEach(item=>{
+    const forms=[item.name,...item.alt].map(normalizeText);
+    if(forms.some(f=>f.startsWith(q)))starts.push(item);
+    else if(forms.some(f=>f.includes(q)))contains.push(item);
+  });
+  return[...starts,...contains].slice(0,limit);
+};
+// findPlantExact: cerca una corrispondenza esatta (usata quando si preme "Aggiungi" senza scegliere un suggerimento).
+const findPlantExact=(query)=>{
+  const q=normalizeText(query.trim());
+  if(!q)return null;
+  return PLANT_DB.find(item=>[item.name,...item.alt].map(normalizeText).includes(q))||null;
+};
+// weekKeyOf: restituisce la data (lunedì) della settimana a cui appartiene una data qualsiasi,
+// per raggruppare i "plant points" settimana per settimana (stessa logica di getWeekStart ma per date arbitrarie).
+const weekKeyOf=(dateStr)=>{
+  const d=new Date(dateStr+"T12:00:00");
+  const day=d.getDay(); const diff=day===0?-6:1-day;
+  d.setDate(d.getDate()+diff);
+  return d.toISOString().slice(0,10);
+};
+
 // ── Helpers ──
+// ── HELPER UI di base (etichette, titoli, card, liste ordinabili, bottom sheet) ──
 const Lbl=({children,style={}})=><p style={{fontSize:10,fontWeight:600,color:N.muted,letterSpacing:.9,margin:"0 0 6px",fontFamily:F.body,...style}}>{children}</p>;
 const Title=({children,size=22,style={}})=><p style={{fontFamily:F.heading,fontSize:size,fontWeight:600,color:N.text,margin:0,lineHeight:1.2,...style}}>{children}</p>;
 const Card=({children,style={}})=><div style={{background:N.card,borderRadius:20,padding:"15px 16px",marginBottom:12,border:`0.5px solid ${N.border}`,boxShadow:"0 2px 10px rgba(0,0,0,0.04)",...style}}>{children}</div>;
+// goalDone: legge lo stato "fatto/non fatto" di un obiettivo (fisso o extra) da una voce del progressLog.
+// Unica fonte di verità: usata sia per lo storico a 14gg che per la barra dei giorni, evita di duplicare l'if/else.
+const goalDone=(g,p)=>
+  g.id==="water"?(p.goals?.water??false):
+  g.id==="steps"?(p.goals?.steps??false):
+  g.id==="read"?(p.goals?.read??false):
+  g.id==="align"?(p.goals?.align??false):
+  (p.goals?.extra?.[g.id]??false);
 
 function SortableList({items, renderItem, onReorder}){
   const move=(from,to)=>{
@@ -458,6 +610,175 @@ function ProteinTracker({weekProteins,onAdd,onUndo}){
   );
 }
 
+// ── COMPONENTI: "20+ piante a settimana" (barra condivisa, info AGP, sezione completa) ──
+// PlantProgressBar: barra a doppia soglia (20 = obiettivo base, 30 = gold standard).
+// Usata sia nella card compatta in Home sia nella sezione completa in Altro.
+function PlantProgressBar({score,compact=false}){
+  const isGold=score>=PLANT_GOAL_GOLD;
+  const isBase=score>=PLANT_GOAL_BASE;
+  const pct=Math.min(Math.round(score/PLANT_GOAL_GOLD*100),100);
+  const barBg=isGold?"linear-gradient(120deg,#E8C468,#FFF3D0,#FFD700,#FFF3D0,#E8C468)":isBase?"#4E8C40":"#5EA840";
+  return(
+    <div>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:6}}>
+        <div style={{display:"flex",alignItems:"baseline",gap:4}}>
+          <span style={{fontFamily:F.heading,fontSize:compact?24:30,fontWeight:600,color:isGold?"#A87A10":N.text}}>{score % 1===0?score:score.toFixed(1)}</span>
+          <span style={{fontSize:compact?11:13,color:N.muted,fontFamily:F.body}}>/ {PLANT_GOAL_BASE}{!compact&&` (gold: ${PLANT_GOAL_GOLD})`}</span>
+        </div>
+        {isGold?<span style={{fontSize:10,padding:"3px 9px",borderRadius:99,background:"#FFF3D0",color:"#A87A10",fontFamily:F.body,fontWeight:700,display:"flex",alignItems:"center",gap:3}}><Ic n="sparkle" s={11} c="#A87A10"/>Gold standard</span>
+        :isBase?<span style={{fontSize:10,padding:"3px 9px",borderRadius:99,background:"#D9F0CE",color:"#2A5A18",fontFamily:F.body,fontWeight:700}}>✓ Obiettivo raggiunto</span>
+        :null}
+      </div>
+      <div style={{position:"relative",height:compact?8:10,background:N.faint,borderRadius:99,overflow:"hidden"}}>
+        <div style={{height:"100%",width:`${pct}%`,background:barBg,backgroundSize:isGold?"200% 100%":"100% 100%",animation:isGold?"plantShine 3s ease-in-out infinite":"none",borderRadius:99,transition:"width .4s"}}/>
+        {/* marcatore alla soglia dei 20 punti (obiettivo base) */}
+        <div style={{position:"absolute",top:0,bottom:0,left:`${PLANT_GOAL_BASE/PLANT_GOAL_GOLD*100}%`,width:1.5,background:"rgba(0,0,0,0.15)"}}/>
+      </div>
+    </div>
+  );
+}
+
+// PlantQuickAdd: campo condiviso per aggiungere un alimento — mostra suggerimenti dal database mentre si digita
+// (es. "mirt" → "Mirtilli (1)") e, se l'alimento non è riconosciuto, permette di scegliere il valore manualmente.
+function PlantQuickAdd({onAdd,compact=false}){
+  const[text,setText]=useState("");
+  const[warn,setWarn]=useState(false);
+  const[manualPick,setManualPick]=useState(false);
+  const suggestions=searchPlantDb(text);
+  const reset=()=>{setText("");setWarn(false);setManualPick(false);};
+  const addWithPoints=(itemName,points)=>{
+    const ok=onAdd(itemName,points);
+    if(ok)reset(); else{setWarn(true);setManualPick(false);}
+  };
+  const handleAddClick=()=>{
+    if(!text.trim())return;
+    const match=findPlantExact(text);
+    if(match)addWithPoints(text.trim(),match.points);
+    else setManualPick(true);
+  };
+  return(
+    <div>
+      <div style={{display:"flex",gap:8}}>
+        <div style={{flex:1,position:"relative"}}>
+          <input value={text} onChange={e=>{setText(e.target.value);setWarn(false);setManualPick(false);}} onKeyDown={e=>{if(e.key==="Enter")handleAddClick();}} placeholder="Aggiungi un alimento…" style={{width:"100%",padding:compact?"9px 12px":"10px 12px",borderRadius:12,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:compact?12:13,color:N.text,background:N.faint,boxSizing:"border-box",outline:"none"}}/>
+          {suggestions.length>0&&!manualPick&&(
+            <div style={{position:"absolute",top:"calc(100% + 4px)",left:0,right:0,background:"#fff",borderRadius:12,border:`0.5px solid ${N.border}`,boxShadow:"0 4px 16px rgba(0,0,0,0.1)",zIndex:20,overflow:"hidden"}}>
+              {suggestions.map((s,i)=>(
+                <div key={i} onClick={()=>addWithPoints(s.name,s.points)} style={{padding:"9px 12px",fontSize:12,fontFamily:F.body,color:N.text,cursor:"pointer",borderBottom:i<suggestions.length-1?`0.5px solid ${N.faint}`:"none",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                  <span>{s.name}</span><span style={{color:s.points<1?"#A03050":"#4E8C40",fontWeight:700,fontSize:11}}>{s.points}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+        <button onClick={handleAddClick} style={{width:compact?38:42,borderRadius:12,border:"none",background:N.text,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",flexShrink:0}}><Ic n="plus" s={compact?15:16} c="#fff"/></button>
+      </div>
+      {manualPick&&(
+        <div style={{marginTop:8,padding:"10px 12px",borderRadius:12,background:N.faint}}>
+          <p style={{fontSize:11,color:N.muted,fontFamily:F.body,margin:"0 0 8px"}}>"{text.trim()}" non è nel database — che valore ha?</p>
+          <div style={{display:"flex",gap:8}}>
+            <button onClick={()=>addWithPoints(text.trim(),1)} style={{flex:1,padding:"8px",borderRadius:10,border:"none",background:"#D9F0CE",color:"#2A5A18",fontSize:12,fontWeight:600,cursor:"pointer",fontFamily:F.body}}>1 punto (alimento pieno)</button>
+            <button onClick={()=>addWithPoints(text.trim(),0.5)} style={{flex:1,padding:"8px",borderRadius:10,border:"none",background:"#FCDDE5",color:"#A03050",fontSize:12,fontWeight:600,cursor:"pointer",fontFamily:F.body}}>0,5 (erba/spezia)</button>
+          </div>
+        </div>
+      )}
+      {warn&&<p style={{fontSize:11,color:"#C05050",fontFamily:F.body,margin:"6px 0 0"}}>Già registrato questa settimana.</p>}
+    </div>
+  );
+}
+
+// PlantInfoModal: spiegazione dell'American Gut Project + tabella delle categorie di alimenti vegetali.
+function PlantInfoModal({onClose}){
+  return(<Sheet onClose={onClose}>
+    <Title size={20}>American Gut Project</Title>
+    <div>
+      <p style={{fontSize:12,color:N.muted,fontFamily:F.body,lineHeight:1.6,margin:"10px 0 14px"}}>
+        Lo studio citizen-science dell'American Gut Project ha analizzato i campioni di oltre 10.000 partecipanti, trovando che chi mangia almeno 30 tipi diversi di alimenti vegetali a settimana ha un microbioma intestinale più diversificato rispetto a chi ne mangia meno di 10. Non conta la quantità, ma la varietà: 20 piante diverse è un buon obiettivo base, 30 è il "gold standard".
+      </p>
+      <Lbl>REGOLE DI CONTEGGIO</Lbl>
+      <p style={{fontSize:12,color:N.text,fontFamily:F.body,lineHeight:1.6,margin:"0 0 14px"}}>
+        Ogni alimento vegetale diverso conta una sola volta a settimana, anche se lo mangi più volte. Erbe e spezie valgono 0,5 punti perché si usano in quantità minime (in alcune fonti si usa 0,25, qui abbiamo scelto 0,5 per semplicità). Succhi e farine molto raffinate non contano, perché hanno perso la fibra. Mentre scrivi il nome di un alimento, l'app suggerisce automaticamente il valore corretto dal database; se un alimento non è ancora nel database, puoi indicarne tu il valore al momento dell'aggiunta.
+      </p>
+      <Lbl>LE CATEGORIE</Lbl>
+      {PLANT_CATEGORIES.map((c,i)=>(
+        <div key={i} style={{display:"flex",gap:10,alignItems:"flex-start",padding:"10px 0",borderBottom:i<PLANT_CATEGORIES.length-1?`0.5px solid ${N.faint}`:"none"}}>
+          <div style={{width:30,height:30,borderRadius:9,background:c.color,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}><Ic n={c.icon} s={14} c={c.tc}/></div>
+          <div style={{flex:1}}>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline"}}>
+              <p style={{fontSize:13,fontWeight:600,color:N.text,margin:0,fontFamily:F.body}}>{c.label}</p>
+              <span style={{fontSize:11,fontWeight:600,color:c.tc,fontFamily:F.body}}>{c.points}</span>
+            </div>
+            <p style={{fontSize:11,color:N.muted,margin:"2px 0 0",fontFamily:F.body,lineHeight:1.4}}>{c.examples}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+    <button onClick={onClose} style={{width:"100%",padding:"13px",borderRadius:16,border:"none",background:"#D9F0CE",color:"#2A5A18",fontWeight:600,fontSize:14,cursor:"pointer",fontFamily:F.body,marginTop:12}}>Chiudi</button>
+  </Sheet>);
+}
+
+// PlantsSection: sezione completa in Altro — aggiungi alimento, barra, riepilogo settimana, storico.
+function PlantsSection({thisWeekPlants,plantScore,history,onAdd,onRemove}){
+  const [openWeek,setOpenWeek]=useState(null);
+  const [showInfo,setShowInfo]=useState(false);
+  return(
+    <div>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:12}}>
+        <p style={{fontSize:12,color:N.muted,fontFamily:F.body,margin:0,lineHeight:1.6,flex:1,paddingRight:10}}>Registra gli alimenti vegetali diversi che mangi questa settimana. Ogni alimento conta una volta sola.</p>
+        <button onClick={()=>setShowInfo(true)} style={{width:26,height:26,borderRadius:"50%",border:`1px solid ${N.border}`,background:"#fff",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",flexShrink:0,fontFamily:F.heading,fontSize:13,fontWeight:600,color:N.muted}}>i</button>
+      </div>
+
+      <Card>
+        <PlantProgressBar score={plantScore}/>
+      </Card>
+
+      <Card style={{overflow:"visible"}}>
+        <Lbl>AGGIUNGI ALIMENTO</Lbl>
+        <PlantQuickAdd onAdd={onAdd}/>
+      </Card>
+
+      {thisWeekPlants.length>0&&<Card>
+        <Lbl>QUESTA SETTIMANA · {thisWeekPlants.length} alimenti</Lbl>
+        <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
+          {thisWeekPlants.map(e=>(
+            <span key={e.id} onClick={()=>onRemove(e.id)} style={{display:"flex",alignItems:"center",gap:5,fontSize:11,padding:"4px 10px",borderRadius:99,background:e.points<1?"#FCDDE5":"#D9F0CE",color:e.points<1?"#A03050":"#2A5A18",fontFamily:F.body,cursor:"pointer"}}>
+              {e.name} · {e.points} <Ic n="close" s={9} c={e.points<1?"#A03050":"#2A5A18"}/>
+            </span>
+          ))}
+        </div>
+      </Card>}
+
+      {history.length>0&&<div style={{marginTop:4}}>
+        <Title size={16} style={{marginBottom:8}}>Storico settimane</Title>
+        {history.map(w=>{
+          const wEnd=new Date(w.weekStart+"T12:00:00"); wEnd.setDate(wEnd.getDate()+6);
+          const label=`${new Date(w.weekStart+"T12:00:00").toLocaleDateString("it-IT",{day:"numeric",month:"short"})} – ${wEnd.toLocaleDateString("it-IT",{day:"numeric",month:"short"})}`;
+          const open=openWeek===w.weekStart;
+          const gold=w.score>=PLANT_GOAL_GOLD, base=w.score>=PLANT_GOAL_BASE;
+          return(<div key={w.weekStart} style={{background:"#fff",borderRadius:16,marginBottom:8,border:`0.5px solid ${N.border}`,overflow:"hidden"}}>
+            <div onClick={()=>setOpenWeek(open?null:w.weekStart)} style={{padding:"12px 14px",display:"flex",justifyContent:"space-between",alignItems:"center",cursor:"pointer"}}>
+              <div>
+                <p style={{fontSize:12,fontWeight:600,color:N.text,margin:0,fontFamily:F.body}}>{label}</p>
+                <p style={{fontSize:10,color:N.muted,margin:"2px 0 0",fontFamily:F.body}}>{w.entries.length} alimenti</p>
+              </div>
+              <div style={{display:"flex",alignItems:"center",gap:8}}>
+                <span style={{fontSize:14,fontWeight:600,fontFamily:F.heading,color:gold?"#A87A10":base?"#2A5A18":N.muted}}>{w.score % 1===0?w.score:w.score.toFixed(1)}</span>
+                <span style={{transform:open?"rotate(90deg)":"none",transition:"transform .2s",display:"inline-flex"}}><Ic n="chevron" s={13} c={N.muted}/></span>
+              </div>
+            </div>
+            {open&&<div style={{padding:"0 14px 12px",display:"flex",flexWrap:"wrap",gap:6}}>
+              {w.entries.map(e=>(<span key={e.id} style={{fontSize:10,padding:"3px 9px",borderRadius:99,background:e.points<1?"#FCDDE5":"#D9F0CE",color:e.points<1?"#A03050":"#2A5A18",fontFamily:F.body}}>{e.name} · {e.points}</span>))}
+            </div>}
+          </div>);
+        })}
+      </div>}
+
+      {showInfo&&<PlantInfoModal onClose={()=>setShowInfo(false)}/>}
+    </div>
+  );
+}
+
+// ── MODALI: aggiungi/rimuovi voci di routine, rituali, ricette, note, movimenti ──
 function AddRoutineModal({onAdd,onClose,label}){
   const[text,setText]=useState(""); const[scope,setScope]=useState("today");
   return(<Sheet onClose={onClose}>
@@ -574,11 +895,47 @@ function AddMovimentoModal({onAdd,onClose}){
   </Sheet>);
 }
 
+// ── COMPONENTI: obiettivi giornalieri (fissi ed extra) ──
+// GoalStylePicker: selettore icona + colore condiviso da tutte le schermate di modifica/aggiunta obiettivo.
+function GoalStylePicker({icon,setIcon,colorIdx,setColorIdx}){
+  return(
+    <div>
+      <Lbl style={{margin:"0 0 3px"}}>ICONA</Lbl>
+      <div style={{display:"flex",gap:6,marginBottom:10,flexWrap:"wrap"}}>
+        {GOAL_ICONS.map(ic=>(<div key={ic} onClick={()=>setIcon(ic)} style={{width:30,height:30,borderRadius:9,background:icon===ic?N.text:N.faint,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",flexShrink:0}}><Ic n={ic} s={13} c={icon===ic?"#fff":N.muted}/></div>))}
+      </div>
+      <Lbl style={{margin:"0 0 3px"}}>COLORE</Lbl>
+      <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
+        {GOAL_COLORS.map(([bg,tc],i)=>(<div key={i} onClick={()=>setColorIdx(i)} style={{width:26,height:26,borderRadius:8,background:bg,border:`2px solid ${colorIdx===i?tc:"transparent"}`,cursor:"pointer",flexShrink:0}}/>))}
+      </div>
+    </div>
+  );
+}
+
+// GoalAddForm: form "+ nuovo" condiviso tra obiettivi del giorno e obiettivi settimanali extra.
+function GoalAddForm({onSave,onCancel}){
+  const[label,setLabel]=useState(""); const[unit,setUnit]=useState(""); const[target,setTarget]=useState("");
+  const[icon,setIcon]=useState("star"); const[colorIdx,setColorIdx]=useState(0);
+  return(
+    <div style={{background:"#fff",borderRadius:18,padding:"14px 15px",marginBottom:12,border:`0.5px solid ${N.border}`}}>
+      {[["Nome",label,setLabel,"Es. Meditazione"],["Unità",unit,setUnit,"min"],["Target",target,setTarget,"10"]].map(([ph,v,sv,pl])=>(<input key={ph} value={v} onChange={e=>sv(e.target.value)} placeholder={pl} style={{width:"100%",padding:"9px 12px",borderRadius:11,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:12,color:N.text,background:N.faint,boxSizing:"border-box",outline:"none",marginBottom:8}}/>))}
+      <GoalStylePicker icon={icon} setIcon={setIcon} colorIdx={colorIdx} setColorIdx={setColorIdx}/>
+      <div style={{display:"flex",gap:8,marginTop:12}}>
+        <button onClick={onCancel} style={{flex:1,padding:"10px",borderRadius:12,border:`0.5px solid ${N.border}`,background:"transparent",color:N.muted,fontSize:12,cursor:"pointer",fontFamily:F.body}}>Annulla</button>
+        <button onClick={()=>{if(label&&target){onSave({label,unit,target:+target,icon,color:GOAL_COLORS[colorIdx][0],tc:GOAL_COLORS[colorIdx][1]});}}} style={{flex:1,padding:"10px",borderRadius:12,border:"none",background:N.text,color:"#fff",fontSize:12,cursor:"pointer",fontFamily:F.body,fontWeight:600}}>Salva</button>
+      </div>
+    </div>
+  );
+}
+
 function GoalCheck({done,setDone,icon,color,checkColor,label,subtitle,extraLink,onEdit,onDelete}){
   const[editing,setEditing]=useState(false);
   const[editLabel,setEditLabel]=useState(label);
   const[editSub,setEditSub]=useState(subtitle||"");
-  useEffect(()=>{setEditLabel(label);setEditSub(subtitle||"");},[label,subtitle]);
+  const[editIcon,setEditIcon]=useState(icon);
+  const colorIdxOf=(tc)=>{const i=GOAL_COLORS.findIndex(c=>c[1]===tc);return i>=0?i:0;};
+  const[editColorIdx,setEditColorIdx]=useState(()=>colorIdxOf(checkColor));
+  useEffect(()=>{setEditLabel(label);setEditSub(subtitle||"");setEditIcon(icon);setEditColorIdx(colorIdxOf(checkColor));},[label,subtitle,icon,checkColor]);
   return(
     <div style={{background:done?color:"#fff",borderRadius:18,padding:"13px 14px",border:`0.5px solid ${done?checkColor:N.border}`,transition:"all .3s"}}>
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6}}>
@@ -595,8 +952,9 @@ function GoalCheck({done,setDone,icon,color,checkColor,label,subtitle,extraLink,
           <Lbl style={{margin:"0 0 3px"}}>NOME</Lbl>
           <input value={editLabel} onChange={e=>setEditLabel(e.target.value)} style={{width:"100%",padding:"6px 8px",borderRadius:8,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:12,color:N.text,background:N.faint,outline:"none",boxSizing:"border-box",marginBottom:6}}/>
           <Lbl style={{margin:"0 0 3px"}}>SOTTOTITOLO</Lbl>
-          <input value={editSub} onChange={e=>setEditSub(e.target.value)} style={{width:"100%",padding:"6px 8px",borderRadius:8,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:12,color:N.text,background:N.faint,outline:"none",boxSizing:"border-box",marginBottom:8}}/>
-          <button onClick={()=>{onEdit(editLabel,editSub);setEditing(false);}} style={{width:"100%",padding:"7px",borderRadius:10,border:"none",background:checkColor,color:"#fff",fontSize:11,cursor:"pointer",fontFamily:F.body,fontWeight:600}}>Salva</button>
+          <input value={editSub} onChange={e=>setEditSub(e.target.value)} style={{width:"100%",padding:"6px 8px",borderRadius:8,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:12,color:N.text,background:N.faint,outline:"none",boxSizing:"border-box",marginBottom:10}}/>
+          <GoalStylePicker icon={editIcon} setIcon={setEditIcon} colorIdx={editColorIdx} setColorIdx={setEditColorIdx}/>
+          <button onClick={()=>{onEdit({label:editLabel,sub:editSub,icon:editIcon,color:GOAL_COLORS[editColorIdx][0],tc:GOAL_COLORS[editColorIdx][1]});setEditing(false);}} style={{width:"100%",padding:"7px",borderRadius:10,border:"none",background:GOAL_COLORS[editColorIdx][1],color:"#fff",fontSize:11,cursor:"pointer",fontFamily:F.body,fontWeight:600,marginTop:10}}>Salva</button>
         </div>
       ):(
         <>
@@ -616,8 +974,11 @@ function ExtraGoalCard({g,v,gd,gp,editGoalId,setEditGoalId,onUpdateGoal,onDelete
   const[lbl,setLbl]=useState(g.label);
   const[tgt,setTgt]=useState(String(g.target));
   const[unt,setUnt]=useState(g.unit||"");
+  const[icn,setIcn]=useState(g.icon||"star");
+  const colorIdxOf=(tc)=>{const i=GOAL_COLORS.findIndex(c=>c[1]===tc);return i>=0?i:0;};
+  const[colorIdx,setColorIdx]=useState(()=>colorIdxOf(g.tc));
   const isEditing=editGoalId===g.id;
-  useEffect(()=>{if(isEditing){setLbl(g.label);setTgt(String(g.target));setUnt(g.unit||"");}},[isEditing]);
+  useEffect(()=>{if(isEditing){setLbl(g.label);setTgt(String(g.target));setUnt(g.unit||"");setIcn(g.icon||"star");setColorIdx(colorIdxOf(g.tc));}},[isEditing]);
   return(
     <div style={{background:gd?g.color:"#fff",borderRadius:18,padding:"13px 14px",border:`0.5px solid ${gd?g.tc+"55":N.border}`,transition:"all .3s"}}>
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6}}>
@@ -636,7 +997,8 @@ function ExtraGoalCard({g,v,gd,gp,editGoalId,setEditGoalId,onUpdateGoal,onDelete
               <input value={val} onChange={e=>setter(e.target.value)} style={{width:"100%",padding:"6px 8px",borderRadius:8,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:12,color:N.text,background:"rgba(255,255,255,0.9)",outline:"none",boxSizing:"border-box"}}/>
             </div>
           ))}
-          <button onClick={()=>{onUpdateGoal(g.id,{label:lbl,target:+tgt||g.target,unit:unt});setEditGoalId(null);}} style={{width:"100%",padding:"8px",borderRadius:10,border:"none",background:g.tc,color:"#fff",fontSize:11,cursor:"pointer",fontFamily:F.body,fontWeight:600,marginTop:4}}>Salva modifiche</button>
+          <div style={{marginBottom:6}}><GoalStylePicker icon={icn} setIcon={setIcn} colorIdx={colorIdx} setColorIdx={setColorIdx}/></div>
+          <button onClick={()=>{onUpdateGoal(g.id,{label:lbl,target:+tgt||g.target,unit:unt,icon:icn,color:GOAL_COLORS[colorIdx][0],tc:GOAL_COLORS[colorIdx][1]});setEditGoalId(null);}} style={{width:"100%",padding:"8px",borderRadius:10,border:"none",background:GOAL_COLORS[colorIdx][1],color:"#fff",fontSize:11,cursor:"pointer",fontFamily:F.body,fontWeight:600,marginTop:4}}>Salva modifiche</button>
         </div>
       ):(
         <>
@@ -653,6 +1015,7 @@ function ExtraGoalCard({g,v,gd,gp,editGoalId,setEditGoalId,onUpdateGoal,onDelete
   );
 }
 
+// ── COMPONENTI: journaling (voce singola + diario) ──
 function JournalingCard({entry,onSave,dateKey}){
   const[editing,setEditing]=useState(false);
   const[text,setText]=useState(entry);
@@ -718,6 +1081,7 @@ function JournalingDiary({journalEntries,onSave}){
   );
 }
 
+// ── COMPONENTI: sezione alimentazione del giorno ──
 function AlimentazioneSection({plan,viewDateKey,dow,alimNote,setAlimNote,alimEdit,setAlimEdit,alimOverrides,setAlimOverrides,th,onGoProteine}){
   const[editingField,setEditingField]=useState(null);
   const[editText,setEditText]=useState("");
@@ -796,6 +1160,7 @@ function AlimentazioneSection({plan,viewDateKey,dow,alimNote,setAlimNote,alimEdi
   );
 }
 
+// ── COMPONENTI: misure corporee e BMI ──
 function BodySection({bodyMeasurements,setBodyMeasurements}){
   const[editHeight,setEditHeight]=useState(false);
   const[heightInput,setHeightInput]=useState(String(bodyMeasurements.height));
@@ -907,6 +1272,7 @@ const PASTEL_PALETTE=[
 let _paletteIdx=0;
 const nextPastel=()=>{const c=PASTEL_PALETTE[_paletteIdx%PASTEL_PALETTE.length];_paletteIdx++;return c;};
 
+// ── COMPONENTI: to-do list giornaliera ──
 function DailyTodoList({todos,todoInput,setTodoInput,onAdd,onToggle,onDelete,onEdit,onToggleSubstep,rituals}){
   const[editingId,setEditingId]=useState(null);
   const[editingText,setEditingText]=useState("");
@@ -982,6 +1348,7 @@ function DailyTodoList({todos,todoInput,setTodoInput,onAdd,onToggle,onDelete,onE
     </div>
   );
 }
+// ── COMPONENTI: frase motivazionale del giorno ──
 function DailyPhrase({todayKey}){
   const key="bm_d_phrase_"+todayKey;
   const[phrase,setPhrase]=useState("");
@@ -1011,6 +1378,7 @@ function DailyPhrase({todayKey}){
   );
 }
 
+// ── COMPONENTI: sezione routine (mattina/sera/ufficio) con reorder ──
 function RSection({list,type,gradStyle,checked,onToggle,onAdd,onDel,onEdit,onReorder,th,plan,onFYOpen}){
   const[editingKey,setEditingKey]=useState(null);
   const[editText,setEditText]=useState("");
@@ -1067,6 +1435,9 @@ function RSection({list,type,gradStyle,checked,onToggle,onAdd,onDel,onEdit,onReo
 }
 
 // ── Main App ──
+// ══════════════════════════════════════════════════════
+// APP PRINCIPALE: stato globale + tab (Oggi/Calendario/Rituali/Altro)
+// ══════════════════════════════════════════════════════
 export default function App(){
   const [now,setNow]=useState(()=>new Date());
   useEffect(()=>{
@@ -1115,6 +1486,7 @@ export default function App(){
   const [deleted,setDeleted]=useState({mattina:[],sera:[],mattina_extra:[],sera_extra:[]});
   const [routineOrder,setRoutineOrder]=useState({mattina:null,sera:null});
   const [weekProteins,setWeekProteins]=useState([]);
+  const [plantFoods,setPlantFoods]=useState([]);
 
   const [checked,setChecked]=useState({});
   const [waterCount,setWaterCount]=useState(0);
@@ -1132,8 +1504,10 @@ export default function App(){
   const [alimOverrides,setAlimOverrides]=useState({});
   const [journalEntries,setJournalEntries]=useState({});
   const [duranteChecked,setDuranteChecked]=useState({});
-  const [readLabel,setReadLabel]=useState({label:"Lettura",sub:"Almeno 1 capitolo"});
-  const [alignLabel,setAlignLabel]=useState({label:"Alignment",sub:""});
+  const [readMeta,setReadMeta]=useState({label:"Lettura",sub:"Almeno 1 capitolo",icon:"openbook",color:"#F0E4B8",tc:"#7A5C10",hidden:false});
+  const [alignMeta,setAlignMeta]=useState({label:"Alignment",sub:"",icon:"align",color:"#FFD9B8",tc:"#A04A10",hidden:false});
+  const [weeklyGoals,setWeeklyGoals]=useState([]);
+  const [weeklyGoalVals,setWeeklyGoalVals]=useState({});
 
   const getWeekStart=()=>{
     const d=new Date(now);
@@ -1170,6 +1544,10 @@ export default function App(){
       setYogaPractices(await load("yogaPractices",INIT_YOGA));
       setFaceYogaPractices(await load("faceYogaPractices",INIT_FACEYOGA));
       setExtraGoals(await load("extraGoals",[]));
+      setReadMeta(await load("readMeta",{label:"Lettura",sub:"Almeno 1 capitolo",icon:"openbook",color:"#F0E4B8",tc:"#7A5C10",hidden:false}));
+      setAlignMeta(await load("alignMeta",{label:"Alignment",sub:"",icon:"align",color:"#FFD9B8",tc:"#A04A10",hidden:false}));
+      setWeeklyGoals(await load("weeklyGoals",[]));
+      setWeeklyGoalVals(await load("weeklyGoalVals",{}));
       // Reset dei dati manuali che potrebbero interferire con le routine base
       // (alwaysExtra, routineOrder, deleted vengono azzerati per garantire la routine corretta)
       await storeSet("bm_alwaysExtra",{mattina:[],sera:[]});
@@ -1181,6 +1559,7 @@ export default function App(){
       const allP=await load("weekProteins",[]);
       const ws=getWeekStart();
       setWeekProteins(allP.filter(e=>e.date>=ws));
+      setPlantFoods(await load("plantFoods",[]));
       setDailyTodos(await load("dailyTodos",{}));
       setBodyMeasurements(await load("bodyMeasurements",{height:1.70,entries:[]}));
       setAlimOverrides(await load("alimOverrides",{}));
@@ -1255,10 +1634,15 @@ export default function App(){
     yoga:mkSet(setYogaPractices,"yogaPractices"),
     faceYoga:mkSet(setFaceYogaPractices,"faceYogaPractices"),
     extraGoals:mkSet(setExtraGoals,"extraGoals"),
+    readMeta:mkSet(setReadMeta,"readMeta"),
+    alignMeta:mkSet(setAlignMeta,"alignMeta"),
+    weeklyGoals:mkSet(setWeeklyGoals,"weeklyGoals"),
+    weeklyGoalVals:mkSet(setWeeklyGoalVals,"weeklyGoalVals"),
     alwaysExtra:mkSet(setAlwaysExtra,"alwaysExtra"),
     deleted:mkSet(setDeleted,"deleted"),
     routineOrder:mkSet(setRoutineOrder,"routineOrder"),
     weekProteins:mkSet(setWeekProteins,"weekProteins"),
+    plantFoods:mkSet(setPlantFoods,"plantFoods"),
     checked:mkSet(setChecked,"checked",true),
     water:mkSet(setWaterCount,"water",true),
     stepsReached:mkSet(setStepsReached,"stepsReached",true),
@@ -1280,6 +1664,7 @@ export default function App(){
   const[waterTarget,setWaterTarget]=useState(8);
   const[editSteps,setEditSteps]=useState(false);
   const[stepsTarget,setStepsTarget]=useState(5000);
+  const[showPlantInfo,setShowPlantInfo]=useState(false);
   const[tab,setTab]=useState("oggi");
   const[subTab,setSubTab]=useState(null);
   const[editGoalId,setEditGoalId]=useState(null);
@@ -1305,9 +1690,8 @@ export default function App(){
   const[newProg,setNewProg]=useState({date:todayKey,peso:"",energia:"3",umore:"3",note:""});
   const[showAddMov,setShowAddMov]=useState(false);
   const[movFilter,setMovFilter]=useState("tutti");
-  const[gl,sGl]=useState(""); const[gu,sGu]=useState(""); const[gt,sGt]=useState("");
-  const goalIcons=["star","heart","leaf","drop","walk","book"]; const[goalIcon,setGoalIcon]=useState("star");
-  const goalColors=[["#D9F0CE","#2A5A18"],["#FFD5B8","#A04010"],["#F0E4B8","#7A5C10"],["#FFD9B8","#A04A10"],["#EDE0FF","#6B3FA0"]]; const[goalCi,setGoalCi]=useState(0);
+  const[showAddWeeklyGoal,setShowAddWeeklyGoal]=useState(false);
+  const[editWeeklyGoalId,setEditWeeklyGoalId]=useState(null);
 
   const buildList=(type)=>{
     const base=plan[type].filter((_,i)=>!(deleted[type]||[]).includes(i));
@@ -1387,6 +1771,43 @@ export default function App(){
   };
 
   const filtRic=ricFilter==="Tutti"?ricette:ricette.filter(r=>r.cat===ricFilter||r.tag===ricFilter);
+
+  // ── "20+ piante a settimana": punteggio, elenco settimana corrente e storico settimane precedenti ──
+  const plantWeekKey=weekKeyOf(todayKey);
+  const thisWeekPlants=plantFoods.filter(e=>weekKeyOf(e.date)===plantWeekKey);
+  const plantScore=thisWeekPlants.reduce((s,e)=>s+e.points,0);
+  const plantHistory=(()=>{
+    const byWeek={};
+    plantFoods.forEach(e=>{
+      const wk=weekKeyOf(e.date);
+      if(wk===plantWeekKey)return;
+      (byWeek[wk]=byWeek[wk]||[]).push(e);
+    });
+    return Object.entries(byWeek)
+      .sort((a,b)=>b[0].localeCompare(a[0]))
+      .map(([weekStart,entries])=>({weekStart,score:entries.reduce((s,e)=>s+e.points,0),entries:[...entries].sort((a,b)=>a.date.localeCompare(b.date))}));
+  })();
+  // addPlantFood: registra un alimento vegetale se non è già stato aggiunto questa settimana (conteggio 1×/settimana).
+  // Il valore in punti arriva già risolto dal chiamante (da PLANT_DB se riconosciuto, oppure scelto manualmente per gli alimenti non in database).
+  // Ritorna false (senza aggiungere) se l'alimento è un duplicato della settimana corrente.
+  const addPlantFood=(name,points)=>{
+    const clean=name.trim();
+    if(!clean)return false;
+    const dup=thisWeekPlants.some(e=>e.name.toLowerCase()===clean.toLowerCase());
+    if(dup)return false;
+    S.plantFoods(p=>[...p,{id:"pf"+Date.now(),name:clean,points,date:todayKey}]);
+    return true;
+  };
+  const removePlantFood=(id)=>S.plantFoods(p=>p.filter(e=>e.id!==id));
+
+  // ── Obiettivi settimanali extra: come gli obiettivi extra giornalieri, ma il contatore si azzera a inizio settimana ──
+  const weeklyGoalCurrentVals=weeklyGoalVals[plantWeekKey]||{};
+  const bumpWeeklyGoal=(id,delta)=>S.weeklyGoalVals(p=>{
+    const cur=p[plantWeekKey]||{};
+    const nv=Math.max(0,(cur[id]||0)+delta);
+    return{...p,[plantWeekKey]:{...cur,[id]:nv}};
+  });
+
   const allMov=[...workouts,...yogaPractices,...faceYogaPractices];
   const filtMov=movFilter==="tutti"?allMov:movFilter==="allenamento"?workouts:movFilter==="yoga"?yogaPractices:faceYogaPractices;
 
@@ -1400,6 +1821,7 @@ export default function App(){
       {fyOpen&&plan.faceYoga&&<FYSheet steps={plan.faceYoga} label={plan.fyLabel||""} onClose={()=>setFyOpen(false)} th={th}/>}
       {fyAutoOpen&&<FYSheet steps={FY_AUTO} label="Face Yoga in Auto 🚗" onClose={()=>setFyAutoOpen(false)} th={{grad:"linear-gradient(135deg,#EDE0FF,#D4C0FF)",dark:"#6B3FA0"}}/>}
       {fyOfficeOpen&&<FYSheet steps={FY_OFFICE} label="Face Yoga in Ufficio 💻" onClose={()=>setFyOfficeOpen(false)} th={{grad:"linear-gradient(135deg,#EDE0FF,#D4C0FF)",dark:"#6B3FA0"}}/>}
+      {showPlantInfo&&<PlantInfoModal onClose={()=>setShowPlantInfo(false)}/>}
       {addModal&&<AddRoutineModal label={addModal.type==="mattina"?"Routine mattina":"Night routine"} onAdd={(text,scope)=>{
         // Anti-duplicati: controlla che il testo non esista già nella lista corrente
         const currentList=buildList(addModal.type);
@@ -1440,9 +1862,9 @@ export default function App(){
           {tab==="cal"&&<Title size={28} style={{fontWeight:500}}>Calendario</Title>}
           {tab==="rituali"&&<Title size={28} style={{fontWeight:500}}>Rituali</Title>}
           {tab==="altro"&&<>
-            <Title size={28} style={{fontWeight:500,marginBottom:subTab?14:0}}>{{ricette:"Ricette & Idee",note:"Note & Info",progressi:"Progressi",movimento:"Movimento",proteine:"Proteine",skincare:"Skincare"}[subTab]||"Libreria"}</Title>
+            <Title size={28} style={{fontWeight:500,marginBottom:subTab?14:0}}>{{ricette:"Ricette & Idee",note:"Note & Info",progressi:"Progressi",movimento:"Movimento",proteine:"Proteine",piante:"20+ piante a settimana",skincare:"Skincare"}[subTab]||"Libreria"}</Title>
             {subTab&&(<div style={{display:"flex",gap:6,overflowX:"auto",scrollbarWidth:"none"}}>
-              {[["ricette","fork","Ricette"],["movimento","dumbbell","Movimento"],["proteine","protein","Proteine"],["skincare","flower","Skincare"],["note","note","Note"],["progressi","chart","Progressi"]].map(([k,ic,l])=>(
+              {[["ricette","fork","Ricette"],["movimento","dumbbell","Movimento"],["proteine","protein","Proteine"],["piante","leaf","Piante"],["skincare","flower","Skincare"],["note","note","Note"],["progressi","chart","Progressi"]].map(([k,ic,l])=>(
                 <button key={k} onClick={()=>setSubTab(k)} style={{flexShrink:0,display:"flex",alignItems:"center",gap:5,padding:"6px 12px",borderRadius:20,border:`1px solid ${subTab===k?N.text:N.border}`,background:subTab===k?N.text:"transparent",color:subTab===k?"#fff":N.muted,fontSize:11,fontFamily:F.body,fontWeight:subTab===k?600:400,cursor:"pointer"}}>
                   <Ic n={ic} s={12} c={subTab===k?"#fff":N.muted}/>{l}
                 </button>
@@ -1460,17 +1882,7 @@ export default function App(){
               <Title size={20}>Obiettivi del giorno</Title>
               <button onClick={()=>setShowAddGoal(s=>!s)} style={{fontSize:11,padding:"4px 10px",borderRadius:20,border:`1px dashed ${N.border}`,background:"transparent",color:N.muted,cursor:"pointer",fontFamily:F.body}}>+ nuovo</button>
             </div>
-            {showAddGoal&&(
-              <div style={{background:"#fff",borderRadius:18,padding:"14px 15px",marginBottom:12,border:`0.5px solid ${N.border}`}}>
-                {[["Nome",gl,sGl,"Es. Meditazione"],["Unità",gu,sGu,"min"],["Target",gt,sGt,"10"]].map(([ph,v,sv,pl])=>(<input key={ph} value={v} onChange={e=>sv(e.target.value)} placeholder={pl} style={{width:"100%",padding:"9px 12px",borderRadius:11,border:`1px solid ${N.border}`,fontFamily:F.body,fontSize:12,color:N.text,background:N.faint,boxSizing:"border-box",outline:"none",marginBottom:8}}/>))}
-                <div style={{display:"flex",gap:6,marginBottom:10}}>{goalIcons.map(ic=><div key={ic} onClick={()=>setGoalIcon(ic)} style={{width:32,height:32,borderRadius:9,background:goalIcon===ic?N.text:N.faint,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer"}}><Ic n={ic} s={14} c={goalIcon===ic?"#fff":N.muted}/></div>)}</div>
-                <div style={{display:"flex",gap:6,marginBottom:12}}>{goalColors.map(([bg,tc],i)=><div key={i} onClick={()=>setGoalCi(i)} style={{flex:1,height:22,borderRadius:7,background:bg,border:`2px solid ${goalCi===i?goalColors[i][1]:"transparent"}`,cursor:"pointer"}}/>)}</div>
-                <div style={{display:"flex",gap:8}}>
-                  <button onClick={()=>setShowAddGoal(false)} style={{flex:1,padding:"10px",borderRadius:12,border:`0.5px solid ${N.border}`,background:"transparent",color:N.muted,fontSize:12,cursor:"pointer",fontFamily:F.body}}>Annulla</button>
-                  <button onClick={()=>{if(gl&&gt){S.extraGoals(p=>[...p,{id:"g"+Date.now(),label:gl,unit:gu,target:+gt,icon:goalIcon,color:goalColors[goalCi][0],tc:goalColors[goalCi][1]}]);setShowAddGoal(false);sGl("");sGu("");sGt("");}}} style={{flex:1,padding:"10px",borderRadius:12,border:"none",background:N.text,color:"#fff",fontSize:12,cursor:"pointer",fontFamily:F.body,fontWeight:600}}>Salva</button>
-                </div>
-              </div>
-            )}
+            {showAddGoal&&<GoalAddForm onSave={(goal)=>{S.extraGoals(p=>[...p,{id:"g"+Date.now(),...goal}]);setShowAddGoal(false);}} onCancel={()=>setShowAddGoal(false)}/>}
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
               {/* ACQUA */}
               <div style={{background:waterCount>=waterTarget?"#D9F0CE":"#fff",borderRadius:18,padding:"13px 14px",border:`0.5px solid ${waterCount>=waterTarget?"#4E8C40":N.border}`,transition:"all .3s"}}>
@@ -1536,10 +1948,33 @@ export default function App(){
                   </>
                 )}
               </div>
-              <GoalCheck done={readDone} setDone={S.readDone} icon="openbook" color="#F0E4B8" checkColor="#7A5C10" label={readLabel.label} subtitle={readLabel.sub} extraLink={{href:"mobilenotes://",label:"📝 Note"}} onEdit={(l,s)=>setReadLabel({label:l,sub:s})}/>
-              <GoalCheck done={alignDone} setDone={S.alignDone} icon="align" color="#FFD9B8" checkColor="#A04A10" label={alignLabel.label} subtitle={alignLabel.sub} onEdit={(l,s)=>setAlignLabel({label:l,sub:s})}/>
+              {!readMeta.hidden&&<GoalCheck done={readDone} setDone={S.readDone} icon={readMeta.icon} color={readMeta.color} checkColor={readMeta.tc} label={readMeta.label} subtitle={readMeta.sub} extraLink={{href:"mobilenotes://",label:"📝 Note"}} onEdit={(patch)=>S.readMeta(m=>({...m,...patch}))} onDelete={()=>S.readMeta(m=>({...m,hidden:true}))}/>}
+              {!alignMeta.hidden&&<GoalCheck done={alignDone} setDone={S.alignDone} icon={alignMeta.icon} color={alignMeta.color} checkColor={alignMeta.tc} label={alignMeta.label} subtitle={alignMeta.sub} onEdit={(patch)=>S.alignMeta(m=>({...m,...patch}))} onDelete={()=>S.alignMeta(m=>({...m,hidden:true}))}/>}
               {extraGoals.map(g=>{const v=goalVals[g.id]||0;const gd=v>=g.target;const gp=Math.min(Math.round(v/g.target*100),100);return(<ExtraGoalCard key={g.id} g={g} v={v} gd={gd} gp={gp} editGoalId={editGoalId} setEditGoalId={setEditGoalId} onUpdateGoal={(id,patch)=>S.extraGoals(p=>p.map(x=>x.id===id?{...x,...patch}:x))} onDeleteGoal={(id)=>S.extraGoals(p=>p.filter(x=>x.id!==id))} onDecrement={()=>S.goalVals(p=>({...p,[g.id]:Math.max(0,(p[g.id]||0)-1)}))} onIncrement={()=>S.goalVals(p=>({...p,[g.id]:(p[g.id]||0)+1}))}/>);})}
             </div>
+          </div>
+
+          <div style={{marginBottom:12}}>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
+              <Title size={20}>Obiettivi settimanali</Title>
+              <div style={{display:"flex",alignItems:"center",gap:6}}>
+                <button onClick={()=>setShowAddWeeklyGoal(s=>!s)} style={{fontSize:11,padding:"4px 10px",borderRadius:20,border:`1px dashed ${N.border}`,background:"transparent",color:N.muted,cursor:"pointer",fontFamily:F.body}}>+ nuovo</button>
+                <button onClick={()=>setShowPlantInfo(true)} style={{width:24,height:24,borderRadius:"50%",border:`1px solid ${N.border}`,background:"#fff",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",fontFamily:F.heading,fontSize:12,fontWeight:600,color:N.muted}}>i</button>
+              </div>
+            </div>
+            {showAddWeeklyGoal&&<GoalAddForm onSave={(goal)=>{S.weeklyGoals(p=>[...p,{id:"wg"+Date.now(),...goal}]);setShowAddWeeklyGoal(false);}} onCancel={()=>setShowAddWeeklyGoal(false)}/>}
+            <Card style={{overflow:"visible"}}>
+              <p style={{fontSize:12,fontWeight:600,color:N.muted,margin:"0 0 10px",fontFamily:F.body}}>🌿 20+ piante a settimana</p>
+              <PlantProgressBar score={plantScore} compact/>
+              <div style={{marginTop:12}}>
+                <PlantQuickAdd onAdd={addPlantFood} compact/>
+              </div>
+            </Card>
+            {weeklyGoals.length>0&&<div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+              {weeklyGoals.map(g=>{const v=weeklyGoalCurrentVals[g.id]||0;const gd=v>=g.target;const gp=Math.min(Math.round(v/g.target*100),100);return(
+                <ExtraGoalCard key={g.id} g={g} v={v} gd={gd} gp={gp} editGoalId={editWeeklyGoalId} setEditGoalId={setEditWeeklyGoalId} onUpdateGoal={(id,patch)=>S.weeklyGoals(p=>p.map(x=>x.id===id?{...x,...patch}:x))} onDeleteGoal={(id)=>S.weeklyGoals(p=>p.filter(x=>x.id!==id))} onDecrement={()=>bumpWeeklyGoal(g.id,-1)} onIncrement={()=>bumpWeeklyGoal(g.id,1)}/>
+              );})}
+            </div>}
           </div>
 
           <AlimentazioneSection
@@ -1735,6 +2170,7 @@ export default function App(){
               {k:"ricette",icon:"fork",label:"Ricette & Idee",desc:`${ricette.length} piatti`,grad:"linear-gradient(135deg,#FDFAF2,#F0E4B8)",tc:"#7A5C10"},
               {k:"movimento",icon:"dumbbell",label:"Movimento",desc:`${workouts.length} allenamenti · ${yogaPractices.length} yoga · ${faceYogaPractices.length} face yoga`,grad:"linear-gradient(135deg,#FFF4EE,#FFD5B8)",tc:"#A04010"},
               {k:"proteine",icon:"protein",label:"Rotazione Proteine",desc:"Traccia i limiti settimanali",grad:"linear-gradient(135deg,#F2FAF0,#C8E8B8)",tc:"#2A5A18"},
+              {k:"piante",icon:"leaf",label:"20+ piante a settimana",desc:`${Math.round(plantScore*10)/10} punti questa settimana`,grad:"linear-gradient(135deg,#D9F0CE,#B8E0A8)",tc:"#2A5A18"},
               {k:"skincare",icon:"flower",label:"Skincare",desc:"Mattina · Sera A/B/C · prodotti & passi",grad:"linear-gradient(135deg,#FFF0F5,#FFD0E0)",tc:"#A03050"},
               {k:"note",icon:"note",label:"Note & Info utili",desc:"Stagionalità, skincare, integratori",grad:"linear-gradient(135deg,#EDE0FF,#D4C0FF)",tc:"#6B3FA0"},
               {k:"progressi",icon:"chart",label:"Progressi",desc:"Costanza nelle routine",grad:"linear-gradient(135deg,#FFF5EE,#FFD9B8)",tc:"#A04A10"},
@@ -1754,6 +2190,8 @@ export default function App(){
           <p style={{fontSize:12,color:N.muted,fontFamily:F.body,margin:"0 0 14px",lineHeight:1.6}}>Registra le proteine che mangi a pranzo e cena. Le barre si aggiornano in tempo reale e ti avvisano quando ti avvicini al limite settimanale.</p>
           <ProteinTracker weekProteins={weekProteins} onAdd={entry=>S.weekProteins(p=>[...p,{...entry,date:todayKey}])} onUndo={()=>S.weekProteins(p=>p.slice(0,-1))}/>
         </div>}
+
+        {tab==="altro"&&subTab==="piante"&&<PlantsSection thisWeekPlants={thisWeekPlants} plantScore={plantScore} history={plantHistory} onAdd={addPlantFood} onRemove={removePlantFood}/>}
 
         {tab==="altro"&&subTab==="ricette"&&<div>
           <div style={{display:"flex",justifyContent:"flex-end",marginBottom:12}}><button onClick={()=>setShowAddRic(true)} style={{display:"flex",alignItems:"center",gap:5,fontSize:11,padding:"5px 12px",borderRadius:20,border:`1px solid ${N.border}`,background:"#fff",color:N.muted,cursor:"pointer",fontFamily:F.body}}><Ic n="plus" s={12} c={N.muted}/>nuovo</button></div>
@@ -1932,8 +2370,8 @@ export default function App(){
             const fixedGoals=[
               {id:"water",label:"Acqua",icon:"drop",color:"#4E8C40",bg:"#D9F0CE"},
               {id:"steps",label:"Passi",icon:"walk",color:"#E8733A",bg:"#FFD5B8"},
-              {id:"read",label:"Lettura",icon:"openbook",color:"#7A5C10",bg:"#F0E4B8"},
-              {id:"align",label:"Alignment",icon:"align",color:"#A04A10",bg:"#FFD9B8"},
+              ...(!readMeta.hidden?[{id:"read",label:readMeta.label,icon:readMeta.icon,color:readMeta.tc,bg:readMeta.color}]:[]),
+              ...(!alignMeta.hidden?[{id:"align",label:alignMeta.label,icon:alignMeta.icon,color:alignMeta.tc,bg:alignMeta.color}]:[]),
             ];
             // Collect all extra goal ids that appear in any log entry
             const extraIds=new Set();
@@ -1948,13 +2386,7 @@ export default function App(){
               <Title size={16} style={{marginBottom:4}}>Costanza obiettivi</Title>
               <p style={{fontSize:11,color:N.muted,fontFamily:F.body,margin:"0 0 14px"}}>Completamento giornaliero per obiettivo</p>
               {allTracked.map(g=>{
-                const vals=last14.map(p=>{
-                  if(g.id==="water")return p.goals?.water??false;
-                  if(g.id==="steps")return p.goals?.steps??false;
-                  if(g.id==="read")return p.goals?.read??false;
-                  if(g.id==="align")return p.goals?.align??false;
-                  return p.goals?.extra?.[g.id]??false;
-                });
+                const vals=last14.map(p=>goalDone(g,p));
                 const streak=vals.filter(Boolean).length;
                 const pct14=Math.round(streak/vals.length*100);
                 return(<div key={g.id} style={{marginBottom:12}}>
@@ -1967,12 +2399,7 @@ export default function App(){
                   </div>
                   <div style={{display:"flex",gap:3,height:28,alignItems:"flex-end"}}>
                     {last14.map((p,i)=>{
-                      let done;
-                      if(g.id==="water")done=p.goals?.water??false;
-                      else if(g.id==="steps")done=p.goals?.steps??false;
-                      else if(g.id==="read")done=p.goals?.read??false;
-                      else if(g.id==="align")done=p.goals?.align??false;
-                      else done=p.goals?.extra?.[g.id]??false;
+                      let done=goalDone(g,p);
                       return(<div key={i} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:2}}>
                         <div style={{width:"100%",height:18,borderRadius:3,background:done?g.color:N.faint,opacity:done?0.85:1,transition:"background .2s"}}/>
                         <span style={{fontSize:7,color:N.muted,fontFamily:F.body}}>{new Date(p.date).getDate()}</span>
